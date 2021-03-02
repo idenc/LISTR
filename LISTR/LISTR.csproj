@@ -154,6 +154,7 @@
     <Content Include="resources\cityVideo.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="resources\realtyLogo.ico" />
     <Resource Include="resources\realtyLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

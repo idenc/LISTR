@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace LISTR
 {
@@ -10,6 +11,11 @@ namespace LISTR
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Media_Ended(object sender, RoutedEventArgs e)
+        {
+            backgroundVideo.Position = TimeSpan.FromMilliseconds(1);
         }
     }
 }

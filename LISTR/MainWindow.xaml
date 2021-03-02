@@ -8,6 +8,7 @@
         MinWidth="480"
         MinHeight="480"
         FontSize="32"
+        Icon="/LISTR;component/resources/realtyLogo.ico"
         FontFamily="/LISTR;component/resources/fonts/#Montserrat"
         Title="LISTR" Height="720" Width="1280">
     <Grid>
@@ -24,13 +25,13 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <VisualBrush>
+            <VisualBrush Stretch="UniformToFill">
                 <VisualBrush.Visual>
                     <StackPanel Background="White">
                         <MediaElement 
+                            x:Name="backgroundVideo" 
                             Source="./resources/cityVideo.mp4" 
-                            Opacity="1.0" 
-                            Stretch="None">
+                            MediaEnded="Media_Ended">
                         </MediaElement>
                     </StackPanel>
                 </VisualBrush.Visual>
