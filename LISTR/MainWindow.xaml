@@ -5,16 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISTR"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="640">
+        MinWidth="480"
+        MinHeight="480"
+        FontSize="32"
+        FontFamily="/LISTR;component/resources/fonts/#Montserrat"
+        Title="LISTR" Height="720" Width="1280">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <VisualBrush>
                 <VisualBrush.Visual>
                     <StackPanel Background="White">
-                        <MediaElement Source="./resources/cityVideo.mp4" Opacity="1.0" Stretch="None"></MediaElement>
+                        <MediaElement 
+                            Source="./resources/cityVideo.mp4" 
+                            Opacity="1.0" 
+                            Stretch="None">
+                        </MediaElement>
                     </StackPanel>
                 </VisualBrush.Visual>
             </VisualBrush>
         </Grid.Background>
+        <Image 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top"
+            Width="225" 
+            Source="resources/realtyLogo.png"/>
+        <AdornerDecorator 
+            Grid.Column="1" 
+            Grid.Row="2" 
+            Height="auto" 
+            VerticalAlignment="Top">
+            <TextBox 
+                x:Name="SearchTextBox"
+                Grid.Column="1"
+                Grid.Row="2"
+                HorizontalAlignment="Stretch"
+                Padding="3">
+                <local:WatermarkService.Watermark>
+                    <TextBlock 
+                        VerticalAlignment="Center" 
+                        Padding="3" 
+                        FontFamily="/LISTR;component/resources/fonts/#Montserrat" 
+                        FontSize="32">
+                        Type here to search text
+                    </TextBlock>
+                </local:WatermarkService.Watermark>
+            </TextBox>
+        </AdornerDecorator>
+        <!--<TextBox 
+            Grid.Column="1" 
+            Grid.Row="2" 
+            HorizontalAlignment="Stretch" 
+            TextWrapping="Wrap" 
+            Text="Search by city or street address..." 
+            VerticalAlignment="Top" Margin="100,0" />-->
     </Grid>
 </Window>
