@@ -12,14 +12,15 @@
         Title="LISTR" Height="720" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="80"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.Background>
@@ -38,38 +39,32 @@
         <Image 
             Grid.Column="1" 
             Grid.Row="1" 
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Center" 
             VerticalAlignment="Top"
             Width="225" 
             Source="resources/realtyLogo.png"/>
         <AdornerDecorator 
-            Grid.Column="1" 
-            Grid.Row="2" 
-            Height="auto" 
-            VerticalAlignment="Top">
+            Height="auto"
+            Width="auto"
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Top" Margin="0,100,0,0">
             <TextBox 
                 x:Name="SearchTextBox"
-                Grid.Column="1"
-                Grid.Row="2"
                 HorizontalAlignment="Stretch"
-                Padding="3">
+                Padding="5">
                 <local:WatermarkService.Watermark>
                     <TextBlock 
                         VerticalAlignment="Center" 
-                        Padding="3" 
                         FontFamily="/LISTR;component/resources/fonts/#Montserrat" 
-                        FontSize="32">
+                        FontSize="32"
+                        Padding="5">
                         Type here to search text
                     </TextBlock>
                 </local:WatermarkService.Watermark>
             </TextBox>
         </AdornerDecorator>
-        <!--<TextBox 
-            Grid.Column="1" 
-            Grid.Row="2" 
-            HorizontalAlignment="Stretch" 
-            TextWrapping="Wrap" 
-            Text="Search by city or street address..." 
-            VerticalAlignment="Top" Margin="100,0" />-->
+        <Button Padding="5" FontSize="24" Grid.Row="2" Grid.Column="2" Content="Search" Margin="0,100,0,0"></Button>
     </Grid>
 </Window>
