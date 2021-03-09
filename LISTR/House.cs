@@ -23,5 +23,23 @@ namespace LISTR
 
         [BsonElement("city")]
         public string City { get; set; }
+
+        [BsonElement("images")]
+        public byte[][] Images { get; set; }
+
+        [BsonElement("owners")]
+        public string Owners { get; set; }
+
+        [BsonElement("is_rental")]
+        public bool IsRental { get; set; }
+
+        [BsonElement("building_type")]
+        public string BuildingType { get; set; }
+
+        [BsonElement("num_rooms")]
+        public int NumRooms{ get; set; }
+
+        [BsonElement("num_baths")]
+        public int NumBaths { get; set; }
     }
 }
