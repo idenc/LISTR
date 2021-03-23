@@ -363,3 +363,8 @@ FodyWeavers.xsd
 
 # Jetbrains folder
 .idea
+
+# Package stuff
+*.dll
+*.so
+*.dylib
