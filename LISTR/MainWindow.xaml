@@ -1,92 +1,21 @@
-﻿<Window x:Class="LISTR.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LISTR"
-        mc:Ignorable="d"
-        MinWidth="480"
-        MinHeight="480"
-        FontSize="24"
-        Icon="/LISTR;component/resources/realtyLogo.ico"
-        FontFamily="/LISTR;component/resources/fonts/#Montserrat"
-        Title="LISTR" Height="720" Width="1280"
-        UseLayoutRounding="True">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
-        <Grid.Background>
-            <VisualBrush Stretch="UniformToFill">
-                <VisualBrush.Visual>
-                    <StackPanel Background="White">
-                        <MediaElement 
-                            x:Name="backgroundVideo" 
-                            Source="./resources/cityVideo.mp4" 
-                            MediaEnded="Media_Ended">
-                        </MediaElement>
-                    </StackPanel>
-                </VisualBrush.Visual>
-            </VisualBrush>
-        </Grid.Background>
-        <Image 
-            Grid.Column="1" 
-            Grid.Row="1" 
-            Grid.ColumnSpan="2"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Top"
-            Width="225" 
-            Source="resources/realtyLogo.png"/>
-        <Button Grid.Row="1" Grid.Column="3" Padding="7"
-                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,20,0" Width="116">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="resources/lock.png"
-                       Height="24"
-                       Margin="0,0,7,0"
-                       RenderOptions.EdgeMode="Aliased"/>
-                <TextBlock>Login</TextBlock>
-            </StackPanel>
-        </Button>
-        <Button Content="Register" Grid.Row="1" Grid.Column="3" Padding="7"
-                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,20,0"/>
+﻿<Window
+    x:Class="LISTR.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LISTR"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="LISTR"
+    Width="1280"
+    Height="720"
+    MinWidth="480"
+    MinHeight="480"
+    Icon="/LISTR;component/resources/realtyLogo.ico"
+    UseLayoutRounding="True"
+    mc:Ignorable="d">
 
-        <AdornerDecorator 
-            Height="auto"
-            Width="auto"
-            Grid.Row="2"
-            Grid.Column="1"
-            VerticalAlignment="Top" Margin="0,100,0,0">
-            <TextBox 
-                x:Name="SearchTextBox"
-                HorizontalAlignment="Stretch"
-                Padding="7">
-                <local:WatermarkService.Watermark>
-                    <TextBlock 
-                        VerticalAlignment="Center" 
-                        FontFamily="/LISTR;component/resources/fonts/#Montserrat" 
-                        FontSize="32"
-                        Padding="7">
-                        Search by city or street address...
-                    </TextBlock>
-                </local:WatermarkService.Watermark>
-            </TextBox>
-        </AdornerDecorator>
-        <Button Padding="20, 7, 20, 7" Grid.Row="2" Grid.Column="2" Content="Search"
-                Margin="0,100,0,0"/>
-        <Button Padding="20, 7, 20, 7" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                HorizontalAlignment="Center" Content="Filters"
-                Margin="0,50,200,0" Width="166"/>
-        <Button Padding="20, 7, 20, 7" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                HorizontalAlignment="Center" Content="Favourites" Margin="200,50,0,0"/>
-    </Grid>
+    <Frame
+        x:Name="Main"
+        NavigationUIVisibility="Hidden"
+        Source="HomePage.xaml" />
 </Window>

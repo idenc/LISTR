@@ -1,9 +1,15 @@
-﻿<Application x:Class="LISTR.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:LISTR"
-             StartupUri="MainWindow.xaml">
+﻿<Application
+    x:Class="LISTR.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LISTR"
+    StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style x:Key="WinAll" TargetType="{x:Type Page}">
+                <Setter Property="FontFamily" Value="/LISTR;component/resources/fonts/#Montserrat" />
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

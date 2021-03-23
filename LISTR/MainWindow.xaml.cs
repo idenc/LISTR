@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Navigation;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -24,11 +25,6 @@ namespace LISTR
         {
             InitializeComponent();
             ReadAllDocuments();
-        }
-
-        private void Media_Ended(object sender, RoutedEventArgs e)
-        {
-            backgroundVideo.Position = TimeSpan.FromMilliseconds(1);
         }
     }
 }
