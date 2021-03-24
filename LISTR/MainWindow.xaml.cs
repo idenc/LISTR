@@ -14,11 +14,12 @@ namespace LISTR
     {
         private static readonly MongoClient client = new MongoClient("mongodb+srv://dbUser:4nBYc8Am2MtD2FJ@cluster0.ujyt6.mongodb.net");
         private static readonly IMongoDatabase db = client.GetDatabase("LISTR");
-        private static readonly IMongoCollection<BsonDocument> collection = db.GetCollection<BsonDocument>("Houses");
+        public static IMongoCollection<BsonDocument> houses = db.GetCollection<BsonDocument>("Houses");
+        public static IMongoCollection<BsonDocument> accounts = db.GetCollection<BsonDocument>("Accounts");
 
         public void ReadAllDocuments()
         {
-            List<BsonDocument> list = collection.AsQueryable().ToList<BsonDocument>();
+            List<BsonDocument> list = houses.AsQueryable().ToList<BsonDocument>();
         }
 
         public MainWindow()

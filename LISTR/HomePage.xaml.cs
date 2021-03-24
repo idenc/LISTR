@@ -21,9 +21,17 @@ namespace LISTR
 
         private void LoginClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
-            Login login = new Login();
-            mainWindow.Main.Navigate(login);
+        }
+
+        private void OpenRegister(object sender, RoutedEventArgs e)
+        {
+            new Register
+            {
+                Placement = System.Windows.Controls.Primitives.PlacementMode.Center,
+                PlacementTarget = this,
+                IsOpen = true,
+                AllowsTransparency = true
+            };
         }
     }
 }

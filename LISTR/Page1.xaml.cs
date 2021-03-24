@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace LISTR
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class Page1 : Page
     {
-        public Login()
+        public Page1()
         {
             InitializeComponent();
         }
