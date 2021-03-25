@@ -13,27 +13,30 @@
     VerticalAlignment="Center"
     IsEnabled="True"
     IsOpen="False"
+    AllowsTransparency="True"
     Placement="Center"
+    PopupAnimation="Fade"
     StaysOpen="False"
     mc:Ignorable="d">
 
-    <Grid Width="Auto" Height="Auto" Background="White">
+    <Grid
+        Width="Auto"
+        Height="Auto"
+        Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
-        <Grid
-            Grid.Row="1"
-            Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition />
@@ -47,7 +50,6 @@
                     <xctk:WatermarkTextBox
                         Name="Username"
                         Width="235"
-                        Height="25"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Left"
                         Background="Transparent"
@@ -76,7 +78,6 @@
                     <xctk:WatermarkPasswordBox
                         Name="Password1"
                         Width="235"
-                        Height="25"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Left"
                         Background="Transparent"
@@ -106,7 +107,6 @@
                     <xctk:WatermarkPasswordBox
                         Name="Password2"
                         Width="235"
-                        Height="25"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Left"
                         Background="Transparent"

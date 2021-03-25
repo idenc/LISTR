@@ -107,9 +107,18 @@
             <Button
                 Name="LogoutButton"
                 Padding="7"
+                Click="LogoutClick"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Content="Logout"
+                FontSize="12"
+                Visibility="Collapsed" />
+            <Button
+                Name="ListingsButton"
+                Padding="7"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Content="Listings"
                 FontSize="12"
                 Visibility="Collapsed" />
         </StackPanel>

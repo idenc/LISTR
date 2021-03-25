@@ -9,9 +9,12 @@ namespace LISTR
     /// </summary>
     public partial class Register : Popup
     {
-        public Register()
+        private readonly HomePage homePage;
+
+        public Register(HomePage homePage)
         {
             InitializeComponent();
+            this.homePage = homePage;
         }
 
         private void RegisterClick(object sender, System.Windows.RoutedEventArgs e)
@@ -43,6 +46,8 @@ namespace LISTR
             };
 
             MainWindow.accounts.InsertOne(document);
+            this.homePage.DoLogin(false);
+            this.IsOpen = false;
         }
     }
 }

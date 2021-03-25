@@ -21,6 +21,17 @@ namespace LISTR
             backgroundVideo.Position = TimeSpan.FromMilliseconds(1);
         }
 
+        public void DoLogin(Boolean isRealtor)
+        {
+            LoginPanel.Visibility = Visibility.Collapsed;
+            RegisterButton.Visibility = Visibility.Collapsed;
+            LogoutButton.Visibility = Visibility.Visible;
+            if (isRealtor)
+            {
+                ListingsButton.Visibility = Visibility.Visible;
+            }
+        }
+
         private void LoginClick(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(HomepageUsername.Text) || string.IsNullOrWhiteSpace(HomepagePassword.Password))
@@ -34,28 +45,38 @@ namespace LISTR
             var search = MainWindow.accounts.Find(filter).FirstOrDefault();
             if (search != null)
             {
+                // User found
                 String password = search["password"].AsString;
                 if (password == HomepagePassword.Password)
                 {
-                    LoginPanel.Visibility = Visibility.Collapsed;
-                    RegisterButton.Visibility = Visibility.Collapsed;
-                    LogoutButton.Visibility = Visibility.Visible;
+                    // Password is correct
+                    DoLogin(search["is_realtor"].AsBoolean);
                     return;
                 }
             }
 
+            // Show error message
             LoginError.Text = "Username or password is incorrect";
             LoginPopup.IsOpen = true;
         }
 
+        private void LogoutClick(object sender, RoutedEventArgs e)
+        {
+            // Reset buttons
+            LogoutButton.Visibility = Visibility.Collapsed;
+            ListingsButton.Visibility = Visibility.Collapsed;
+
+            LoginPanel.Visibility = Visibility.Visible;
+            RegisterButton.Visibility = Visibility.Visible;
+        }
+
         private void OpenRegister(object sender, RoutedEventArgs e)
         {
-            new Register
+            new Register(this)
             {
                 Placement = System.Windows.Controls.Primitives.PlacementMode.Center,
                 PlacementTarget = this,
-                IsOpen = true,
-                AllowsTransparency = true
+                IsOpen = true
             };
         }
 
