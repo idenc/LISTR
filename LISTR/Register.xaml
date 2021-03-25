@@ -6,6 +6,7 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:LISTR"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Width="Auto"
     Height="Auto"
     HorizontalAlignment="Center"
@@ -16,20 +17,23 @@
     StaysOpen="False"
     mc:Ignorable="d">
 
-    <Grid Width="Auto" Height="Auto">
+    <Grid Width="Auto" Height="Auto" Background="White">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*" />
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <Grid
             Grid.Row="1"
-            Grid.Column="1"
-            Background="White">
+            Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition />
@@ -40,11 +44,10 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBox
+                    <xctk:WatermarkTextBox
                         Name="Username"
                         Width="235"
                         Height="25"
-                        Margin="63,0,0,0"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Left"
                         Background="Transparent"
@@ -53,7 +56,7 @@
                         FontWeight="Light"
                         Foreground="Black"
                         Opacity="0.5"
-                        Text="Username" />
+                        Watermark="Username" />
                     <iconPacks:PackIconMaterial
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -70,11 +73,10 @@
                     Margin="0,20,0,0"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal">
-                    <PasswordBox
+                    <xctk:WatermarkPasswordBox
                         Name="Password1"
                         Width="235"
                         Height="25"
-                        Margin="63,0,0,0"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Left"
                         Background="Transparent"
@@ -84,7 +86,7 @@
                         FontWeight="Light"
                         Foreground="Black"
                         Opacity="0.5"
-                        Password="Password" />
+                        Watermark="Password" />
                     <iconPacks:PackIconMaterial
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -101,11 +103,10 @@
                     Margin="0,20,0,0"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal">
-                    <PasswordBox
+                    <xctk:WatermarkPasswordBox
                         Name="Password2"
                         Width="235"
                         Height="25"
-                        Margin="63,0,0,0"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Left"
                         Background="Transparent"
@@ -115,7 +116,7 @@
                         FontWeight="Light"
                         Foreground="Black"
                         Opacity="0.5"
-                        Password="Password" />
+                        Watermark="Confirm Password" />
                     <iconPacks:PackIconMaterial
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"

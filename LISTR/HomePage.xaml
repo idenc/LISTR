@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:LISTR"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-    Title="HomePage"
     Name="frontpage"
+    Title="HomePage"
     d:DesignHeight="720"
     d:DesignWidth="1280"
     Style="{StaticResource WinAll}"
@@ -52,28 +52,51 @@
             Grid.Row="1"
             Grid.Column="2"
             Grid.ColumnSpan="2">
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <StackPanel
+                Name="LoginPanel"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
                 <xctk:WatermarkTextBox
+                    Name="HomepageUsername"
                     Width="120"
                     Padding="7"
                     FontSize="12"
+                    TextChanged="LoginChanged"
                     Watermark="Username" />
                 <xctk:WatermarkPasswordBox
+                    Name="HomepagePassword"
                     Width="120"
                     Margin="10,0,0,0"
                     Padding="7"
                     FontSize="12"
+                    TextChanged="LoginChanged"
                     Watermark="Password" />
                 <Button
+                    Name="LoginButton"
                     Width="66"
                     Margin="10,0,0,0"
                     Padding="7"
+                    Click="LoginClick"
                     Content="Login"
-                    FontSize="12" />
+                    FontSize="12"
+                    IsDefault="True"
+                    IsEnabled="False" />
             </StackPanel>
+            <Popup
+                Name="LoginPopup"
+                IsOpen="False"
+                PlacementTarget="{Binding ElementName=HomepageUsername}"
+                StaysOpen="False">
+                <TextBlock
+                    Name="LoginError"
+                    Padding="10"
+                    Background="White"
+                    Foreground="Red" />
+            </Popup>
 
 
             <Button
+                Name="RegisterButton"
                 Margin="0,20,0,0"
                 Padding="7"
                 HorizontalAlignment="Right"
@@ -81,6 +104,14 @@
                 Click="OpenRegister"
                 Content="Register"
                 FontSize="12" />
+            <Button
+                Name="LogoutButton"
+                Padding="7"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Content="Logout"
+                FontSize="12"
+                Visibility="Collapsed" />
         </StackPanel>
 
 

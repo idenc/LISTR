@@ -38,7 +38,8 @@ namespace LISTR
 
             var document = new BsonDocument {
                 { "username", Username.Text},
-                { "password", Password1.Password}
+                { "password", Password1.Password},
+                { "is_realtor", false} // Realtors must be manually marked as such
             };
 
             MainWindow.accounts.InsertOne(document);
