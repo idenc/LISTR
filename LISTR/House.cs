@@ -25,6 +25,9 @@ namespace LISTR
         [BsonElement("city"), BsonDefaultValue(null)]
         public string City { get; set; }
 
+        [BsonElement("postal_code"), BsonDefaultValue(null)]
+        public string PostalCode { get; set; }
+
         [BsonElement("images"), BsonDefaultValue(null)]
         public byte[][] Images { get; set; }
 

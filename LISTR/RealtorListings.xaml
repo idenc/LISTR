@@ -8,8 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="RealtorListings"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DataContext="{x:Static local:DesignTimeHouseBinding.HouseSampleData}"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    Loaded="RealtorLoaded"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -22,6 +24,7 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
@@ -107,8 +110,88 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-        <ScrollViewer Grid.Column="1" Grid.Row="2" Height="100">
-            <ItemsControl ItemsSource="{Binding houses}" />
+        <ScrollViewer
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Background="White">
+            <ItemsControl x:Name="MyControl" Background="White">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Height="100"
+                                Margin="20"
+                                Source="{Binding Images[0]}" />
+                            <StackPanel Margin="20" VerticalAlignment="Center">
+                                <StackPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontSize" Value="15" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock Text="{Binding Price, StringFormat='For Sale: {0}$'}" />
+                                <TextBlock Text="{Binding Address}" />
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="City" />
+                                            <Binding Path="Province" />
+                                            <Binding Path="PostalCode" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} Beds, {1} Baths">
+                                            <Binding Path="NumRooms" />
+                                            <Binding Path="NumBaths" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Text="{Binding Owners, StringFormat='Owned By: {0}'}" />
+                            </StackPanel>
+                            <StackPanel Margin="171,20,20,20">
+                                <Button
+                                    Width="130"
+                                    Margin="0,0,0,10"
+                                    HorizontalAlignment="Left">
+                                    <Grid Width="130">
+                                        <TextBlock
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Padding="7"
+                                            HorizontalAlignment="Left">
+                                            Edit
+                                        </TextBlock>
+                                        <iconPacks:PackIconMaterial
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="0,0,7,0"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Foreground="Black"
+                                            Kind="HomeEdit" />
+                                    </Grid>
+                                </Button>
+                                <Button Width="130">
+                                    <Grid Width="130">
+                                        <TextBlock Padding="7" HorizontalAlignment="Left">
+                                            Delete
+                                        </TextBlock>
+                                        <iconPacks:PackIconMaterial
+                                            Margin="0,0,7,0"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Foreground="Black"
+                                            Kind="Delete" />
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </Page>

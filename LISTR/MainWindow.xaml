@@ -17,5 +17,5 @@
     <Frame
         x:Name="Main"
         NavigationUIVisibility="Hidden"
-        Source="HomePage.xaml" />
+        Source="RealtorListings.xaml" />
 </Window>
