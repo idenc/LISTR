@@ -91,5 +91,11 @@ namespace LISTR
                 LoginButton.IsEnabled = false;
             }
         }
+
+        private void ListingsClick(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new RealtorListings());
+        }
     }
 }
