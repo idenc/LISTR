@@ -5,10 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:LISTR"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Name="frontpage"
     Title="HomePage"
     d:DesignHeight="720"
     d:DesignWidth="1280"
     Style="{StaticResource WinAll}"
+    UseLayoutRounding="True"
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,6 +19,7 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -44,60 +48,86 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Source="resources/realtyLogo.png" />
-        <Button
+        <StackPanel
             Grid.Row="1"
-            Grid.Column="3"
-            Width="116"
-            Margin="0,0,20,0"
-            Padding="7"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Click="LoginClick">
-            <StackPanel Orientation="Horizontal">
-                <Image
-                    Height="24"
-                    Margin="0,0,7,0"
-                    RenderOptions.EdgeMode="Aliased"
-                    Source="resources/lock.png" />
-                <TextBlock>Login</TextBlock>
+            Grid.Column="2"
+            Grid.ColumnSpan="2">
+            <StackPanel
+                Name="LoginPanel"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <xctk:WatermarkTextBox
+                    Name="HomepageUsername"
+                    Width="120"
+                    Padding="7"
+                    FontSize="12"
+                    TextChanged="LoginChanged"
+                    Watermark="Username" />
+                <xctk:WatermarkPasswordBox
+                    Name="HomepagePassword"
+                    Width="120"
+                    Margin="10,0,0,0"
+                    Padding="7"
+                    FontSize="12"
+                    TextChanged="LoginChanged"
+                    Watermark="Password" />
+                <Button
+                    Name="LoginButton"
+                    Width="66"
+                    Margin="10,0,0,0"
+                    Padding="7"
+                    Click="LoginClick"
+                    Content="Login"
+                    FontSize="12"
+                    IsDefault="True"
+                    IsEnabled="False" />
             </StackPanel>
-        </Button>
-        <Button
-            Grid.Row="1"
-            Grid.Column="3"
-            Margin="0,65,20,0"
-            Padding="7"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Content="Register" />
+            <Popup
+                Name="LoginPopup"
+                IsOpen="False"
+                PlacementTarget="{Binding ElementName=HomepageUsername}"
+                StaysOpen="False">
+                <TextBlock
+                    Name="LoginError"
+                    Padding="10"
+                    Background="White"
+                    Foreground="Red" />
+            </Popup>
 
-        <AdornerDecorator
+
+            <Button
+                Name="RegisterButton"
+                Margin="0,20,0,0"
+                Padding="7"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="OpenRegister"
+                Content="Register"
+                FontSize="12" />
+            <Button
+                Name="LogoutButton"
+                Padding="7"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Content="Logout"
+                FontSize="12"
+                Visibility="Collapsed" />
+        </StackPanel>
+
+
+        <xctk:WatermarkTextBox
             Grid.Row="2"
             Grid.Column="1"
-            Width="auto"
-            Height="auto"
             Margin="0,100,0,0"
-            VerticalAlignment="Top">
-            <TextBox
-                x:Name="SearchTextBox"
-                Padding="7"
-                HorizontalAlignment="Stretch">
-                <local:WatermarkService.Watermark>
-                    <TextBlock
-                        Padding="7"
-                        VerticalAlignment="Center"
-                        FontFamily="/LISTR;component/resources/fonts/#Montserrat"
-                        FontSize="32">
-                        Search by city or street address...
-                    </TextBlock>
-                </local:WatermarkService.Watermark>
-            </TextBox>
-        </AdornerDecorator>
+            Padding="5,7,0,7"
+            VerticalAlignment="Bottom"
+            Watermark="Search by city or street address..." />
         <Button
             Grid.Row="2"
             Grid.Column="2"
             Margin="0,100,0,0"
             Padding="20,7,20,7"
+            VerticalAlignment="Bottom"
             Content="Search" />
         <Button
             Grid.Row="3"
