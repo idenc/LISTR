@@ -146,18 +146,9 @@
             Grid.Row="3"
             Grid.Column="1"
             Grid.ColumnSpan="2"
-            Width="166"
-            Margin="0,50,200,0"
+            Margin="0,30,0,0"
             Padding="20,7,20,7"
             HorizontalAlignment="Center"
-            Content="Filters" />
-        <Button
-            Grid.Row="3"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Margin="200,50,0,0"
-            Padding="20,7,20,7"
-            HorizontalAlignment="Center"
-            Content="Favourites" />
+            Content="My LISTR" />
     </Grid>
 </Page>
