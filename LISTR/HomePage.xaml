@@ -121,8 +121,8 @@
                 Padding="7"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Content="Listings"
                 Click="ListingsClick"
+                Content="Listings"
                 FontSize="12"
                 Visibility="Collapsed" />
         </StackPanel>
