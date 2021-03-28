@@ -5,10 +5,53 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LISTR"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="AddListing">
 
-    <Grid>
-        
+    <Grid Background="#FFF4F4F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Label Content="Add Listing" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Height="68" Width="746" FontFamily="Montserrat" FontSize="48" FontWeight="Bold"/>
+        <Label Content="Upload photos" Grid.Column="1" HorizontalAlignment="Left" Margin="50,75,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="50,290,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="Bedrooms" Grid.Column="1" HorizontalAlignment="Left" Margin="50,415,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="Bathrooms" Grid.Column="1" HorizontalAlignment="Left" Margin="50,490,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="Square feet" Grid.Column="1" HorizontalAlignment="Left" Margin="50,565,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="Owners" Grid.Column="1" HorizontalAlignment="Left" Margin="721,100,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="913,179,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <Label Content="Price ($CAD)" Grid.Column="1" HorizontalAlignment="Left" Margin="721,175,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="913,105,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <Label Content="Address" Grid.Column="1" HorizontalAlignment="Left" Margin="721,250,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="913,255,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <Label Content="Type" Grid.Column="1" HorizontalAlignment="Left" Margin="721,325,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="913,330,0,0" Grid.Row="3" VerticalAlignment="Top" Width="265" Height="30">
+            <ComboBoxItem>
+                Buy
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Rent
+            </ComboBoxItem>
+        </ComboBox>
+        <Label Content="Tags" Grid.Column="1" HorizontalAlignment="Left" Margin="721,400,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="182,650,0,0" Grid.Row="3" VerticalAlignment="Top" Width="182" Height="30" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Button Content="Preview" Grid.Column="1" HorizontalAlignment="Left" Margin="546,650,0,0" Grid.Row="3" VerticalAlignment="Top" Width="182" Height="30" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Button Content="Post" Grid.Column="1" HorizontalAlignment="Left" Margin="910,650,0,0" Grid.Row="3" VerticalAlignment="Top" Width="182" Height="30" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="261,569,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="261,495,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="261,419,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="131" Margin="261,244,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="261,419,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="913,405,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
+
     </Grid>
 </Page>
