@@ -10,7 +10,7 @@ namespace LISTR
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static readonly MongoClient client = new MongoClient("mongodb+srv://dbUser:4nBYc8Am2MtD2FJ@cluster0.ujyt6.mongodb.net");
+        private static readonly MongoClient client = new MongoClient("mongodb+srv://dbUser:4nBYc8Am2MtD2FJ@cluster0.ujyt6.mongodb.net?socketTimeoutMS=3000");
         private static readonly IMongoDatabase db = client.GetDatabase("LISTR");
         public static IMongoCollection<House> houses = db.GetCollection<House>("Houses");
         public static IMongoCollection<BsonDocument> accounts = db.GetCollection<BsonDocument>("Accounts");

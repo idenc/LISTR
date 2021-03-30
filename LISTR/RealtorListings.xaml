@@ -15,6 +15,10 @@
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <local:PriceConverter x:Key="PriceConverter" />
+    </Page.Resources>
+
     <Grid>
         <Grid.Background>
             <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
@@ -27,6 +31,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -85,15 +90,8 @@
                 </StackPanel>
             </Button>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <xctk:WatermarkTextBox
-                    Height="36"
-                    Margin="100,5,0,5"
-                    Padding="7"
-                    VerticalAlignment="Center"
-                    FontSize="15"
-                    Watermark="Search Listings..." />
-                <Button Margin="0,5">
+            <DockPanel Grid.Column="1" HorizontalAlignment="Stretch">
+                <Button Margin="0,5" DockPanel.Dock="Right">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Padding="7">Search</TextBlock>
                         <iconPacks:PackIconMaterial
@@ -104,7 +102,17 @@
                             Kind="HomeSearch" />
                     </StackPanel>
                 </Button>
-            </StackPanel>
+                <xctk:WatermarkTextBox
+                    Height="36"
+                    Margin="0,5,0,5"
+                    Padding="7"
+                    VerticalAlignment="Center"
+                    DockPanel.Dock="Left"
+                    FontSize="15"
+                    Name="ListingsSearch"
+                    TextChanged="ListingSearch"
+                    Watermark="Search Listings..." />
+            </DockPanel>
 
             <Button
                 Grid.Column="2"
@@ -129,6 +137,7 @@
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
+                TextSearch.TextPath="@Address"
                 ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -152,7 +161,14 @@
                                         <Setter Property="FontSize" Value="15" />
                                     </Style>
                                 </StackPanel.Resources>
-                                <TextBlock Text="{Binding Price, StringFormat='For Sale: {0}$'}" />
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource PriceConverter}">
+                                            <Binding Path="Price" />
+                                            <Binding Path="IsRental" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                                 <TextBlock Text="{Binding Address}" />
                                 <TextBlock>
                                     <TextBlock.Text>
@@ -193,7 +209,10 @@
                                             Kind="HomeEdit" />
                                     </Grid>
                                 </Button>
-                                <Button Width="130">
+                                <Button
+                                    Width="130"
+                                    Click="DeleteListing"
+                                    Tag="{Binding Id}">
                                     <Grid Width="130">
                                         <TextBlock Padding="7" HorizontalAlignment="Left">
                                             Delete
@@ -207,6 +226,11 @@
                                     </Grid>
                                 </Button>
                             </StackPanel>
+                            <Separator
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                VerticalAlignment="Bottom" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
