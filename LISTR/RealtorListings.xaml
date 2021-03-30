@@ -17,6 +17,13 @@
 
     <Page.Resources>
         <local:PriceConverter x:Key="PriceConverter" />
+        <Style x:Key="RoundButton" TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7,7,0,0" />
+                </Style>
+            </Style.Resources>
+        </Style>
     </Page.Resources>
 
     <Grid>
@@ -70,9 +77,11 @@
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="0"
@@ -90,7 +99,23 @@
                 </StackPanel>
             </Button>
 
-            <DockPanel Grid.Column="1" HorizontalAlignment="Stretch">
+            <Button
+                Grid.Column="2"
+                Margin="-10,5,20,0"
+                Background="White"
+                Content="Past Listings"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" />
+
+            <Button
+                Grid.Column="1"
+                Margin="20,5,0,0"
+                Background="#FF9B9797"
+                Content="Current Listings"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" />
+
+            <DockPanel Grid.Column="3" HorizontalAlignment="Stretch">
                 <Button Margin="0,5" DockPanel.Dock="Right">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Padding="7">Search</TextBlock>
@@ -103,20 +128,20 @@
                     </StackPanel>
                 </Button>
                 <xctk:WatermarkTextBox
+                    Name="ListingsSearch"
                     Height="36"
                     Margin="0,5,0,5"
                     Padding="7"
                     VerticalAlignment="Center"
                     DockPanel.Dock="Left"
                     FontSize="15"
-                    Name="ListingsSearch"
                     TextChanged="ListingSearch"
                     Watermark="Search Listings..." />
             </DockPanel>
 
             <Button
-                Grid.Column="2"
-                Margin="100,5,20,5"
+                Grid.Column="4"
+                Margin="20,5"
                 Click="AddListingClick">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Padding="7">Add Listing</TextBlock>
@@ -137,8 +162,8 @@
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
-                TextSearch.TextPath="@Address"
-                ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}">
+                ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}"
+                TextSearch.TextPath="@Address">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
