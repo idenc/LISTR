@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using MongoDB.Driver;
@@ -11,7 +12,7 @@ namespace LISTR
     /// </summary>
     public partial class RealtorListings : Page
     {
-        public List<House> houses = MainWindow.houses.AsQueryable().ToList();
+        public static ObservableCollection<House> houses = new ObservableCollection<House>(MainWindow.houses.AsQueryable().ToList());
         private readonly MainWindow mainWindow;
 
         public RealtorListings()
