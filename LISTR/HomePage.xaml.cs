@@ -97,5 +97,11 @@ namespace LISTR
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.Main.Navigate(new RealtorListings());
         }
+
+        private void SearchClick(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new Browsing());
+        }
     }
 }
