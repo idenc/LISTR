@@ -143,13 +143,27 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
                 ItemsSource="{Binding Images}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Height="120" Rows="1" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!--  Add this Template  -->
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Height="120" Orientation="Horizontal">
-                            <Image Source="{Binding}" />
-                        </StackPanel>
+                        <Image Source="{Binding}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
+
             </ItemsControl>
         </Grid>
 
