@@ -1,4 +1,5 @@
-﻿<Page  x:Class="LISTR.Browsing"
+﻿<Page
+    x:Class="LISTR.Browsing"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="Browsing"
+    d:DataContext="{x:Static local:Browsing.SampleHouse}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
-   
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -23,7 +24,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0" />
             <RowDefinition Height="200" />
-
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
@@ -31,68 +31,69 @@
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="309.333" />
-
-
         </Grid.ColumnDefinitions>
+
         <StackPanel
             Grid.Row="1"
-            
-            Margin="0,0.333,-507.333,0"
+            Grid.ColumnSpan="5"
+            Height="103"
+            Margin="0,0,-507.333,0"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
-           
-            Orientation="Horizontal" Height="103" Grid.ColumnSpan="5">
+            Orientation="Horizontal">
             <StackPanel.Background>
-                <RadialGradientBrush  Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
-                    <GradientStop Color="#FF5E81E0" Offset="1" />
-                    <GradientStop Color="#FF97D5FF" Offset="0" />
-
+                <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
+                    <GradientStop Offset="1" Color="#FF5E81E0" />
+                    <GradientStop Offset="0" Color="#FF97D5FF" />
                 </RadialGradientBrush>
             </StackPanel.Background>
             <StackPanel.Resources>
                 <Style x:Key="StackPanelPadding" TargetType="Image">
-                    <Setter Property="Margin" Value="20,12,0,0"/>
-                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Margin" Value="20,12,0,0" />
+                    <Setter Property="Height" Value="40" />
                 </Style>
-                <Style BasedOn="{StaticResource StackPanelPadding}" TargetType="Image"/>
+                <Style BasedOn="{StaticResource StackPanelPadding}" TargetType="Image" />
                 <Style TargetType="Button">
                     <Setter Property="FontSize" Value="23" />
                 </Style>
             </StackPanel.Resources>
 
             <Image
+                Width="102"
                 Height="93"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                
-                Source="resources/realtyLogoSmall.png" 
-                Width="102" RenderTransformOrigin="0.502,0.973" />
+                RenderTransformOrigin="0.502,0.973"
+                Source="resources/realtyLogoSmall.png" />
 
             <Button
                 Width=" 140"
                 Margin="20,12,12,12"
                 Padding="7"
-                HorizontalAlignment="Left"
-                >
-                <TextBlock TextAlignment="Center">View<LineBreak/>Favourites</TextBlock>
+                HorizontalAlignment="Left">
+                <TextBlock TextAlignment="Center">
+                    View<LineBreak />
+                    Favourites</TextBlock>
             </Button>
 
             <Button
-                 Width=" 140"
+                Width=" 140"
                 Margin="8,12,12,12"
                 Padding="7"
-                HorizontalAlignment="Left"
-                 >
-                <TextBlock TextAlignment="Center">View<LineBreak/>Skipped</TextBlock>
+                HorizontalAlignment="Left">
+                <TextBlock TextAlignment="Center">
+                    View<LineBreak />
+                    Skipped</TextBlock>
             </Button>
 
             <Button
                 Width="140"
                 Margin="8,12,12,12"
                 Padding="7"
-                HorizontalAlignment="Left"
-                >
-                <TextBlock TextAlignment="Center">View<LineBreak/>Trashed</TextBlock>
+                HorizontalAlignment="Left">
+                <TextBlock TextAlignment="Center">
+                    View<LineBreak />
+                    Trashed</TextBlock>
             </Button>
             <xctk:WatermarkTextBox
                 Height="50"
@@ -112,69 +113,68 @@
                         Kind="HomeSearch" />
                 </StackPanel>
             </Button>
-
-
         </StackPanel>
 
-        <Image
-                Grid.Row="1"
-                Height="447"
-                HorizontalAlignment="Left"
+        <Grid
+            Grid.Row="1"
+            Grid.ColumnSpan="5"
+            Margin="10,108,107,-508"
+            Background="SlateGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                
-                Source="resources/HouseMain.png"
-                Width="643" RenderTransformOrigin="0.502,0.973" Margin="27,126.333,0,-372.667" Grid.ColumnSpan="5" />
+                Source="{Binding Images[0]}" />
 
-        <TextBox 
-         Grid.Row="1"
-         Name="TextBox"
-         
-         VerticalScrollBarVisibility="Visible"
-         TextWrapping="Wrap" Grid.Column="4" Margin="229.333,126.333,-482.333,-351.667" />
-        <Image
+            <ItemsControl
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                ItemsSource="{Binding Images}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="120" Orientation="Horizontal">
+                            <Image Source="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+        <TextBlock
+            Name="TextBox"
             Grid.Row="1"
-            Height="91"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-                
-            Source="resources/House1.png"
-            Width="134" RenderTransformOrigin="0.502,0.973" Margin="27,594.333,0,-484.667" Grid.ColumnSpan="2" />
-        <Image
-            Grid.Row="1"
-            Height="91"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-                
-            Source="resources/House2.png"
-            Width="134" RenderTransformOrigin="0.502,0.973" Margin="97.333,594.333,0,-484.667" Grid.ColumnSpan="2" Grid.Column="1" />
-        <Image
-            Grid.Row="1"
-            Height="91"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-                
-            Source="resources/House3.png"
-            Width="134" RenderTransformOrigin="0.502,0.973" Margin="25,594.333,0,-484.667" Grid.ColumnSpan="2" Grid.Column="3" />
-        <Image
-            Grid.Row="1"
-            Height="91"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-                
-            Source="resources/House4.png"
-            Width="134" RenderTransformOrigin="0.502,0.973" Margin="73.333,594.333,0,-484.667" Grid.Column="4" />
+            Grid.Column="4"
+            Margin="229.333,126.333,-482.333,-351.667"
+            Padding="7"
+            Background="White"
+            Text="{Binding Description}"
+            TextWrapping="Wrap" />
+
 
 
         <Button
-                Grid.Row="1"
-                Width=" 140"
-                Margin="652.333,594.333,-482.333,-479.667"
-                Padding="7"
-                HorizontalAlignment="Left"
-                Grid.Column="4">
-            <TextBlock TextAlignment="Center">Contact<LineBreak/>Realtor</TextBlock>
+            Grid.Row="1"
+            Grid.Column="4"
+            Width=" 140"
+            Margin="652.333,594.333,-482.333,-479.667"
+            Padding="7"
+            HorizontalAlignment="Left">
+            <TextBlock TextAlignment="Center">
+                Contact<LineBreak />
+                Realtor</TextBlock>
         </Button>
-
-
     </Grid>
 </Page>

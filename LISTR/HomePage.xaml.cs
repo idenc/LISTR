@@ -21,7 +21,7 @@ namespace LISTR
             backgroundVideo.Position = TimeSpan.FromMilliseconds(1);
         }
 
-        public void DoLogin(Boolean isRealtor)
+        public void DoLogin(Boolean isRealtor, string username)
         {
             LoginPanel.Visibility = Visibility.Collapsed;
             RegisterButton.Visibility = Visibility.Collapsed;
@@ -30,6 +30,9 @@ namespace LISTR
             {
                 ListingsButton.Visibility = Visibility.Visible;
             }
+            // Save login info as global variables
+            Application.Current.Properties["Username"] = HomepageUsername.Text;
+            Application.Current.Properties["IsRealtor"] = isRealtor;
         }
 
         private void LoginClick(object sender, RoutedEventArgs e)
@@ -50,7 +53,7 @@ namespace LISTR
                 if (password == HomepagePassword.Password)
                 {
                     // Password is correct
-                    DoLogin(search["is_realtor"].AsBoolean);
+                    DoLogin(search["is_realtor"].AsBoolean, HomepageUsername.Text);
                     return;
                 }
             }
@@ -102,6 +105,20 @@ namespace LISTR
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.Main.Navigate(new Browsing());
+        }
+
+        private void HomePageLoaded(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Properties.Contains("Username"))
+            {
+                bool is_realtor = false;
+                if (Application.Current.Properties.Contains("IsRealtor"))
+                {
+                    is_realtor = (bool)Application.Current.Properties["IsRealtor"];
+                }
+                // The user is logged in
+                DoLogin(is_realtor, (string)Application.Current.Properties["Username"]);
+            }
         }
     }
 }

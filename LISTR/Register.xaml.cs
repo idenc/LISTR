@@ -46,7 +46,7 @@ namespace LISTR
             };
 
             MainWindow.accounts.InsertOne(document);
-            this.homePage.DoLogin(false);
+            this.homePage.DoLogin(false, Username.Text);
             this.IsOpen = false;
         }
     }

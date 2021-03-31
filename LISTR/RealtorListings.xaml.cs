@@ -37,11 +37,6 @@ namespace LISTR
             mainWindow.Main.Navigate(new HomePage());
         }
 
-        private void RealtorLoaded(object sender, RoutedEventArgs e)
-        {
-            MyControl.ItemsSource = houses;
-        }
-
         private void DeleteListing(object sender, RoutedEventArgs e)
         {
             string id = ((Button)sender).Tag as string;

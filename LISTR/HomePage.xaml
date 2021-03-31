@@ -10,6 +10,7 @@
     Title="HomePage"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+    Loaded="HomePageLoaded"
     Style="{StaticResource WinAll}"
     UseLayoutRounding="True"
     mc:Ignorable="d">
@@ -141,8 +142,8 @@
             Margin="0,100,0,0"
             Padding="20,7,20,7"
             VerticalAlignment="Bottom"
-            Content="Search"
-            Click="SearchClick"/>
+            Click="SearchClick"
+            Content="Search" />
         <Button
             Grid.Row="3"
             Grid.Column="1"
