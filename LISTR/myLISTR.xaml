@@ -1,0 +1,248 @@
+﻿<Page
+    x:Class="LISTR.RealtorListings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:LISTR"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Title="RealtorListings"
+    d:DataContext="{x:Static local:RealtorListings.houses}"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    Loaded="RealtorLoaded"
+    Style="{StaticResource WinAll}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:PriceConverter x:Key="PriceConverter" />
+        <Style x:Key="RoundButton" TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7,7,0,0" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
+    <Grid HorizontalAlignment="Right" Width="1280" RenderTransformOrigin="0.505,0.494">
+
+        <Grid.Background>
+            <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
+                <GradientStop Offset="1" Color="#cceeff" />
+                <GradientStop Offset="0" Color="#66ccff" />
+            </RadialGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+
+        </Grid.ColumnDefinitions>
+        <Image
+            Grid.Row="3"
+            Grid.Column="1"
+            Height="43"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Source="resources/realtyLogoSmall.png" Margin="30,101,0,0" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Padding="7"
+            HorizontalAlignment="Center"
+            Background="#FFF4F4F5">
+            My LISTR
+        </TextBlock>
+
+        <Grid
+            Grid.Row="3"
+            Grid.Column="1"
+
+            HorizontalAlignment="Stretch" Margin="0,5,0,15" Grid.RowSpan="3"
+ >
+            <Button
+                Margin="0,48,1047,553"
+                Background="#FFFFFFFF"
+                Content="Favourited"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="3" />
+
+            <Button
+                Margin="193,48,859,553"
+                Background="#FF9B9797"
+                Content="Seen"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="3" />
+
+            <Button
+            Margin="381,48,671,553"
+            Background="#FF9B9797"
+            Content="Disliked"
+            FontSize="15"
+            Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="3" />
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            Margin="0,86,0,428"
+            HorizontalAlignment="Stretch"
+ 
+            Background="#FFFFFF" Grid.Column="1"/>
+
+        <Button x:Name="EnterButton_Copy"
+ 
+            HorizontalAlignment="Left"
+            Content="Filters" Width="194" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="10,0,0,500" />
+        <Button x:Name="EnterButton_Copy1"
+            
+            HorizontalAlignment="Left"
+            Content="Reset" Width="194" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="234,0,0,500" />
+
+        <Grid
+            Grid.Row="3"
+            Margin="0,232,68,248"
+            HorizontalAlignment="Stretch"
+ 
+            Background="#FFFFFF" Grid.Column="1"/>
+        <Button x:Name="EnterButton_Copy2"
+ 
+            HorizontalAlignment="Left"
+            Content="Filters" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="978,0,0,332" />
+        <Button x:Name="EnterButton_Copy3"
+ 
+            HorizontalAlignment="Left"
+            Content="Filters" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="978,0,0,274" />
+        <Button x:Name="EnterButton_Copy4"
+ 
+            HorizontalAlignment="Left"
+            Content="Filters" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="812,0,0,332" />
+        <Button x:Name="EnterButton_Copy5"
+ 
+            HorizontalAlignment="Left"
+            Content="Filters" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="812,0,0,274" />
+        <Grid
+            Grid.Row="3"
+            Grid.Column="1"
+
+            HorizontalAlignment="Stretch" Margin="0,5,0,15" Grid.RowSpan="3"
+ >
+            <Button
+                Margin="0,48,1047,553"
+                Background="#FFFFFFFF"
+                Content="Favourited"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="3" />
+
+            <Button
+                Margin="193,48,859,553"
+                Background="#FF9B9797"
+                Content="Seen"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="3" />
+
+            <Button
+                Margin="381,48,671,553"
+                Background="#FF9B9797"
+                Content="Disliked"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="3" />
+        </Grid>
+        <Button x:Name="EnterButton_Copy6"
+ 
+            HorizontalAlignment="Left"
+            Content="Move to Trash" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="978,0,0,332" />
+        <Button x:Name="EnterButton_Copy7"
+ 
+            HorizontalAlignment="Left"
+            Content="Move to Seen" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="978,0,0,274" />
+        <Button x:Name="EnterButton_Copy8"
+ 
+            HorizontalAlignment="Left"
+            Content="View Details" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="812,0,0,332" />
+        <Button x:Name="EnterButton_Copy9"
+ 
+            HorizontalAlignment="Left"
+            Content="Contact Realtor" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="812,0,0,274" />
+        <Grid
+            Grid.Row="3"
+            Margin="0,430,68,50"
+            HorizontalAlignment="Stretch"
+ 
+            Background="#FFFFFF" Grid.Column="1"/>
+        <Button x:Name="EnterButton_Copy10"
+ 
+            HorizontalAlignment="Left"
+            Content="View Details" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="812,0,0,140" />
+        <Button x:Name="EnterButton_Copy11"
+ 
+            HorizontalAlignment="Left"
+            Content="Contact Realtor" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="812,0,0,76" />
+        <Button x:Name="EnterButton_Copy12"
+ 
+            HorizontalAlignment="Left"
+            Content="Move to Trash" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="978,0,0,140" />
+        <Button x:Name="EnterButton_Copy13"
+ 
+            HorizontalAlignment="Left"
+            Content="Move to Seen" Width="128" FontSize="16" Background="#FFFFFF" Height="36" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" Margin="978,0,0,76" />
+
+        <TextBlock
+            Grid.Row ="3" Grid.Column ="1"  Margin="312,246,812,362" 
+            
+            ><Run Text="For Sale"/><LineBreak/><Run Text="dsadsa"/></TextBlock>
+        <TextBlock
+            Grid.Row ="3" Grid.Column ="1"  Margin="433,246,691,362" 
+            
+            />
+        <TextBlock
+            Grid.Row ="3" Grid.Column ="1"  Margin="312,461,812,147" 
+            
+            Text="For Rent" 
+            
+            />
+        <TextBlock
+            Grid.Row ="3" Grid.Column ="1"  Margin="312,282,691,241" 
+            
+            Text="Lorem Ipsum" 
+            
+            />
+        <TextBlock
+            Grid.Row ="3" Grid.Column ="1"  Margin="312,495,691,28" 
+            
+            Text="Lorem Ipsum" 
+            
+            />
+
+
+        <Image Source="resources/ML_house1.png" Grid.Column="1" Margin="30,232,990,250" Grid.Row="3"/>
+        <Image Source="resources/ML_house2.png" Grid.Column="1" Margin="30,432,990,50" Grid.Row="3"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</Page>

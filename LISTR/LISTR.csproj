@@ -414,6 +414,9 @@
     </Compile>
     <Compile Include="House.cs" />
     <Compile Include="MongoContext.cs" />
+    <Compile Include="myLISTR.xaml.cs">
+      <DependentUpon>myLISTR.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RealtorListings.xaml.cs">
       <DependentUpon>RealtorListings.xaml</DependentUpon>
     </Compile>
@@ -426,6 +429,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="myLISTR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RealtorListings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -449,6 +456,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="resources\ML_house2.png" />
+    <Resource Include="resources\ML_house1.png" />
     <Resource Include="resources\realtyLogoSmall.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
