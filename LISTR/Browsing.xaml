@@ -11,6 +11,7 @@
     d:DataContext="{x:Static local:Browsing.SampleHouse}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+    Loaded="BrowsingLoaded"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -96,12 +97,13 @@
                     Trashed</TextBlock>
             </Button>
             <xctk:WatermarkTextBox
+                Name="SearchBox"
                 Height="50"
+                MinWidth="250"
                 Margin="250,26,0,26.667"
                 Padding="7"
                 VerticalAlignment="Center"
-                FontSize="27"
-                Watermark="Calgary,AB          " />
+                FontSize="27" />
             <Button Margin="0,26,0,26.667">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Padding="7">Search</TextBlock>
@@ -167,17 +169,75 @@
             </ItemsControl>
         </Grid>
 
-        <TextBlock
+        <Grid
             Name="TextBox"
             Grid.Row="1"
             Grid.Column="4"
             Margin="229.333,126.333,-482.333,-351.667"
-            Padding="7"
-            Background="White"
-            Text="{Binding Description}"
-            TextWrapping="Wrap" />
+            Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding Price, StringFormat='For Sale: {0}$'}" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding Address}" />
+            <TextBlock Grid.Row="3" Grid.Column="1">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                        <Binding Path="City" />
+                        <Binding Path="Province" />
+                        <Binding Path="PostalCode" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="1"
+                Margin="0,20,0,0"
+                Text="{Binding Description}" />
+        </Grid>
 
-
+        <UniformGrid
+            Grid.Row="1"
+            Grid.Column="4"
+            Margin="229,558,-331,-508"
+            Rows="1">
+            <iconPacks:PackIconMaterial
+                Width="103"
+                Height="120"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Black"
+                Kind="HomeRemove" />
+            <iconPacks:PackIconMaterial
+                Width="103"
+                Height="120"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Black"
+                Kind="SkipForward" />
+            <iconPacks:PackIconMaterial
+                Width="103"
+                Height="120"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Black"
+                Kind="HomeHeart"
+                PreviewMouseDown="FavouriteClick" />
+        </UniformGrid>
 
         <Button
             Grid.Row="1"

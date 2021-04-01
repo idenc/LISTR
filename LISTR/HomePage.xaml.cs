@@ -88,6 +88,8 @@ namespace LISTR
             if (!string.IsNullOrWhiteSpace(HomepageUsername.Text) && !string.IsNullOrWhiteSpace(HomepagePassword.Password))
             {
                 LoginButton.IsEnabled = true;
+                SearchButton.IsDefault = false;
+                LoginButton.IsDefault = true;
             }
             else
             {
@@ -103,8 +105,16 @@ namespace LISTR
 
         private void SearchClick(object sender, RoutedEventArgs e)
         {
+            string search = SearchBar.Text.ToLower();
+            if (String.IsNullOrWhiteSpace(search))
+            {
+                return;
+            }
+
+            var result = MainWindow.houses.FindAll(x => x.Address.ToLower().Contains(search) || x.City.ToLower().Contains(search) || x.Province.ToLower().Contains(search));
+
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Main.Navigate(new Browsing());
+            mainWindow.Main.Navigate(new Browsing(result, search));
         }
 
         private void HomePageLoaded(object sender, RoutedEventArgs e)
@@ -119,6 +129,12 @@ namespace LISTR
                 // The user is logged in
                 DoLogin(is_realtor, (string)Application.Current.Properties["Username"]);
             }
+        }
+
+        private void SearchBarClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            SearchButton.IsDefault = true;
+            LoginButton.IsDefault = false;
         }
     }
 }

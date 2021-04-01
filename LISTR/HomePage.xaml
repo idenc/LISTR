@@ -130,13 +130,16 @@
 
 
         <xctk:WatermarkTextBox
+            Name="SearchBar"
             Grid.Row="2"
             Grid.Column="1"
             Margin="0,100,0,0"
             Padding="5,7,0,7"
             VerticalAlignment="Bottom"
+            PreviewMouseDown="SearchBarClick"
             Watermark="Search by city or street address..." />
         <Button
+            Name="SearchButton"
             Grid.Row="2"
             Grid.Column="2"
             Margin="0,100,0,0"

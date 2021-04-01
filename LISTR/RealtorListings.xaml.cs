@@ -41,7 +41,7 @@ namespace LISTR
         {
             string id = ((Button)sender).Tag as string;
             var deleteFilter = Builders<House>.Filter.Eq("_id", id);
-            MainWindow.houses.DeleteOne(deleteFilter);
+            MainWindow.houseCollection.DeleteOne(deleteFilter);
             houses.Remove(houses.Where(i => i.Id == id).Single());
         }
 
