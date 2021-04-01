@@ -141,7 +141,8 @@
             Margin="0,100,0,0"
             Padding="20,7,20,7"
             VerticalAlignment="Bottom"
-            Content="Search" />
+            Content="Search"
+            Click="SearchClick"/>
         <Button
             Grid.Row="3"
             Grid.Column="1"
