@@ -17,5 +17,5 @@
     <Frame
         x:Name="Main"
         NavigationUIVisibility="Hidden"
-        Source="AddListing.xaml" />
+        Source="HomePage.xaml" />
 </Window>
