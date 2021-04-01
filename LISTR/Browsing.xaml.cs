@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using MongoDB.Driver;
 
 namespace LISTR
 {
@@ -21,15 +15,53 @@ namespace LISTR
     public partial class Browsing : Page
     {
         private MainWindow mainWindow;
+        public static House SampleHouse = MainWindow.houses.AsQueryable().ToList()[0];
+        private string search;
+        private List<House> houses;
+        private int index = 0;
+
+        public Browsing(List<House> houses, string search)
+        {
+            mainWindow = (MainWindow)Application.Current.MainWindow;
+            try
+            {
+                this.search = search;
+                this.houses = houses;
+                DataContext = houses[index];
+            }
+            catch (Exception ex)
+            {
+                if (ex is NullReferenceException || ex is ArgumentOutOfRangeException)
+                {
+                    DataContext = SampleHouse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            InitializeComponent();
+        }
 
         public Browsing()
         {
-            mainWindow = (MainWindow)Application.Current.MainWindow;
+            DataContext = SampleHouse;
             InitializeComponent();
-
-            
         }
 
-       
+        private void FavouriteClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (index < houses.Count - 1)
+            {
+                DataContext = houses[++index];
+                Console.WriteLine("Hi");
+            }
+        }
+
+        private void BrowsingLoaded(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Watermark = this.search;
+        }
     }
 }

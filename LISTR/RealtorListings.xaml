@@ -11,7 +11,6 @@
     d:DataContext="{x:Static local:RealtorListings.houses}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
-    Loaded="RealtorLoaded"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 

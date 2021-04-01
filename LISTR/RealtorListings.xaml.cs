@@ -37,16 +37,11 @@ namespace LISTR
             mainWindow.Main.Navigate(new HomePage());
         }
 
-        private void RealtorLoaded(object sender, RoutedEventArgs e)
-        {
-            MyControl.ItemsSource = houses;
-        }
-
         private void DeleteListing(object sender, RoutedEventArgs e)
         {
             string id = ((Button)sender).Tag as string;
             var deleteFilter = Builders<House>.Filter.Eq("_id", id);
-            MainWindow.houses.DeleteOne(deleteFilter);
+            MainWindow.houseCollection.DeleteOne(deleteFilter);
             houses.Remove(houses.Where(i => i.Id == id).Single());
         }
 
