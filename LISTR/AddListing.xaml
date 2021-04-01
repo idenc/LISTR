@@ -34,7 +34,7 @@
         <Label Content="Address" Grid.Column="1" HorizontalAlignment="Left" Margin="721,250,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="913,255,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
         <Label Content="Type" Grid.Column="1" HorizontalAlignment="Left" Margin="721,325,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" FontSize="24" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="913,330,0,0" Grid.Row="3" VerticalAlignment="Top" Width="265" Height="30">
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="913,330,0,0" Grid.Row="3" VerticalAlignment="Top" Width="265" Height="30" FontSize="20">
             <ComboBoxItem>
                 Buy
             </ComboBoxItem>
@@ -84,14 +84,23 @@
             </ComboBoxItem>
         </ComboBox>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="913,405,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="20"/>
-        <Image Grid.Column ="1" Grid.Row="3" HorizontalAlignment="Center" Height="80" VerticalAlignment="Center" Width="80" Source="addphoto.png" MouseDown="SelectPhotos" Margin="54,125,1106,475"/>
-        <Image Name ="img1" Grid.Column ="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="default.jpg" Height="80" Margin="158,125,975,475"/>
-        <Image Name ="img2" Grid.Column ="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="default.jpg" Height="80" Margin="284,125,849,475"/>
-        <Image Name ="img3" Grid.Column ="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="default.jpg" Height="80" Margin="410,125,723,475"/>
-        <Image Name ="img4" Grid.Column ="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="default.jpg" Height="80" Margin="536,125,597,475"/>
         <Label Name ="img1_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="242,120,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img1_MouseDown"/>
         <Label Name ="img2_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="368,120,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img2_MouseDown"/>
         <Label Name ="img3_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="494,120,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img3_MouseDown"/>
         <Label Name ="img4_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="620,120,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img4_MouseDown"/>
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="50,120,0,0" Grid.Row="3" VerticalAlignment="Top" Width="614">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column ="0" HorizontalAlignment="Center" Height="80" VerticalAlignment="Center" Width="80" Source="resources/addphoto.png" MouseDown="SelectPhotos"/>
+            <Image Name ="img1" Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.jpg" Height="80"/>
+            <Image Name ="img2" Grid.Column ="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.jpg" Height="80"/>
+            <Image Name ="img3" Grid.Column ="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.jpg" Height="80"/>
+            <Image Name ="img4" Grid.Column ="4" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.jpg" Height="80"/>
+        </Grid>
     </Grid>
 </Page>

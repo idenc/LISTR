@@ -447,7 +447,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="addphoto.png" />
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -520,9 +519,6 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
-    <Resource Include="defaultimage.jpg" />
-    <Resource Include="image.jpg" />
-    <Resource Include="default.jpg" />
     <Content Include="mongocrypt.dll" />
     <Content Include="resources\cityVideo.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
