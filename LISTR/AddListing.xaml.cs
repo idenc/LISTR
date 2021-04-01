@@ -50,20 +50,20 @@ namespace LISTR
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(filename);
                 bitmap.EndInit();
-                if (img1.Source.ToString().Contains("default.jpg")) {
+                if (img1.Source.ToString().Contains("default.png")) {
                     img1.Source = bitmap;
                     img1_label.Visibility = Visibility.Visible;
                 }
-                else if (img2.Source.ToString().Contains("default.jpg")) {
+                else if (img2.Source.ToString().Contains("default.png")) {
                     img2.Source = bitmap;
                     img2_label.Visibility = Visibility.Visible;
                 }
-                else if (img3.Source.ToString().Contains("default.jpg"))
+                else if (img3.Source.ToString().Contains("default.png"))
                 {
                     img3.Source = bitmap;
                     img3_label.Visibility = Visibility.Visible;
                 }
-                else if (img4.Source.ToString().Contains("default.jpg"))
+                else if (img4.Source.ToString().Contains("default.png"))
                 {
                     img4.Source = bitmap;
                     img4_label.Visibility = Visibility.Visible;
