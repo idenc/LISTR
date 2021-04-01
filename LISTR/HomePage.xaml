@@ -10,6 +10,7 @@
     Title="HomePage"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+    Loaded="HomePageLoaded"
     Style="{StaticResource WinAll}"
     UseLayoutRounding="True"
     mc:Ignorable="d">
@@ -129,20 +130,23 @@
 
 
         <xctk:WatermarkTextBox
+            Name="SearchBar"
             Grid.Row="2"
             Grid.Column="1"
             Margin="0,100,0,0"
             Padding="5,7,0,7"
             VerticalAlignment="Bottom"
+            PreviewMouseDown="SearchBarClick"
             Watermark="Search by city or street address..." />
         <Button
+            Name="SearchButton"
             Grid.Row="2"
             Grid.Column="2"
             Margin="0,100,0,0"
             Padding="20,7,20,7"
             VerticalAlignment="Bottom"
-            Content="Search"
-            Click="SearchClick"/>
+            Click="SearchClick"
+            Content="Search" />
         <Button
             Grid.Row="3"
             Grid.Column="1"
