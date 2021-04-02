@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LISTR
 {
@@ -20,7 +12,8 @@ namespace LISTR
     /// </summary>
     public partial class AddListing : Page
     {
-        String defaultpath = "";
+        private String defaultpath = "";
+        private int numImages = 0;
 
         public AddListing()
         {
@@ -29,7 +22,8 @@ namespace LISTR
 
         private void SelectPhotos(object sender, MouseButtonEventArgs e)
         {
-            if (defaultpath.Equals("")) {
+            if (defaultpath.Equals(""))
+            {
                 defaultpath = img1.Source.ToString();
             }
 
@@ -42,19 +36,20 @@ namespace LISTR
             // display the open file dialogue
             Nullable<bool> result = dialogue.ShowDialog();
 
-
             if (result == true)
             {
-                string filename = dialogue.FileName;;
+                string filename = dialogue.FileName; ;
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(filename);
                 bitmap.EndInit();
-                if (img1.Source.ToString().Contains("default.png")) {
+                if (img1.Source.ToString().Contains("default.png"))
+                {
                     img1.Source = bitmap;
                     img1_label.Visibility = Visibility.Visible;
                 }
-                else if (img2.Source.ToString().Contains("default.png")) {
+                else if (img2.Source.ToString().Contains("default.png"))
+                {
                     img2.Source = bitmap;
                     img2_label.Visibility = Visibility.Visible;
                 }
@@ -73,37 +68,45 @@ namespace LISTR
                     img5.Source = bitmap;
                     img5_label.Visibility = Visibility.Visible;
                 }
+                numImages++;
             }
         }
 
-        private void img1_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ImgMouseDown(object sender, MouseButtonEventArgs e)
         {
-            img1.Source = new BitmapImage(new Uri(@defaultpath));
-            img1_label.Visibility = Visibility.Hidden;
+            Label label = sender as Label;
+            Image image = FindName(label.Name.Substring(0, label.Name.Length - 6)) as Image;
+            image.Source = new BitmapImage(new Uri(@defaultpath));
+            label.Visibility = Visibility.Hidden;
+            numImages--;
         }
 
-        private void img2_MouseDown(object sender, MouseButtonEventArgs e)
+        private void PostListing(object sender, RoutedEventArgs e)
         {
-            img2.Source = new BitmapImage(new Uri(@defaultpath));
-            img2_label.Visibility = Visibility.Hidden;
+            House house = new House();
+            house.Description = Description.Text;
+            byte[][] images = new byte[numImages][];
+            int count = 0;
+            for (int i = 1; i <= 5; i++)
+            {
+                Image image = FindName("img" + i) as Image;
+                if (!image.Source.ToString().Contains("default.png"))
+                {
+                    images[count++] = ImageToByteArray(image);
+                }
+            }
+            house.Images = images;
+
+            MainWindow.houseCollection.InsertOne(house);
         }
 
-        private void img3_MouseDown(object sender, MouseButtonEventArgs e)
+        public static byte[] ImageToByteArray(Image imageIn)
         {
-            img3.Source = new BitmapImage(new Uri(@defaultpath));
-            img3_label.Visibility = Visibility.Hidden;
-        }
-
-        private void img4_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            img4.Source = new BitmapImage(new Uri(@defaultpath));
-            img4_label.Visibility = Visibility.Hidden;
-        }
-
-        private void img5_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            img5.Source = new BitmapImage(new Uri(@defaultpath));
-            img5_label.Visibility = Visibility.Hidden;
+            MemoryStream memStream = new MemoryStream();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageIn.Source as BitmapImage));
+            encoder.Save(memStream);
+            return memStream.ToArray();
         }
     }
 }

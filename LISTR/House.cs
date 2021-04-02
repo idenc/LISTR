@@ -66,7 +66,7 @@ namespace LISTR
         {
             get => _realtor; set
             {
-                if (!isStringEmpty(value))
+                if (value != null && !isStringEmpty(value))
                 {
                     _realtor = value;
                 }
