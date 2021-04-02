@@ -67,23 +67,32 @@
             <ComboBoxItem Content="5+"/>
         </ComboBox>
         <xctk:WatermarkTextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="893,493,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" FontSize="16" Watermark="Tag1, Tag2, Tag3, ..."/>
-        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="80,126,0,0" Grid.Row="3" VerticalAlignment="Top" Width="576">
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="80,126,0,0" Grid.Row="3" VerticalAlignment="Top" Width="514">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column ="0" HorizontalAlignment="Center" Height="80" VerticalAlignment="Center" Width="80" Source="resources/addphoto.png" MouseDown="SelectPhotos"/>
-            <Image x:Name ="img1" Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="80"/>
-            <Image x:Name ="img2" Grid.Column ="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="80"/>
-            <Image x:Name ="img3" Grid.Column ="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="80"/>
-            <Image x:Name ="img4" Grid.Column ="4" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="80"/>
+            <Image Grid.Column ="0" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="60" Source="resources/addphoto.png" MouseDown="SelectPhotos"/>
+            <Image x:Name ="img1" Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="60" Width="82"/>
+            <Image x:Name ="img2" Grid.Column ="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="60" Width="82"/>
+            <Image x:Name ="img3" Grid.Column ="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="60" Width="82"/>
+            <Image x:Name ="img4" Grid.Column ="4" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="60" Width="82"/>
+            <Image x:Name ="img5" Grid.Column ="5" HorizontalAlignment="Center" VerticalAlignment="Center" Source="resources/default.png" Height="60" Margin="1,20,0,20" Width="82"/>
         </Grid>
-        <Label x:Name ="img1_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="254,128,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img1_MouseDown"/>
-        <Label x:Name ="img2_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="378,128,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img2_MouseDown"/>
-        <Label x:Name ="img3_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="502,128,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img3_MouseDown"/>
-        <Label x:Name ="img4_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="626,128,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img4_MouseDown"/>
+        <Label x:Name ="img1_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="206,138,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img1_MouseDown"/>
+        <Label x:Name ="img2_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="296,138,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img2_MouseDown"/>
+        <Label x:Name ="img3_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="386,138,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img3_MouseDown"/>
+        <Label x:Name ="img4_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="478,138,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img4_MouseDown"/>
+        <Label x:Name ="img5_label" Content="X" Grid.Column="1" HorizontalAlignment="Left" Margin="568,138,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#a10000" Visibility="Hidden" MouseDown="img5_MouseDown"/>
+        <Label Content="*" Grid.Column="1" HorizontalAlignment="Left" Margin="753,415,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Foreground="Red" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="*" Grid.Column="1" HorizontalAlignment="Left" Margin="789,339,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Foreground="Red" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="*" Grid.Column="1" HorizontalAlignment="Left" Margin="755,265,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Foreground="Red" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="*" Grid.Column="1" HorizontalAlignment="Left" Margin="785,189,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Foreground="Red" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="*" Grid.Column="1" HorizontalAlignment="Left" Margin="1041,38,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Foreground="Red" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="mandatory field" Grid.Column="1" HorizontalAlignment="Left" Margin="1053,40,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="16" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
     </Grid>
 </Page>

@@ -68,6 +68,11 @@ namespace LISTR
                     img4.Source = bitmap;
                     img4_label.Visibility = Visibility.Visible;
                 }
+                else if (img5.Source.ToString().Contains("default.png"))
+                {
+                    img5.Source = bitmap;
+                    img5_label.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -95,5 +100,10 @@ namespace LISTR
             img4_label.Visibility = Visibility.Hidden;
         }
 
+        private void img5_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            img5.Source = new BitmapImage(new Uri(@defaultpath));
+            img5_label.Visibility = Visibility.Hidden;
+        }
     }
 }
