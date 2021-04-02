@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LISTR
 {
@@ -20,7 +12,8 @@ namespace LISTR
     /// </summary>
     public partial class AddListing : Page
     {
-        String defaultpath = "";
+        private String defaultpath = "";
+        private List<Image> images;
 
         public AddListing()
         {
@@ -29,7 +22,8 @@ namespace LISTR
 
         private void SelectPhotos(object sender, MouseButtonEventArgs e)
         {
-            if (defaultpath.Equals("")) {
+            if (defaultpath.Equals(""))
+            {
                 defaultpath = img1.Source.ToString();
             }
 
@@ -42,19 +36,20 @@ namespace LISTR
             // display the open file dialogue
             Nullable<bool> result = dialogue.ShowDialog();
 
-
             if (result == true)
             {
-                string filename = dialogue.FileName;;
+                string filename = dialogue.FileName; ;
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(filename);
                 bitmap.EndInit();
-                if (img1.Source.ToString().Contains("default.png")) {
+                if (img1.Source.ToString().Contains("default.png"))
+                {
                     img1.Source = bitmap;
                     img1_label.Visibility = Visibility.Visible;
                 }
-                else if (img2.Source.ToString().Contains("default.png")) {
+                else if (img2.Source.ToString().Contains("default.png"))
+                {
                     img2.Source = bitmap;
                     img2_label.Visibility = Visibility.Visible;
                 }
@@ -95,5 +90,12 @@ namespace LISTR
             img4_label.Visibility = Visibility.Hidden;
         }
 
+        private void PostListing(object sender, RoutedEventArgs e)
+        {
+            House house = new House();
+            house.Description = Description.Text;
+            house.NumRooms = BedRooms.Text;
+            house.NumBaths = BedRooms.Text;
+        }
     }
 }
