@@ -111,7 +111,9 @@ namespace LISTR
                 return;
             }
 
-            var result = MainWindow.houses.FindAll(x => x.Address.ToLower().Contains(search) || x.City.ToLower().Contains(search) || x.Province.ToLower().Contains(search));
+            var result = MainWindow.houses.FindAll(x => (x.Address != null && x.Address.ToLower().Contains(search))
+            || (x.City != null && x.City.ToLower().Contains(search))
+            || (x.Province != null && x.Province.ToLower().Contains(search)));
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.Main.Navigate(new Browsing(result, search));
