@@ -32,14 +32,13 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Rectangle
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.RowSpan="2"
             Grid.Column="1"
             Width="1202"
             Height="668"
-            Margin="12,14,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             Fill="#FFF4F4F5"
             Stroke="Black" />
         <Label
@@ -62,237 +61,6 @@
             VerticalAlignment="Top"
             Content="Upload photos"
             FontSize="24" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="276"
-            Margin="80,296,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Description"
-            FontSize="24" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="276"
-            Margin="80,421,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Bedrooms"
-            FontSize="24" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="276"
-            Margin="80,496,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Bathrooms"
-            FontSize="24" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="auto"
-            Margin="701,412,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Area"
-            FontSize="24" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="auto"
-            Margin="701,188,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Owners"
-            FontSize="24" />
-        <xctk:WatermarkTextBox
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="893,267,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text=""
-            TextWrapping="Wrap"
-            Watermark="Price in CA$" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="auto"
-            Margin="701,263,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Price"
-            FontSize="24" />
-        <xctk:WatermarkTextBox
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="893,193,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text=""
-            TextWrapping="Wrap"
-            Watermark="Name(s) of Owners" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="auto"
-            Margin="701,338,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Address"
-            FontSize="24" />
-        <xctk:WatermarkTextBox
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="893,343,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text=""
-            TextWrapping="Wrap"
-            Watermark="123 Home Street City, Province" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="auto"
-            Margin="701,117,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Type"
-            FontSize="24" />
-        <ComboBox
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="893,120,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16">
-            <ComboBoxItem Content="Buy" />
-            <ComboBoxItem Content="Rent" />
-        </ComboBox>
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="276"
-            Margin="701,488,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Tags"
-            FontSize="24" />
-        <Button
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="182"
-            Height="30"
-            Margin="184,600,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Cancel"
-            FontSize="24" />
-        <Button
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="182"
-            Height="30"
-            Margin="548,600,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Preview"
-            FontSize="24" />
-        <Button
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="182"
-            Height="30"
-            Margin="912,600,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="PostListing"
-            Content="Post"
-            FontSize="24" />
-        <xctk:WatermarkTextBox
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="893,421,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text=""
-            TextWrapping="Wrap"
-            Watermark="Area in Square Feet" />
-        <ComboBox
-            Name="Bathrooms"
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="291,501,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text="">
-            <ComboBoxItem Content="1" />
-            <ComboBoxItem Content="2" />
-            <ComboBoxItem Content="3" />
-            <ComboBoxItem Content="4" />
-            <ComboBoxItem Content="5+" />
-        </ComboBox>
-        <xctk:WatermarkTextBox
-            Name="Description"
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="131"
-            Margin="291,250,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text=""
-            TextWrapping="Wrap"
-            Watermark="Add listing description here..." />
-        <ComboBox
-            Name="Bedrooms"
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="291,425,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text="">
-            <ComboBoxItem Content="1" />
-            <ComboBoxItem Content="2" />
-            <ComboBoxItem Content="3" />
-            <ComboBoxItem Content="4" />
-            <ComboBoxItem Content="5+" />
-        </ComboBox>
-        <xctk:WatermarkTextBox
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="265"
-            Height="30"
-            Margin="893,493,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            Text=""
-            TextWrapping="Wrap"
-            Watermark="Tag1, Tag2, Tag3, ..." />
         <Grid
             Grid.Row="3"
             Grid.Column="1"
@@ -362,6 +130,301 @@
                 Source="resources/default.png" />
         </Grid>
         <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="276"
+            Margin="80,296,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Description"
+            FontSize="24" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="276"
+            Margin="80,421,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Bedrooms"
+            FontSize="24" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="276"
+            Margin="80,496,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Bathrooms"
+            FontSize="24" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="auto"
+            Margin="701,338,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Address"
+            FontSize="24" />
+        <xctk:WatermarkTextBox
+            Name="Address"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,310,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Text=""
+            TextWrapping="Wrap"
+            Watermark="Street Address" />
+        <xctk:WatermarkTextBox
+            Name="City"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,350,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Text=""
+            TextWrapping="Wrap"
+            Watermark="City" />
+        <ComboBox
+            Name="Province"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,390,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            SelectedIndex="0">
+            <ComboBoxItem Content="Alberta" />
+            <ComboBoxItem Content="BC" />
+            <ComboBoxItem Content="Manitoba" />
+            <ComboBoxItem Content="New Brunswick" />
+            <ComboBoxItem Content="Newfoundland and Labrador" />
+            <ComboBoxItem Content="Nova Scotia" />
+            <ComboBoxItem Content="Ontario" />
+            <ComboBoxItem Content="Prince Edward Island" />
+            <ComboBoxItem Content="Quebec" />
+            <ComboBoxItem Content="Saskatchewan" />
+            <ComboBoxItem Content="Northwest Territories" />
+            <ComboBoxItem Content="Nunavut" />
+            <ComboBoxItem Content="Yukon" />
+        </ComboBox>
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="auto"
+            Margin="701,432,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Area"
+            FontSize="24" />
+        <xctk:WatermarkTextBox
+            Name="Area"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,441,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            PreviewTextInput="CheckNumbers"
+            Text=""
+            TextWrapping="Wrap"
+            Watermark="Area in Square Feet" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="276"
+            Margin="701,496,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Tags"
+            FontSize="24" />
+        <xctk:WatermarkTextBox
+            Name="Tags"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,501,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Text=""
+            TextWrapping="Wrap"
+            Watermark="Tag1, Tag2, Tag3, ..." />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="182"
+            Height="30"
+            Margin="184,600,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="CancelClick"
+            Content="Cancel"
+            FontSize="24" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="182"
+            Height="30"
+            Margin="548,600,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Preview"
+            FontSize="24" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="182"
+            Height="30"
+            Margin="912,600,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="PostListing"
+            FontSize="24">
+            <StackPanel>
+                <TextBlock>Post</TextBlock>
+                <Popup
+                    Name="PostPopup"
+                    HorizontalOffset="-200"
+                    IsOpen="False"
+                    Placement="Top"
+                    VerticalOffset="-10">
+                    <TextBlock
+                        Padding="10"
+                        Background="White"
+                        Foreground="Red">
+                        Please fill in all mandatory fields!
+                    </TextBlock>
+                </Popup>
+            </StackPanel>
+        </Button>
+        <xctk:WatermarkTextBox
+            Name="Description"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="131"
+            Margin="291,250,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Text=""
+            TextWrapping="Wrap"
+            Watermark="Add listing description here..." />
+        <ComboBox
+            Name="Bedrooms"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="291,425,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Text="">
+            <ComboBoxItem Content="1" />
+            <ComboBoxItem Content="2" />
+            <ComboBoxItem Content="3" />
+            <ComboBoxItem Content="4" />
+            <ComboBoxItem Content="5+" />
+        </ComboBox>
+        <ComboBox
+            Name="Bathrooms"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="291,501,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Text="">
+            <ComboBoxItem Content="1" />
+            <ComboBoxItem Content="2" />
+            <ComboBoxItem Content="3" />
+            <ComboBoxItem Content="4" />
+            <ComboBoxItem Content="5+" />
+        </ComboBox>
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="auto"
+            Margin="701,117,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Listing Type"
+            FontSize="24" />
+        <ComboBox
+            Name="ListingType"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,120,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            SelectedIndex="0">
+            <ComboBoxItem Content="For sale" />
+            <ComboBoxItem Content="Rental" />
+        </ComboBox>
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="auto"
+            Margin="701,188,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Owners"
+            FontSize="24" />
+        <xctk:WatermarkTextBox
+            Name="Owners"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,193,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Text=""
+            TextWrapping="Wrap"
+            Watermark="Name(s) of Owners" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="auto"
+            Margin="701,241,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Price"
+            FontSize="24" />
+        <xctk:WatermarkTextBox
+            Name="Price"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="265"
+            Height="30"
+            Margin="893,247,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="16"
+            PreviewTextInput="CheckNumbers"
+            Text=""
+            TextWrapping="Wrap"
+            Watermark="Price in CA$" />
+        <Label
             x:Name="img1_label"
             Grid.Row="3"
             Grid.Column="1"
@@ -429,7 +492,7 @@
         <Label
             Grid.Row="3"
             Grid.Column="1"
-            Margin="773,126,0,0"
+            Margin="855,120,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="*"
@@ -447,7 +510,7 @@
         <Label
             Grid.Row="3"
             Grid.Column="1"
-            Margin="771,267,0,0"
+            Margin="771,247,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="*"
