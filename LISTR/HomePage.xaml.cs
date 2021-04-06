@@ -97,5 +97,54 @@ namespace LISTR
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.Main.Navigate(new RealtorListings());
         }
+<<<<<<< Updated upstream
+=======
+
+        private void SearchClick(object sender, RoutedEventArgs e)
+        {
+            string search = SearchBar.Text.ToLower();
+            if (String.IsNullOrWhiteSpace(search))
+            {
+                return;
+            }
+
+            var result = MainWindow.houses.FindAll(x => (x.Address != null && x.Address.ToLower().Contains(search))
+            || (x.City != null && x.City.ToLower().Contains(search))
+            || (x.Province != null && x.Province.ToLower().Contains(search)));
+
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new Browsing(result, search));
+        }
+
+        private void HomePageLoaded(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Properties.Contains("Username"))
+            {
+                bool is_realtor = false;
+                if (Application.Current.Properties.Contains("IsRealtor"))
+                {
+                    is_realtor = (bool)Application.Current.Properties["IsRealtor"];
+                }
+                // The user is logged in
+                DoLogin(is_realtor, (string)Application.Current.Properties["Username"]);
+            }
+        }
+
+        private void SearchBarClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            SearchButton.IsDefault = true;
+            LoginButton.IsDefault = false;
+        }
+
+
+
+        private void ListrClick(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new myLISTR());
+        }
+>>>>>>> Stashed changes
     }
+
+
 }
