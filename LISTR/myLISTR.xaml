@@ -8,10 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="RealtorListings"
-    d:DataContext="{x:Static local:RealtorListings.houses}"
+    d:DataContext="{x:Static local:myLISTR.favourites}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
-    Loaded="RealtorLoaded"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -145,7 +144,8 @@
                 Margin="213,5,0,70"
                 Padding="7"
                 HorizontalAlignment="Left"
-                Grid.ColumnSpan="3" Width="171">
+                Grid.ColumnSpan="3" Width="171"
+                Click="resetClick">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5,0,0,0" Text="Reset"/>
                 </StackPanel>
@@ -173,7 +173,7 @@
                     Watermark="Search Listings..." Grid.Column="7" />
             <Button
                 Grid.Column="7"
-                Margin="390.667,9,0,73"
+                Margin="397,9,0,73"
                 Padding="7"
                 HorizontalAlignment="Left"
                  Width="172">
@@ -183,12 +183,21 @@
             </Button>
             <Button
                 Grid.Column="7"
-                Margin="390.667,72,0,10"
+                Margin="397,72,0,10"
                 Padding="7"
                 HorizontalAlignment="Left"
                  Width="172">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5,0,0,0"><Run Text="Remove all filters"/><LineBreak/><Run/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button
+                Grid.Column="1"
+                Margin="20,65,55,10"
+                Padding="7"
+                Click="backClick">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5,0,0,0" Text="Back"/>
                 </StackPanel>
             </Button>
 
@@ -204,7 +213,7 @@
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
-                ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}"
+                ItemsSource="{Binding Source={x:Static local:myLISTR.favourites}}"
                 TextSearch.TextPath="@Address" Height="1063" Width="1220">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -212,41 +221,76 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-
-
+                                <ColumnDefinition Width="1.5*" />
                             </Grid.ColumnDefinitions>
+
+
                             <Image
                                 Grid.Column="0"
                                 Height="100"
                                 Margin="20"
-                                Source="resources/House1.png" />
+                                Source="{Binding Images[0]}" />
+
+
+
+
+
                             <StackPanel
                                 Grid.Column="1"
                                 Margin="20"
                                 VerticalAlignment="Center">
-                                <TextBlock>Lorem Ipsum</TextBlock>
+                                <StackPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontSize" Value="15" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource PriceConverter}">
+                                            <Binding Path="Price" />
+                                            <Binding Path="IsRental" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Text="{Binding Address}" />
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="City" />
+                                            <Binding Path="Province" />
+                                            <Binding Path="PostalCode" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} Beds, {1} Baths">
+                                            <Binding Path="NumRooms" />
+                                            <Binding Path="NumBaths" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                             </StackPanel>
 
 
 
-                            <Canvas Grid.Column="4" Margin="0,20,20,20">
-                                <Button Width="Auto" Margin="1,0,0,0">
+                            <Canvas Grid.Column="2" Margin="0,20,20,20">
+                                <Button Width="256" Margin="0" Canvas.Left="1">
                                     View Details
                                 </Button>
                                 <Button
-                                    Width="Auto"
-                                    Tag="{Binding Id}" Margin="170,0,0,0">
+                                    Width="233"
+                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270">
                                     Contact Realtor
                                 </Button>
                                 <Button
-                                    Width="186"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Left="180" Canvas.Top="50">
+                                    Width="233"
+                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270" Canvas.Top="50">
                                     Seen
                                 </Button>
                                 <Button
-                                    Width="175"
-                                    Tag="{Binding Id}" Margin="0,50,0,0">
+                                    Width="257"
+                                    Tag="{Binding Id}" Margin="0" Canvas.Top="50">
                                     Dislike
                                 </Button>
                             </Canvas>

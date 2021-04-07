@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MongoDB.Driver;
+using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace LISTR
 
@@ -25,13 +27,35 @@ namespace LISTR
     /// </summary>
     public partial class myLISTR : Page
     {
-
-        private readonly MainWindow mainWindow;
+        private MainWindow mainWindow;
+        public static ObservableCollection<House> favourites = new ObservableCollection<House>(MainWindow.favouritedHouse.AsQueryable().ToList());
 
 
         public myLISTR()
         {
             InitializeComponent();
+        }
+
+        private void backClick(object sender, RoutedEventArgs e)
+        {
+            if(MainWindow.fromBrowse)
+            {
+                var MainWindow = (MainWindow)Application.Current.MainWindow;
+                MainWindow.Main.Navigate(new Browsing());
+                MainWindow.fromBrowse = false;
+            }
+            else if(!MainWindow.fromBrowse)
+            {
+                var MainWindow = (MainWindow)Application.Current.MainWindow;
+                MainWindow.Main.Navigate(new HomePage());
+                MainWindow.fromBrowse = false;
+            }
+        }
+
+        private void resetClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow.favouritedHouse.Clear();
+            favourites.Clear();
         }
     }
 }

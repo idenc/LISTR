@@ -15,6 +15,8 @@ namespace LISTR
         public static IMongoCollection<House> houseCollection = db.GetCollection<House>("Houses");
         public static List<House> houses = houseCollection.AsQueryable().ToList();
         public static IMongoCollection<BsonDocument> accounts = db.GetCollection<BsonDocument>("Accounts");
+        public static List<House> favouritedHouse = new List<House>();
+        public static bool fromBrowse = false;
 
         public MainWindow()
         {

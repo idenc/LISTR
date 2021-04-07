@@ -103,6 +103,12 @@ namespace LISTR
             mainWindow.Main.Navigate(new RealtorListings());
         }
 
+        private void ListrClick(object sender, RoutedEventArgs e)
+        {
+            var MainWindow = (MainWindow)Application.Current.MainWindow;
+            MainWindow.Main.Navigate(new myLISTR());
+        }
+
         private void SearchClick(object sender, RoutedEventArgs e)
         {
             string search = SearchBar.Text.ToLower();

@@ -71,7 +71,8 @@
                 Width=" 140"
                 Margin="20,12,12,12"
                 Padding="7"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Click="ListrFavourite">
                 <TextBlock TextAlignment="Center">
                     View<LineBreak />
                     Favourites</TextBlock>
@@ -236,7 +237,8 @@
                 VerticalAlignment="Center"
                 Foreground="Black"
                 Kind="HomeHeart"
-                PreviewMouseDown="FavouriteClick" />
+                PreviewMouseDown="FavouriteClick" 
+                />
         </UniformGrid>
 
         <Button

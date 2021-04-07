@@ -51,17 +51,30 @@ namespace LISTR
         }
 
         private void FavouriteClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
+        {   
+
+                MainWindow.favouritedHouse.Add(houses[index]);
+            
+
             if (index < houses.Count - 1)
             {
                 DataContext = houses[++index];
                 Console.WriteLine("Hi");
             }
+
+
         }
 
         private void BrowsingLoaded(object sender, RoutedEventArgs e)
         {
             SearchBox.Watermark = this.search;
+        }
+
+        private void ListrFavourite(object sender, RoutedEventArgs e)
+        {
+            var MainWindow = (MainWindow)Application.Current.MainWindow;
+            MainWindow.Main.Navigate(new myLISTR());
+            MainWindow.fromBrowse = true;
         }
     }
 }
