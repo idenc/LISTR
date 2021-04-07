@@ -108,6 +108,11 @@ namespace LISTR
             house.Province = Province.Text;
             house.Area = Double.Parse(Area.Text);
             house.Tags = Tags.Text.Split(',').Select(s => s.Trim()).ToArray();
+            if (Application.Current.Properties.Contains("Username"))
+            {
+                house.Realtor = Application.Current.Properties["Username"] as string;
+            }
+
             byte[][] images = new byte[numImages][];
             int count = 0;
             for (int i = 1; i <= 5; i++)
