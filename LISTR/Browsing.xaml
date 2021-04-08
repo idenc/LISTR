@@ -15,6 +15,56 @@
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="0"
+                        Padding="4,2" 
+                        BorderBrush="DarkGray" 
+                        CornerRadius="3" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <RemoveStoryboard BeginStoryboardName="Pop" />
+                        <RemoveStoryboard BeginStoryboardName="exit" />
+                        <BeginStoryboard Name ="Pop">
+                            <Storyboard>
+                               
+                                <DoubleAnimation Duration="0:0:0.450" From="120" To="110" 
+                                                            Storyboard.TargetProperty="Height" />
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <RemoveStoryboard BeginStoryboardName="Pop" />
+                        <RemoveStoryboard BeginStoryboardName="exit" />
+                        <BeginStoryboard Name ="exit">
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.350" From="110" To="120" 
+                                                            Storyboard.TargetProperty="Height" />
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.Background>
             <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
@@ -181,6 +231,8 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10" />
@@ -206,8 +258,47 @@
             <TextBlock
                 Grid.Row="4"
                 Grid.Column="1"
-                Margin="0,20,0,0"
+                Margin="0.333,10.333,0.333,9.667"
                 Text="{Binding Description}" />
+            <TextBlock
+                Grid.Row="4"
+                Margin="10,49.333,-144.667,-29.667"
+                Text="Similar to Previous Listing:" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+            <StackPanel
+                Grid.Row="4" Grid.ColumnSpan="2" Margin="0,40.333,-322,-100.667" Grid.RowSpan="2">
+                <Button x:Name="EnterButton_Copy"
+                Margin="10,0,0,-94.667"
+                Padding="20,7,20,7"
+                HorizontalAlignment="Left"
+                Content="A-Frame" Width="129" FontSize="16" Background="#90EE90" Height="36" VerticalAlignment="Bottom" />
+                <Button x:Name="EnterButton_Copy2"
+                Margin="150,0,0,-94.667"
+                Padding="20,7,20,7"
+                HorizontalAlignment="Left"
+                Content="A-Frame" Width="129" FontSize="16" Background="#90EE90"  Height="36" VerticalAlignment="Bottom" />
+            </StackPanel>
+            <TextBlock
+                Grid.Row="5"
+                Margin="0.333,106.333,-155.667,-138.667"
+                Text="Unique to this Listing:" Grid.Column="1" />
+            <StackPanel
+                Grid.Row="5" Grid.ColumnSpan="2" Margin="0,92.333,-321.667,-199.667">
+                <Button x:Name="EnterButton_Copy1"
+                    Margin="10,0,0,-94.667"
+                    Padding="20,7,20,7"
+                    HorizontalAlignment="Left"
+                    Content="A-Frame" Width="129" FontSize="16" Background="#ffffed" Height="36" VerticalAlignment="Bottom" />
+                <Button x:Name="EnterButton_Copy3"
+                    Margin="150,0,0,-94.667"
+                    Padding="20,7,20,7"
+                    HorizontalAlignment="Left"
+                    Content="A-Frame" Width="129" FontSize="16" Background="#ffffed"  Height="36" VerticalAlignment="Bottom" />
+            </StackPanel>
+
+
+
+
+
         </Grid>
 
         <UniformGrid
@@ -215,28 +306,17 @@
             Grid.Column="4"
             Margin="229,558,-331,-508"
             Rows="1">
-            <iconPacks:PackIconMaterial
-                Width="103"
-                Height="120"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Foreground="Black"
-                Kind="HomeRemove" />
-            <iconPacks:PackIconMaterial
-                Width="103"
-                Height="120"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Foreground="Black"
-                Kind="SkipForward" />
-            <iconPacks:PackIconMaterial
-                Width="103"
-                Height="120"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Foreground="Black"
-                Kind="HomeHeart"
-                PreviewMouseDown="FavouriteClick" />
+            <Button 
+                Style="{StaticResource MyButtonStyle}"
+                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove}, Width=103, Height=120}" />
+
+            <Button 
+                Style="{StaticResource MyButtonStyle}"
+                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward}, Width=103, Height=120}" />
+            <Button 
+                Style="{StaticResource MyButtonStyle}"
+                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart}, Width=103, Height=120}" 
+                PreviewMouseDown="FavouriteClick"/>
         </UniformGrid>
 
         <Button
