@@ -63,5 +63,10 @@ namespace LISTR
         {
             SearchBox.Watermark = this.search;
         }
+
+        private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            mainWindow.Main.Navigate(new HomePage());
+        }
     }
 }

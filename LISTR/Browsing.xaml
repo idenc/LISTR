@@ -114,6 +114,8 @@
                 Height="93"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
+                Cursor="Hand"
+                MouseLeftButtonDown="HomeClick"
                 RenderTransformOrigin="0.502,0.973"
                 Source="resources/realtyLogoSmall.png" />
 
@@ -212,7 +214,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding}" />
+                        <Image Cursor="Hand" Source="{Binding}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
 

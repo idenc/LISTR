@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,6 +16,7 @@ namespace LISTR
     {
         private String defaultpath = "";
         private int numImages = 0;
+        private static readonly Regex _regex = new Regex("[^0-9]+"); //regex that matches disallowed text
 
         public AddListing()
         {
@@ -81,10 +84,35 @@ namespace LISTR
             numImages--;
         }
 
+        private bool MandatoryFieldsFilled()
+        {
+            return !(String.IsNullOrWhiteSpace(Owners.Text) || String.IsNullOrWhiteSpace(Price.Text) || String.IsNullOrWhiteSpace(Address.Text));
+        }
+
         private void PostListing(object sender, RoutedEventArgs e)
         {
+            if (!MandatoryFieldsFilled())
+            {
+                PostPopup.IsOpen = true;
+                return;
+            }
             House house = new House();
             house.Description = Description.Text;
+            house.NumRooms = Bedrooms.Text;
+            house.NumBaths = Bathrooms.Text;
+            house.IsRental = ListingType.Text == "Rental";
+            house.Owners = Owners.Text;
+            house.Price = Double.Parse(Price.Text);
+            house.Address = Address.Text;
+            house.City = City.Text;
+            house.Province = Province.Text;
+            house.Area = Double.Parse(Area.Text);
+            house.Tags = Tags.Text.Split(',').Select(s => s.Trim()).ToArray();
+            if (Application.Current.Properties.Contains("Username"))
+            {
+                house.Realtor = Application.Current.Properties["Username"] as string;
+            }
+
             byte[][] images = new byte[numImages][];
             int count = 0;
             for (int i = 1; i <= 5; i++)
@@ -98,6 +126,8 @@ namespace LISTR
             house.Images = images;
 
             MainWindow.houseCollection.InsertOne(house);
+            MainWindow.houses.Add(house);
+            GoToListings();
         }
 
         public static byte[] ImageToByteArray(Image imageIn)
@@ -107,6 +137,29 @@ namespace LISTR
             encoder.Frames.Add(BitmapFrame.Create(imageIn.Source as BitmapImage));
             encoder.Save(memStream);
             return memStream.ToArray();
+        }
+
+        private void CheckNumbers(object sender, TextCompositionEventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(e.Text))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = _regex.IsMatch(e.Text);
+            }
+        }
+
+        private void GoToListings()
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new RealtorListings());
+        }
+
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            GoToListings();
         }
     }
 }

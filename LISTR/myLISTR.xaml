@@ -1,0 +1,267 @@
+﻿<Page
+    x:Class="LISTR.myLISTR"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:LISTR"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Title="RealtorListings"
+    d:DataContext="{x:Static local:RealtorListings.houses}"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    Loaded="RealtorLoaded"
+    Style="{StaticResource WinAll}"
+    mc:Ignorable="d">
+
+
+    <Page.Resources>
+        <local:PriceConverter x:Key="PriceConverter" />
+        <Style x:Key="RoundButton" TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7,7,0,0" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
+    <Grid HorizontalAlignment="Right" Width="1280" RenderTransformOrigin="0.505,0.494">
+
+        <Grid.Background>
+            <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
+                <GradientStop Offset="1" Color="#cceeff" />
+                <GradientStop Offset="0" Color="#66ccff" />
+            </RadialGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+
+        </Grid.ColumnDefinitions>
+        <Image
+            Grid.Row="1"
+
+            Grid.Column="1"
+            Height="43"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Source="resources/realtyLogoSmall.png" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Padding="7"
+            HorizontalAlignment="Center"
+            Background="#FFF4F4F5">
+            My LISTR
+        </TextBlock>
+
+        <Grid
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,40,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top">
+
+
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="15" />
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="FontSize" Value="15" />
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="1"
+                Margin="228,-29,38,-11"
+                Background="#FF9B9797"
+                Content="Seen"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
+            <Button
+                Grid.Column="2"
+                Margin="208,-29,60,-11"
+                Background="#FF9B9797"
+                Content="Disliked"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
+            <Button
+                Grid.Column="1"
+                Margin="0,-29,20,-11"
+                Background="#FFFFFF"
+                Content="Favourites"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="0,0,0,10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            Background="#FFF4F4F5" Height="116">
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="15" />
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="FontSize" Value="15" />
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="248*" />
+                <ColumnDefinition Width="149*" />
+                <ColumnDefinition Width="99*"/>
+                <ColumnDefinition Width="82*" />
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="619*"/>
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="0"
+                Margin="213,5,0,70"
+                Padding="7"
+                HorizontalAlignment="Left"
+                Grid.ColumnSpan="3" Width="171">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5,0,0,0" Text="Reset"/>
+                </StackPanel>
+            </Button>
+
+            <Button
+                Grid.Column="1"
+                Margin="20,5,55,70"
+                Padding="7">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5,0,0,0" Text="Filters"/>
+                </StackPanel>
+            </Button>
+
+
+
+            <DockPanel Grid.Column="4" HorizontalAlignment="Stretch" Grid.ColumnSpan="4"/>
+            <xctk:WatermarkTextBox
+                    x:Name="ListingsSearch"
+                    Height="34"
+                    Margin="12.667,9,50,73"
+                    Padding="7"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    Watermark="Search Listings..." Grid.Column="7" />
+            <Button
+                Grid.Column="7"
+                Margin="390.667,9,0,73"
+                Padding="7"
+                HorizontalAlignment="Left"
+                 Width="172">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5,0,0,0" Text="Search"/>
+                </StackPanel>
+            </Button>
+            <Button
+                Grid.Column="7"
+                Margin="390.667,72,0,10"
+                Padding="7"
+                HorizontalAlignment="Left"
+                 Width="172">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5,0,0,0"><Run Text="Remove all filters"/><LineBreak/><Run/></TextBlock>
+                </StackPanel>
+            </Button>
+
+
+
+        </Grid>
+
+        <ScrollViewer
+            Grid.Row="4"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Background="White" Height="481" Grid.RowSpan="2">
+            <ItemsControl
+                x:Name="MyControl"
+                Background="White"
+                ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}"
+                TextSearch.TextPath="@Address" Height="1063" Width="1220">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+
+
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Height="100"
+                                Margin="20"
+                                Source="resources/House1.png" />
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="20"
+                                VerticalAlignment="Center">
+                                <TextBlock>Lorem Ipsum</TextBlock>
+                            </StackPanel>
+
+
+
+                            <Canvas Grid.Column="4" Margin="0,20,20,20">
+                                <Button Width="Auto" Margin="1,0,0,0">
+                                    View Details
+                                </Button>
+                                <Button
+                                    Width="Auto"
+                                    Tag="{Binding Id}" Margin="170,0,0,0">
+                                    Contact Realtor
+                                </Button>
+                                <Button
+                                    Width="186"
+                                    Tag="{Binding Id}" Margin="0" Canvas.Left="180" Canvas.Top="50">
+                                    Seen
+                                </Button>
+                                <Button
+                                    Width="175"
+                                    Tag="{Binding Id}" Margin="0,50,0,0">
+                                    Dislike
+                                </Button>
+                            </Canvas>
+                            <Separator
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"
+                                VerticalAlignment="Bottom" />
+
+
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+    </Grid>
+</Page>
