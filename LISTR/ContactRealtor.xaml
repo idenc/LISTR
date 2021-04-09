@@ -1,0 +1,188 @@
+﻿<Popup
+    x:Class="LISTR.ContactRealtor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:LISTR"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Width="Auto"
+    Height="Auto"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center"
+    IsEnabled="True"
+    IsOpen="False"
+    AllowsTransparency="True"
+    Placement="Center"
+    PopupAnimation="Fade"
+    StaysOpen="False"
+    mc:Ignorable="d">
+
+    <Grid
+        Width="Auto"
+        Height="Auto"
+        Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <xctk:WatermarkTextBox
+                        Name="Username"
+                        Width="235"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Left"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="20"
+                        FontWeight="Light"
+                        Foreground="Black"
+                        Opacity="0.5"
+                        Watermark="Name" />
+                    <iconPacks:PackIconMaterial
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="Black"
+                        Kind="Account" />
+                </StackPanel>
+                <Border
+                    Width="250"
+                    Height="2"
+                    Background="Black"
+                    Opacity="0.5" />
+
+                <StackPanel
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <xctk:WatermarkPasswordBox
+                        Name="Password1"
+                        Width="235"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Left"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontFamily="Helvetica"
+                        FontSize="20"
+                        FontWeight="Light"
+                        Foreground="Black"
+                        Opacity="0.5"
+                        Watermark="E-Mail" />
+                    <iconPacks:PackIconMaterial
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="Black"
+                        Kind="Email" />
+                </StackPanel>
+                <Border
+                    Width="250"
+                    Height="2"
+                    Background="Black"
+                    Opacity="0.5" />
+
+                <StackPanel
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <xctk:WatermarkPasswordBox
+                        Name="Password2"
+                        Width="235"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Left"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontFamily="Helvetica"
+                        FontSize="20"
+                        FontWeight="Light"
+                        Foreground="Black"
+                        Opacity="0.5"
+                        Watermark="Phone" />
+                    <iconPacks:PackIconMaterial
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="Black"
+                        Kind="Phone" />
+                    
+                </StackPanel>
+                <Border
+                    Width="250"
+                    Height="2"
+                    Background="Black"
+                    Opacity="0.5" />
+
+                <TextBlock
+                    Margin="0,20,0,0"
+                     Background="Transparent"
+                       
+                        FontFamily="Helvetica"
+                        FontSize="20"
+                        FontWeight="Light"
+                        Foreground="Black"
+                        Opacity="0.5"
+                    >Message for Realtor:</TextBlock>
+
+                <TextBox
+                    Name ="myTextBox"
+                    Margin="0,5,0,0"
+                     Background="Transparent"
+                        BorderThickness="1"
+                        FontFamily="Helvetica"
+                        FontSize="20"
+                       
+                        Foreground="Black"
+                     
+                   
+                    AcceptsReturn="True" TextWrapping="Wrap"
+                    Height="65"
+                    >
+                    
+                </TextBox>
+
+                <TextBlock
+                    Name="RegisterError"
+                    HorizontalAlignment="Center"
+                    Foreground="Red" />
+
+                <UniformGrid
+                    Rows="1">
+                    <Button
+                    Width="100"
+                    Height="40"
+                    Margin="0,20,0,0"
+                    Click="SendClick"
+                    Content="SEND"
+                    FontSize="14" />
+                    <Button
+                    Width="100"
+                    Height="40"
+                    Margin="0,20,0,0"
+                    Click="CancelClick"
+                    Content="CANCEL"
+                    FontSize="14" />
+                </UniformGrid>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</Popup>

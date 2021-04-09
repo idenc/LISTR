@@ -64,6 +64,24 @@ namespace LISTR
             SearchBox.Watermark = this.search;
         }
 
+        private void ImageClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Image newimage = new Image();
+            newimage.Source = ((Image)sender).Source;
+            dynamicImage.Source = newimage.Source;
+
+        }
+
+        private void ContactRealtorClick(object sender, RoutedEventArgs e)
+        {
+            new ContactRealtor(this)
+            {
+                Placement = System.Windows.Controls.Primitives.PlacementMode.Center,
+                PlacementTarget = this,
+                IsOpen = true
+            };
+        }
+
         private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             mainWindow.Main.Navigate(new HomePage());

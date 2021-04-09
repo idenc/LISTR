@@ -11,6 +11,7 @@
     d:DataContext="{x:Static local:RealtorListings.houses}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -153,7 +154,7 @@
             <Button
                 Grid.Column="1"
                 Margin="20,5,55,70"
-                Padding="7" Click="OpenFilters">
+                Padding="7">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5,0,0,0" Text="Filters"/>
                 </StackPanel>
@@ -203,7 +204,7 @@
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
-                ItemsSource="{Binding Source={x:Static local:myLISTR.houses}}"
+                ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}"
                 TextSearch.TextPath="@Address" Height="1063" Width="1220">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -219,12 +220,12 @@
                                 Grid.Column="0"
                                 Height="100"
                                 Margin="20"
-                                Source="{Binding Images[0]}" />
+                                Source="resources/House1.png" />
                             <StackPanel
                                 Grid.Column="1"
                                 Margin="20"
                                 VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Address}" />
+                                <TextBlock>Lorem Ipsum</TextBlock>
                             </StackPanel>
 
 
