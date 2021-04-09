@@ -24,6 +24,14 @@ namespace LISTR
         public Filters()
         {
             InitializeComponent();
+            RentSwitch.Background = Brushes.LightGray;
+            BuySwitch.Background = Brushes.Beige;
+            Tag1.Background = Brushes.Gray;
+            Tag2.Background = Brushes.Gray;
+            Tag3.Background = Brushes.Gray;
+            Tag4.Background = Brushes.Gray;
+            Tag5.Background = Brushes.Gray;
+            Tag6.Background = Brushes.Gray;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,13 +41,13 @@ namespace LISTR
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            btn.Background = Brushes.Gray;
+            btn.Background = Brushes.Beige;
             RentSwitch.Background = Brushes.LightGray;
         }
         private void Rent_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            btn.Background = Brushes.Gray;
+            btn.Background = Brushes.Beige;
             BuySwitch.Background = Brushes.LightGray;
         }
         private void Tag_Click(object sender, RoutedEventArgs e)
@@ -55,6 +63,11 @@ namespace LISTR
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ListingSearch(object sender, TextChangedEventArgs e)
         {
 
         }

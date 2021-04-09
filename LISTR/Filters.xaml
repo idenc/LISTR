@@ -38,7 +38,7 @@
             HorizontalAlignment="Center"
             Content="ENTER" Grid.Row="1" Width="132" FontSize="20" Click="Button_Click" Height="46" VerticalAlignment="Bottom" />
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0,0,398,109" Stroke="Black" Width="438" Height="317" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
-        <Button x:Name="EnterButton_Copy"
+        <Button x:Name="Tag1"
             Margin="458,0,0,34"
             Padding="20,7,20,7"
             HorizontalAlignment="Left"
@@ -80,11 +80,36 @@
             <ListBoxItem Content="3" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
             <ListBoxItem Content="4+" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="591,249,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="746,249,0,0" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="591,249,0,0" BorderBrush="Black"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="746,249,0,0" TextChanged="TextBox_TextChanged" BorderBrush="Black"/>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="2" Margin="711,177,0,0" Stroke="Black" VerticalAlignment="Top" Width="36"/>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="2" Margin="711,220,0,0" Stroke="Black" VerticalAlignment="Top" Width="36"/>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="2" Margin="711,259,0,0" Stroke="Black" VerticalAlignment="Top" Width="36"/>
+        <Button x:Name="Tag2"
+            Margin="602,0,0,34"
+            Padding="20,7,20,7"
+            HorizontalAlignment="Left"
+            Content="A-Frame" Width="109" FontSize="16" Click="Tag_Click" Background="#FF898989" Height="36" VerticalAlignment="Bottom" />
+        <Button x:Name="Tag4"
+            Margin="458,0,0,317"
+            Padding="20,7,20,7"
+            HorizontalAlignment="Left"
+            Content="A-Frame" Width="108" FontSize="16" Click="Tag_Click" Background="#FF898989" Height="36" VerticalAlignment="Bottom" Grid.RowSpan="2" />
+        <Button x:Name="Tag3"
+            Margin="725,0,0,34"
+            Padding="20,7,20,7"
+            HorizontalAlignment="Left"
+            Content="A-Frame" Width="103" FontSize="16" Click="Tag_Click" Background="#FF898989" Height="36" VerticalAlignment="Bottom" />
+        <Button x:Name="Tag5"
+            Margin="581,0,0,317"
+            Padding="20,7,20,7"
+            HorizontalAlignment="Left"
+            Content="A-Frame" Width="130" FontSize="16" Click="Tag_Click" Background="#FF898989" Height="36" VerticalAlignment="Bottom" Grid.RowSpan="2" />
+        <Button x:Name="Tag6"
+            Margin="725,0,0,317"
+            Padding="20,7,20,7"
+            HorizontalAlignment="Left"
+            Content="A-Frame" Width="130" FontSize="16" Click="Tag_Click" Background="#FF898989" Height="36" VerticalAlignment="Bottom" Grid.RowSpan="2" />
 
     </Grid>
 

@@ -154,6 +154,6 @@
             Margin="0,30,0,0"
             Padding="20,7,20,7"
             HorizontalAlignment="Center"
-            Content="My LISTR" />
+            Content="My LISTR" Click="Button_Click_1" />
     </Grid>
 </Page>

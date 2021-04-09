@@ -138,5 +138,16 @@ namespace LISTR
             SearchButton.IsDefault = true;
             LoginButton.IsDefault = false;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new myLISTR());
+        }
     }
 }
