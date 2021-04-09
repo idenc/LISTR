@@ -73,7 +73,7 @@ namespace LISTR
         private void ListrFavourite(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTR());
+            MainWindow.Main.Navigate(new myLISTR(this));
             MainWindow.fromBrowse = true;
         }
     }

@@ -106,7 +106,7 @@ namespace LISTR
         private void ListrClick(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTR());
+            MainWindow.Main.Navigate(new myLISTR(this));
         }
 
         private void SearchClick(object sender, RoutedEventArgs e)
