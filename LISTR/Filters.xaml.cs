@@ -18,6 +18,7 @@ namespace LISTR
     /// <summary>
     /// Interaction logic for Filters.xaml
     /// </summary>
+    /// <Grid.Background>
     public partial class Filters : Page
     {
         public Filters()
@@ -48,5 +49,14 @@ namespace LISTR
             else { btn.Background = Brushes.LightCyan; }
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

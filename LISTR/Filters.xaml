@@ -8,58 +8,84 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="Filters">
 
-    <Grid Margin="-116,-144,-1,72">
+    <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="323*"/>
             <RowDefinition Height="271*"/>
         </Grid.RowDefinitions>
+
         <Grid.Background>
             <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
                 <GradientStop Offset="1" Color="#FF9F9FF0" />
                 <GradientStop Offset="0" Color="#FF9F9FF0" />
             </RadialGradientBrush>
         </Grid.Background>
+
         <Image
-            Width="78"
+            Width="100"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Source="resources/realtyLogoSmall.png" Margin="188,10,1131,0" Height="108" />
-        <Label Content="&#xD;&#xA;FILTERS" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,-32,0,0" Width="176" FontSize="36" Height="90" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            Source="resources/realtyLogoSmall.png" Margin="19,12,1165,0" Height="100" RenderTransformOrigin="0.552,0.348" />
+        <Label Content="&#xD;&#xA;FILTERS" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="438,12,0,0" Width="184" FontSize="40" Height="121" FontFamily="/LISTR;component/resources/fonts/#Montserrat" FontWeight="Bold"/>
         <Button x:Name="CancelButton"
-            Margin="482,0,783,54"
+            Margin="434,0,714,42"
             Padding="20,7,20,7"
             HorizontalAlignment="Center"
             Content="CANCEL" Grid.Row="1" Width="132" FontSize="20" Height="46" VerticalAlignment="Bottom" />
         <Button x:Name="EnterButton"
-            Margin="785,0,480,54"
+            Margin="738,0,410,42"
             Padding="20,7,20,7"
             HorizontalAlignment="Center"
             Content="ENTER" Grid.Row="1" Width="132" FontSize="20" Click="Button_Click" Height="46" VerticalAlignment="Bottom" />
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0,0,478,142" Stroke="Black" Width="435" Height="219" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0,0,398,109" Stroke="Black" Width="438" Height="317" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
         <Button x:Name="EnterButton_Copy"
-            Margin="500,0,0,315"
+            Margin="458,0,0,34"
             Padding="20,7,20,7"
             HorizontalAlignment="Left"
-            Content="A-Frame" Width="129" FontSize="16" Click="Tag_Click" Background="#FF898989" Height="36" VerticalAlignment="Bottom" Grid.Row="1" />
-        <TextBlock HorizontalAlignment="Right" Height="25" Margin="0,224,649,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="118" Background="White" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
-        <TextBlock HorizontalAlignment="Right" Height="25" Margin="0,224,491,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="118" Background="White" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,266,649,0" TextWrapping="Wrap" Text="TextBlock" Width="118" Background="White" FontFamily="/LISTR;component/resources/fonts/#Montserrat" Height="25" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="788,266,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="117" Background="White" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
-        <Label Content="BEDROOMS" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,218,793,0" Width="122" FontSize="18" Height="34" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
-        <Label Content="BATHROOMS" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,261,781,0" Width="134" FontSize="18" Height="34" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
-        <Label Content="PRICE" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,305,793,0" Width="122" FontSize="18" Height="34" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,309,649,0" TextWrapping="Wrap" Text="TextBlock" Width="118" Background="White" FontFamily="/LISTR;component/resources/fonts/#Montserrat" Height="25" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="788,309,0,0" TextWrapping="Wrap" Text="TextBlock" Width="117" Background="White" FontFamily="/LISTR;component/resources/fonts/#Montserrat" Height="25" VerticalAlignment="Top"/>
+            Content="A-Frame" Width="130" FontSize="16" Click="Tag_Click" Background="#FF898989" Height="36" VerticalAlignment="Bottom" />
+        <Label Content="BEDROOMS" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,162,710,0" Width="122" FontSize="18" Height="34" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="BATHROOMS" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,205,698,0" Width="134" FontSize="18" Height="34" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        <Label Content="PRICE" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,249,710,0" Width="122" FontSize="18" Height="34" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
         <Button x:Name="RentSwitch"
-            Margin="850,20,439,363"
+            Margin="751,74,397,294"
             Padding="20,7,20,7"
             HorizontalAlignment="Center"
-            Content="RENT" Width="108" FontSize="20" Click="Rent_Click" Background="#FF9B9B9B" RenderTransformOrigin="0.796,0.458" />
+            Content="RENT" Width="132" FontSize="16" Click="Rent_Click" Background="#FF9B9B9B" RenderTransformOrigin="0.796,0.458" />
         <Button x:Name="BuySwitch"
-            Margin="732,20,547,363"
+            Margin="637,74,511,294"
             Padding="20,7,20,7"
             HorizontalAlignment="Center"
-            Content="BUY" Width="118" FontSize="20" Click="Buy_Click" Background="#FFBDBDBD" FontFamily="/LISTR;component/resources/fonts/#Montserrat" />
+            Content="BUY" Width="132" FontSize="16" Click="Buy_Click" Background="#FFBDBDBD" FontFamily="/LISTR;component/resources/fonts/#Montserrat" />
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="591,168,0,0" SelectionChanged="ComboBox_SelectionChanged">
+            <ListBoxItem Content="1" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="2" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="3" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="4" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="5" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="6+" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="591,210,0,0">
+            <ListBoxItem Content="1" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="2" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="3" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="4+" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="746,168,0,0">
+            <ListBoxItem Content="3" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="4" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="5" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="6+" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="746,210,0,0">
+            <ListBoxItem Content="3" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+            <ListBoxItem Content="4+" FontFamily="/LISTR;component/resources/fonts/#Montserrat"/>
+        </ComboBox>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="591,249,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="746,249,0,0" TextChanged="TextBox_TextChanged"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="2" Margin="711,177,0,0" Stroke="Black" VerticalAlignment="Top" Width="36"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="2" Margin="711,220,0,0" Stroke="Black" VerticalAlignment="Top" Width="36"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="2" Margin="711,259,0,0" Stroke="Black" VerticalAlignment="Top" Width="36"/>
+
     </Grid>
 
 </Page>
