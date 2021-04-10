@@ -10,8 +10,8 @@ namespace LISTR
 {
     public class MoveBinding : INotifyPropertyChanged
     {
-        private string _move1 = "Hello";
-        private string _move2 = "Goodbye";
+        private string _move1 = "Move to Skipped";
+        private string _move2 = "Move to Disliked";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -50,7 +50,7 @@ namespace LISTR
         public static ObservableCollection<House> favourites = new ObservableCollection<House>();
         public static ObservableCollection<House> skipped = new ObservableCollection<House>();
         public static ObservableCollection<House> disliked = new ObservableCollection<House>();
-        public MoveBinding moveBinding = new MoveBinding();
+        public static MoveBinding moveBinding = new MoveBinding();
 
         private SelectedTab selectedTab;
 
@@ -149,6 +149,7 @@ namespace LISTR
             FavouritesButton.Background = bc.ConvertFrom("#FF9B9797") as Brush;
             SkippedButton.Background = bc.ConvertFrom("#FF9B9797") as Brush;
             MyControl.ItemsSource = disliked;
+            UpdateMoveButtons();
         }
 
         private void SkippedClick(object sender, RoutedEventArgs e)
@@ -164,6 +165,7 @@ namespace LISTR
             FavouritesButton.Background = bc.ConvertFrom("#FF9B9797") as Brush;
             DislikedButton.Background = bc.ConvertFrom("#FF9B9797") as Brush;
             MyControl.ItemsSource = skipped;
+            UpdateMoveButtons();
         }
 
         private void MyLISTRLoaded(object sender, RoutedEventArgs e)
