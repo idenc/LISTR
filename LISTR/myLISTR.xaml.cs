@@ -1,9 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace LISTR
@@ -74,9 +76,40 @@ namespace LISTR
             InitializeComponent();
         }
 
-        private void resetClick(object sender, RoutedEventArgs e)
+        private void ResetClick(object sender, RoutedEventArgs e)
         {
-            favourites.Clear();
+            if (selectedTab == SelectedTab.Favourites)
+            {
+                favourites.Clear();
+            }
+            else if (selectedTab == SelectedTab.Disliked)
+            {
+                disliked.Clear();
+            }
+            else
+            {
+                skipped.Clear();
+            }
+        }
+
+        private bool ListingFilter(object item)
+        {
+            if (String.IsNullOrWhiteSpace(ListingsSearch.Text))
+            {
+                return true;
+            }
+            else
+            {
+                House house = item as House;
+                return house.Address.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 
+                    || house.City.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 
+                    || house.Province.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+            }
+        }
+
+        private void ListingSearch(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(MyControl.ItemsSource).Refresh();
         }
 
         private void ContactRealtorClick(object sender, RoutedEventArgs e)
@@ -143,7 +176,7 @@ namespace LISTR
 
             Panel.SetZIndex(DislikedButton, 2);
             Panel.SetZIndex(SkippedButton, 1);
-            Panel.SetZIndex(DislikedButton, 0);
+            Panel.SetZIndex(FavouritesButton, 0);
 
             var bc = new BrushConverter();
             FavouritesButton.Background = bc.ConvertFrom("#FF9B9797") as Brush;
@@ -182,11 +215,30 @@ namespace LISTR
             {
                 SkippedClick(null, null);
             }
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(MyControl.ItemsSource);
+            view.Filter = ListingFilter;
         }
 
-        private void moveListing(object sender, ObservableCollection<House> destList)
+        private void MoveListing(object sender, RoutedEventArgs e)
         {
-            string id = ((Button)sender).Tag as string;
+            Button button = sender as Button;
+            string id = button.Tag as string;
+            string content = (button.Content as TextBlock).Text;
+
+            ObservableCollection<House> destList;
+            if (content == "Move to Favourites")
+            {
+                destList = favourites;
+            }
+            else if (content == "Move to Skipped")
+            {
+                destList = skipped;
+            }
+            else
+            {
+                destList = disliked;
+            }
 
             if (selectedTab == SelectedTab.Favourites)
             {
@@ -206,21 +258,6 @@ namespace LISTR
                 disliked.Remove(listing);
                 destList.Add(listing);
             }
-        }
-
-        private void moveListingFavourite(object sender, RoutedEventArgs e)
-        {
-            moveListing(sender, favourites);
-        }
-
-        private void moveListingDisliked(object sender, RoutedEventArgs e)
-        {
-            moveListing(sender, disliked);
-        }
-
-        private void moveListingSkipped(object sender, RoutedEventArgs e)
-        {
-            moveListing(sender, skipped);
         }
     }
 }

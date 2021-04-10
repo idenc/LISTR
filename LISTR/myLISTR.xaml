@@ -172,7 +172,7 @@
                     Margin="20,10,20,10"
                     Padding="7"
                     HorizontalAlignment="Left"
-                    Click="resetClick">
+                    Click="ResetClick">
                     <StackPanel Orientation="Horizontal">
                         <iconPacks:PackIconMaterial
                             Margin="0,0,10,0"
@@ -214,6 +214,7 @@
                         VerticalContentAlignment="Center"
                         DockPanel.Dock="Left"
                         FontSize="15"
+                        TextChanged="ListingSearch"
                         Watermark="Search Listings..." />
                 </DockPanel>
             </DockPanel>
@@ -324,15 +325,16 @@
                                     Canvas.Top="50"
                                     Width="233"
                                     Margin="0"
-                                    Click="moveListingSkipped"
+                                    Click="MoveListing"
                                     Tag="{Binding Id}">
                                     <TextBlock DataContext="{Binding Source={x:Static local:myLISTR.moveBinding}}" Text="{Binding Move1}" />
                                 </Button>
                                 <Button
+                                    Name="Move2"
                                     Canvas.Top="50"
                                     Width="257"
                                     Margin="0"
-                                    Click="moveListingDisliked"
+                                    Click="MoveListing"
                                     Tag="{Binding Id}">
                                     <TextBlock DataContext="{Binding Source={x:Static local:myLISTR.moveBinding}}" Text="{Binding Move2}" />
                                 </Button>
