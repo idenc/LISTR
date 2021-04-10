@@ -8,7 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="RealtorListings"
-    d:DataContext="{x:Static local:RealtorListings.houses}"
+    d:DataContext="{x:Static local:RealtorListings.AllHouses}"
+    Loaded="RealtorLoaded"
     d:DesignHeight="720"
     d:DesignWidth="1280"
     Style="{StaticResource WinAll}"
@@ -99,17 +100,21 @@
             </Button>
 
             <Button
+                Name="SoldButton"
                 Grid.Column="2"
                 Margin="-10,5,20,0"
                 Background="White"
+                Click="SoldClick"
                 Content="Sold Listings"
                 FontSize="15"
                 Style="{StaticResource RoundButton}" />
 
             <Button
+                Name="ActiveButton"
                 Grid.Column="1"
                 Margin="20,5,0,0"
                 Background="#FF9B9797"
+                Click="ActiveClick"
                 Content="Active Listings"
                 FontSize="15"
                 Style="{StaticResource RoundButton}" />
@@ -161,7 +166,7 @@
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
-                ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}"
+                ItemsSource="{Binding Source={x:Static local:RealtorListings.AllHouses}}"
                 TextSearch.TextPath="@Address">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -214,7 +219,10 @@
                                 <TextBlock Text="{Binding Owners, StringFormat='Owned By: {0}'}" />
                             </StackPanel>
                             <StackPanel Grid.Column="2" Margin="171,20,20,20">
-                                <Button Width="130" Margin="0,0,0,10">
+                                <Button
+                                    Width="130"
+                                    Margin="0,0,0,10"
+                                    Click="HouseEdit">
                                     <Grid Width="130">
                                         <TextBlock
                                             Grid.Row="0"

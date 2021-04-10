@@ -11,7 +11,6 @@
     d:DataContext="{x:Static local:RealtorListings.houses}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
-
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -27,7 +26,10 @@
         </Style>
     </Page.Resources>
 
-    <Grid HorizontalAlignment="Right" Width="1280" RenderTransformOrigin="0.505,0.494">
+    <Grid
+        Width="1280"
+        HorizontalAlignment="Right"
+        RenderTransformOrigin="0.505,0.494">
 
         <Grid.Background>
             <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
@@ -53,7 +55,6 @@
         </Grid.ColumnDefinitions>
         <Image
             Grid.Row="1"
-
             Grid.Column="1"
             Height="43"
             HorizontalAlignment="Left"
@@ -93,18 +94,20 @@
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="1"
+                Grid.ColumnSpan="2"
                 Margin="228,-29,38,-11"
                 Background="#FF9B9797"
                 Content="Seen"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
+                Style="{StaticResource RoundButton}" />
             <Button
                 Grid.Column="2"
+                Grid.ColumnSpan="2"
                 Margin="208,-29,60,-11"
                 Background="#FF9B9797"
                 Content="Disliked"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
+                Style="{StaticResource RoundButton}" />
             <Button
                 Grid.Column="1"
                 Margin="0,-29,20,-11"
@@ -117,10 +120,11 @@
         <Grid
             Grid.Row="3"
             Grid.Column="1"
+            Height="116"
             Margin="0,0,0,10"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
-            Background="#FFF4F4F5" Height="116">
+            Background="#FFF4F4F5">
             <Grid.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="FontSize" Value="15" />
@@ -133,21 +137,22 @@
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="248*" />
                 <ColumnDefinition Width="149*" />
-                <ColumnDefinition Width="99*"/>
+                <ColumnDefinition Width="99*" />
                 <ColumnDefinition Width="82*" />
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="11*"/>
-                <ColumnDefinition Width="619*"/>
+                <ColumnDefinition Width="32*" />
+                <ColumnDefinition Width="11*" />
+                <ColumnDefinition Width="619*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Width="171"
                 Margin="213,5,0,70"
                 Padding="7"
-                HorizontalAlignment="Left"
-                Grid.ColumnSpan="3" Width="171">
+                HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0" Text="Reset"/>
+                    <TextBlock Margin="5,0,0,0" Text="Reset" />
                 </StackPanel>
             </Button>
 
@@ -156,39 +161,43 @@
                 Margin="20,5,55,70"
                 Padding="7">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0" Text="Filters"/>
+                    <TextBlock Margin="5,0,0,0" Text="Filters" />
                 </StackPanel>
             </Button>
 
 
 
-            <DockPanel Grid.Column="4" HorizontalAlignment="Stretch" Grid.ColumnSpan="4"/>
+            <DockPanel
+                Grid.Column="4"
+                Grid.ColumnSpan="4"
+                HorizontalAlignment="Stretch" />
             <xctk:WatermarkTextBox
-                    x:Name="ListingsSearch"
-                    Height="34"
-                    Margin="12.667,9,50,73"
-                    Padding="7"
-                    VerticalAlignment="Center"
-                    FontSize="15"
-                    Watermark="Search Listings..." Grid.Column="7" />
+                x:Name="ListingsSearch"
+                Grid.Column="7"
+                Height="34"
+                Margin="12.667,9,50,73"
+                Padding="7"
+                VerticalAlignment="Center"
+                FontSize="15"
+                Watermark="Search Listings..." />
             <Button
                 Grid.Column="7"
+                Width="172"
                 Margin="390.667,9,0,73"
                 Padding="7"
-                HorizontalAlignment="Left"
-                 Width="172">
+                HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0" Text="Search"/>
+                    <TextBlock Margin="5,0,0,0" Text="Search" />
                 </StackPanel>
             </Button>
             <Button
                 Grid.Column="7"
+                Width="172"
                 Margin="390.667,72,0,10"
                 Padding="7"
-                HorizontalAlignment="Left"
-                 Width="172">
+                HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0"><Run Text="Remove all filters"/><LineBreak/><Run/></TextBlock>
+                    <TextBlock Margin="5,0,0,0"><Run Text="Remove all filters" /><LineBreak /><Run /></TextBlock>
                 </StackPanel>
             </Button>
 
@@ -198,14 +207,18 @@
 
         <ScrollViewer
             Grid.Row="4"
+            Grid.RowSpan="2"
             Grid.Column="1"
+            Height="481"
             VerticalAlignment="Top"
-            Background="White" Height="481" Grid.RowSpan="2">
+            Background="White">
             <ItemsControl
                 x:Name="MyControl"
+                Width="1220"
+                Height="1063"
                 Background="White"
-                ItemsSource="{Binding Source={x:Static local:RealtorListings.houses}}"
-                TextSearch.TextPath="@Address" Height="1063" Width="1220">
+                ItemsSource="{Binding Source={x:Static local:RealtorListings.AllHouses}}"
+                TextSearch.TextPath="@Address">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -236,17 +249,22 @@
                                 </Button>
                                 <Button
                                     Width="Auto"
-                                    Tag="{Binding Id}" Margin="170,0,0,0">
+                                    Margin="170,0,0,0"
+                                    Tag="{Binding Id}">
                                     Contact Realtor
                                 </Button>
                                 <Button
+                                    Canvas.Left="180"
+                                    Canvas.Top="50"
                                     Width="186"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Left="180" Canvas.Top="50">
+                                    Margin="0"
+                                    Tag="{Binding Id}">
                                     Seen
                                 </Button>
                                 <Button
                                     Width="175"
-                                    Tag="{Binding Id}" Margin="0,50,0,0">
+                                    Margin="0,50,0,0"
+                                    Tag="{Binding Id}">
                                     Dislike
                                 </Button>
                             </Canvas>
