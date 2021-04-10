@@ -9,9 +9,9 @@
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="RealtorListings"
     d:DataContext="{x:Static local:RealtorListings.AllHouses}"
-    Loaded="RealtorLoaded"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+    Loaded="RealtorLoaded"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -222,7 +222,8 @@
                                 <Button
                                     Width="130"
                                     Margin="0,0,0,10"
-                                    Click="HouseEdit">
+                                    Click="HouseEdit"
+                                    Tag="{Binding Id}">
                                     <Grid Width="130">
                                         <TextBlock
                                             Grid.Row="0"

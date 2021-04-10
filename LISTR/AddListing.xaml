@@ -9,6 +9,7 @@
     Title="AddListing"
     d:DesignHeight="720"
     d:DesignWidth="1280"
+    Loaded="AddListingLoaded"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -283,6 +284,7 @@
             Content="Preview"
             FontSize="24" />
         <Button
+            Name="PostButton"
             Grid.Row="3"
             Grid.Column="1"
             Width="182"
@@ -293,7 +295,7 @@
             Click="PostListing"
             FontSize="24">
             <StackPanel>
-                <TextBlock>Post</TextBlock>
+                <TextBlock Name="PostButtonText">Post</TextBlock>
                 <Popup
                     Name="PostPopup"
                     HorizontalOffset="-200"

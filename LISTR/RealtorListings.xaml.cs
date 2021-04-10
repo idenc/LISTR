@@ -23,6 +23,7 @@ namespace LISTR
         {
             mainWindow = (MainWindow)Application.Current.MainWindow;
             Console.WriteLine("Num Houses: " + AllHouses.Count);
+            AllHouses = new ObservableCollection<House>(MainWindow.houses.AsQueryable().ToList());
             houses = new ObservableCollection<House>(AllHouses.Take(AllHouses.Count - 1));
             InitializeComponent();
 
@@ -76,6 +77,8 @@ namespace LISTR
 
         private void HouseEdit(object sender, RoutedEventArgs e)
         {
+            string id = ((Button)sender).Tag as string;
+            mainWindow.Main.Navigate(new AddListing(houses.Where(i => i.Id == id).Single()));
         }
 
         private void ActiveClick(object sender, RoutedEventArgs e)

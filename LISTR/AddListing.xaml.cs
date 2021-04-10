@@ -6,6 +6,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace LISTR
 {
@@ -14,12 +16,19 @@ namespace LISTR
     /// </summary>
     public partial class AddListing : Page
     {
-        private String defaultpath = "";
+        private string defaultpath = "";
         private int numImages = 0;
         private static readonly Regex _regex = new Regex("[^0-9]+"); //regex that matches disallowed text
+        private House editHouse;
 
         public AddListing()
         {
+            InitializeComponent();
+        }
+
+        public AddListing(House house)
+        {
+            editHouse = house;
             InitializeComponent();
         }
 
@@ -102,11 +111,17 @@ namespace LISTR
             house.NumBaths = Bathrooms.Text;
             house.IsRental = ListingType.Text == "Rental";
             house.Owners = Owners.Text;
-            house.Price = Double.Parse(Price.Text);
+            if (!string.IsNullOrWhiteSpace(Price.Text))
+            {
+                house.Price = Double.Parse(Price.Text);
+            }
             house.Address = Address.Text;
             house.City = City.Text;
             house.Province = Province.Text;
-            house.Area = Double.Parse(Area.Text);
+            if (!string.IsNullOrWhiteSpace(Area.Text))
+            {
+                house.Area = Double.Parse(Area.Text);
+            }
             house.Tags = Tags.Text.Split(',').Select(s => s.Trim()).ToArray();
             if (Application.Current.Properties.Contains("Username"))
             {
@@ -125,18 +140,57 @@ namespace LISTR
             }
             house.Images = images;
 
-            MainWindow.houseCollection.InsertOne(house);
-            MainWindow.houses.Add(house);
-            GoToListings();
+            if (editHouse == null)
+            {
+                MainWindow.houseCollection.InsertOne(house);
+                MainWindow.houses.Add(house);
+            }
+            else
+            {
+                var filter = Builders<House>.Filter.Eq("_id", new ObjectId(editHouse.Id));
+                house.Id = editHouse.Id;
+                var result = MainWindow.houseCollection.ReplaceOne(filter, house);
+                if (result.MatchedCount > 0)
+                {
+                    int index = MainWindow.houses.FindIndex(h => h.Id == editHouse.Id);
+                    if (index != -1)
+                    {
+                        MainWindow.houses[index] = house;
+                        GoToListings();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed to update");
+                }
+            }
         }
 
-        public static byte[] ImageToByteArray(Image imageIn)
+        private static byte[] ImageToByteArray(Image imageIn)
         {
             MemoryStream memStream = new MemoryStream();
             JpegBitmapEncoder encoder = new JpegBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(imageIn.Source as BitmapImage));
             encoder.Save(memStream);
             return memStream.ToArray();
+        }
+
+        private static BitmapImage LoadImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
         }
 
         private void CheckNumbers(object sender, TextCompositionEventArgs e)
@@ -160,6 +214,41 @@ namespace LISTR
         private void CancelClick(object sender, RoutedEventArgs e)
         {
             GoToListings();
+        }
+
+        private void AddListingLoaded(object sender, RoutedEventArgs e)
+        {
+            if (editHouse != null)
+            {
+                PostButtonText.Text = "Update";
+
+                Description.Text = editHouse.Description;
+                Bedrooms.Text = editHouse.NumRooms;
+                Bathrooms.Text = editHouse.NumBaths;
+                ListingType.Text = editHouse.IsRental ? "Rental" : "For sale";
+                Owners.Text = editHouse.Owners;
+                Price.Text = editHouse.Price.ToString();
+                Address.Text = editHouse.Address;
+                City.Text = editHouse.City;
+                Province.Text = editHouse.Province;
+                if (editHouse.Area > 0)
+                {
+                    Area.Text = editHouse.Area.ToString();
+                }
+
+                if (editHouse.Tags != null)
+                {
+                    Tags.Text = string.Join(",", editHouse.Tags);
+                }
+
+                numImages = editHouse.Images.Length;
+
+                for (int i = 1; i <= Math.Min(5, editHouse.Images.Length); i++)
+                {
+                    Image image = FindName("img" + i) as Image;
+                    image.Source = LoadImage(editHouse.Images[i - 1]);
+                }
+            }
         }
     }
 }

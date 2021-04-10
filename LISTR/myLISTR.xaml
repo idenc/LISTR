@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="RealtorListings"
-    d:DataContext="{x:Static local:RealtorListings.houses}"
+    d:DataContext="{x:Static local:RealtorListings.AllHouses}"
     d:DesignHeight="720"
     d:DesignWidth="1280"
     Style="{StaticResource WinAll}"
