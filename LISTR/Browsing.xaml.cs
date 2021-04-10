@@ -54,6 +54,27 @@ namespace LISTR
         {
             if (index < houses.Count - 1)
             {
+                myLISTR.favourites.Add(houses[index]);
+                DataContext = houses[++index];
+                Console.WriteLine("Hi");
+            }
+        }
+
+        private void SeenClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (index < houses.Count - 1)
+            {
+                myLISTRSeen.skipped.Add(houses[index]);
+                DataContext = houses[++index];
+                Console.WriteLine("Hi");
+            }
+        }
+
+        private void DislikeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (index < houses.Count - 1)
+            {
+                myLISTRDislike.disliked.Add(houses[index]);
                 DataContext = houses[++index];
                 Console.WriteLine("Hi");
             }
@@ -85,6 +106,24 @@ namespace LISTR
         private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             mainWindow.Main.Navigate(new HomePage());
+        }
+
+        private void moveToFavourites(object sender, RoutedEventArgs e)
+        {
+            var MainWindow = (MainWindow)Application.Current.MainWindow;
+            MainWindow.Main.Navigate(new myLISTR(this));
+        }
+
+        private void moveToSkipped(object sender, RoutedEventArgs e)
+        {
+            var MainWindow = (MainWindow)Application.Current.MainWindow;
+            MainWindow.Main.Navigate(new myLISTRSeen(this));
+        }
+
+        private void moveToDisliked(object sender, RoutedEventArgs e)
+        {
+            var MainWindow = (MainWindow)Application.Current.MainWindow;
+            MainWindow.Main.Navigate(new myLISTRDislike(this));
         }
     }
 }

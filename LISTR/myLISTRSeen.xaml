@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="LISTR.myLISTR"
+    x:Class="LISTR.myLISTRSeen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -94,26 +94,26 @@
             <Button
                 Grid.Column="2"
                 Margin="22,-15,38,-25"
-                Background="#FF9B9797"
+                Background="#FFFFFF"
                 Content="Skipped"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" 
-                Click="myListrSkipped"/>
+                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
             <Button
                 Grid.Column="3"
                 Margin="210,-15,58,-25"
                 Background="#FF9B9797"
                 Content="Disliked"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="3"
+                Style="{StaticResource RoundButton}" Grid.ColumnSpan="3" 
                 Click="myListrDisliked"/>
             <Button
                 Grid.Column="1"
                 Margin="0,-15,20,-25"
-                Background="#FFFFFF"
+                Background="#FF9B9797"
                 Content="Favourites"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
+                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" 
+                Click="myListrFavourites"/>
         </Grid>
 
         <Grid
@@ -217,7 +217,7 @@
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
-                ItemsSource="{Binding Source={x:Static local:myLISTR.favourites}}"
+                ItemsSource="{Binding Source={x:Static local:myLISTRSeen.skipped}}"
                 TextSearch.TextPath="@Address" Height="1063" Width="1220">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -289,8 +289,8 @@
                                 </Button>
                                 <Button
                                     Width="233"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270" Canvas.Top="50" Click="moveListingSkipped">
-                                    Move To Skipped
+                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270" Canvas.Top="50" Click="moveListingFavourite">
+                                    Move To Favourite
                                 </Button>
                                 <Button
                                     Width="257"

@@ -147,7 +147,7 @@ namespace LISTR
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Main.Navigate(new myLISTR());
+            mainWindow.Main.Navigate(new myLISTR(this));
         }
     }
 }

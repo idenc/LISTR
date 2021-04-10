@@ -23,12 +23,12 @@ namespace LISTR
     /// <summary>
     /// Interaction logic for myLISTRSeen.xaml
     /// </summary>
-    public partial class myLISTR : Page
+    public partial class myLISTRSeen : Page
     {
         private Page _previousPage;
-        public static ObservableCollection<House> favourites = new ObservableCollection<House>();
+        public static ObservableCollection<House> skipped = new ObservableCollection<House>();
 
-        public myLISTR(Page previousPage)
+        public myLISTRSeen(Page previousPage)
         {
             this._previousPage = previousPage;
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace LISTR
 
         private void resetClick(object sender, RoutedEventArgs e)
         {
-            favourites.Clear();
+            skipped.Clear();
         }
 
         private void ContactRealtorClick(object sender, RoutedEventArgs e)
@@ -61,10 +61,10 @@ namespace LISTR
             MainWindow.Main.Navigate(new HomePage());
         }
 
-        private void myListrSkipped(object sender, RoutedEventArgs e)
+        private void myListrFavourites(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTRSeen(_previousPage));
+            MainWindow.Main.Navigate(new myLISTR(_previousPage));
         }
 
         private void myListrDisliked(object sender, RoutedEventArgs e)
@@ -73,19 +73,20 @@ namespace LISTR
             MainWindow.Main.Navigate(new myLISTRDislike(_previousPage));
         }
 
-        private void moveListingSkipped(object sender, RoutedEventArgs e)
+        private void moveListingFavourite(object sender, RoutedEventArgs e)
         {
             string id = ((Button)sender).Tag as string;
-            myLISTRSeen.skipped.Add(favourites.Where(i => i.Id == id).Single());
-            favourites.Remove(favourites.Where(i => i.Id == id).Single());
+            myLISTR.favourites.Add(skipped.Where(i => i.Id == id).Single());
+            skipped.Remove(skipped.Where(i => i.Id == id).Single());
         }
 
         private void moveListingDisliked(object sender, RoutedEventArgs e)
         {
             string id = ((Button)sender).Tag as string;
-            myLISTRDislike.disliked.Add(favourites.Where(i => i.Id == id).Single());
-            favourites.Remove(favourites.Where(i => i.Id == id).Single());
+            myLISTRDislike.disliked.Add(skipped.Where(i => i.Id == id).Single());
+            skipped.Remove(skipped.Where(i => i.Id == id).Single());
         }
+
 
     }
 

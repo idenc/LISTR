@@ -429,6 +429,12 @@
     <Compile Include="myLISTR.xaml.cs">
       <DependentUpon>myLISTR.xaml</DependentUpon>
     </Compile>
+    <Compile Include="myLISTRDislike.xaml.cs">
+      <DependentUpon>myLISTRDislike.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="myLISTRSeen.xaml.cs">
+      <DependentUpon>myLISTRSeen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RealtorListings.xaml.cs">
       <DependentUpon>RealtorListings.xaml</DependentUpon>
     </Compile>
@@ -445,6 +451,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="myLISTR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="myLISTRDislike.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="myLISTRSeen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

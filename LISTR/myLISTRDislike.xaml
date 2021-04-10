@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="LISTR.myLISTR"
+    x:Class="LISTR.myLISTRDislike"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -55,8 +55,7 @@
             Height="43"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Source="resources/realtyLogoSmall.png" 
-            MouseLeftButtonDown="HomeClick"/>
+            Source="resources/realtyLogoSmall.png" />
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"
@@ -97,22 +96,22 @@
                 Background="#FF9B9797"
                 Content="Skipped"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" 
-                Click="myListrSkipped"/>
+                Click="moveToSeen"
+                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
             <Button
                 Grid.Column="3"
                 Margin="210,-15,58,-25"
-                Background="#FF9B9797"
+                Background="#FFFFFF"
                 Content="Disliked"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="3"
-                Click="myListrDisliked"/>
+                Style="{StaticResource RoundButton}" Grid.ColumnSpan="3" />
             <Button
                 Grid.Column="1"
                 Margin="0,-15,20,-25"
-                Background="#FFFFFF"
+                Background="#FF9B9797"
                 Content="Favourites"
                 FontSize="15"
+                Click="moveToFavourites"
                 Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
         </Grid>
 
@@ -217,7 +216,7 @@
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
-                ItemsSource="{Binding Source={x:Static local:myLISTR.favourites}}"
+                ItemsSource="{Binding Source={x:Static local:myLISTRDislike.disliked}}"
                 TextSearch.TextPath="@Address" Height="1063" Width="1220">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -289,13 +288,13 @@
                                 </Button>
                                 <Button
                                     Width="233"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270" Canvas.Top="50" Click="moveListingSkipped">
-                                    Move To Skipped
+                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270" Canvas.Top="50" Click="moveListingFavourite">
+                                    Move To Favourite
                                 </Button>
                                 <Button
                                     Width="257"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Top="50" Click="moveListingDisliked">
-                                    Move To Disliked
+                                    Tag="{Binding Id}" Margin="0" Canvas.Top="50" Click="moveListingSeen">
+                                    Move To Skipped
                                 </Button>
                             </Canvas>
                             <Separator
