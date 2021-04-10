@@ -123,7 +123,8 @@
                 Width=" 140"
                 Margin="20,12,12,12"
                 Padding="7"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Click="moveToFavourites">
                 <TextBlock TextAlignment="Center">
                     View<LineBreak />
                     Favourites</TextBlock>
@@ -133,7 +134,8 @@
                 Width=" 140"
                 Margin="8,12,12,12"
                 Padding="7"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Click="moveToSkipped">
                 <TextBlock TextAlignment="Center">
                     View<LineBreak />
                     Skipped</TextBlock>
@@ -143,10 +145,11 @@
                 Width="140"
                 Margin="8,12,12,12"
                 Padding="7"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Click="moveToDisliked">
                 <TextBlock TextAlignment="Center">
                     View<LineBreak />
-                    Trashed</TextBlock>
+                    Disliked</TextBlock>
             </Button>
             <xctk:WatermarkTextBox
                 Name="SearchBox"
@@ -380,11 +383,13 @@
             Rows="1">
             <Button 
                 Style="{StaticResource MyButtonStyle}"
-                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove}, Width=103, Height=120}" />
+                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove}, Width=103, Height=120}" 
+                PreviewMouseDown="DislikeClick"/>
 
             <Button 
                 Style="{StaticResource MyButtonStyle}"
-                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward}, Width=103, Height=120}" />
+                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward}, Width=103, Height=120}" 
+                PreviewMouseDown="SeenClick"/>
             <Button 
                 Style="{StaticResource MyButtonStyle}"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart}, Width=103, Height=120}" 

@@ -52,9 +52,16 @@ namespace LISTR
         private bool ListingFilter(object item)
         {
             if (String.IsNullOrWhiteSpace(ListingsSearch.Text))
+            {
                 return true;
+            }
             else
-                return ((item as House).Address.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            {
+                House house = item as House;
+                return house.Address.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0
+                    || house.City.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0
+                    || house.Province.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+            }
         }
 
         private void ListingSearch(object sender, TextChangedEventArgs e)

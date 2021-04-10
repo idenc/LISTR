@@ -16,6 +16,7 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="auto" />
@@ -43,16 +44,17 @@
         </Grid.Background>
         <Image
             Grid.Row="1"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Width="225"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Width="224"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Source="resources/realtyLogo.png" />
         <StackPanel
             Grid.Row="1"
             Grid.Column="2"
-            Grid.ColumnSpan="2">
+            Grid.ColumnSpan="3"
+            Margin="0">
             <StackPanel
                 Name="LoginPanel"
                 HorizontalAlignment="Right"
@@ -129,31 +131,35 @@
         </StackPanel>
 
 
-        <xctk:WatermarkTextBox
-            Name="SearchBar"
-            Grid.Row="2"
-            Grid.Column="1"
-            Margin="0,100,0,0"
-            Padding="5,7,0,7"
-            VerticalAlignment="Bottom"
-            PreviewMouseDown="SearchBarClick"
-            Watermark="Search by city or street address..." />
-        <Button
-            Name="SearchButton"
+        <DockPanel
             Grid.Row="2"
             Grid.Column="2"
             Margin="0,100,0,0"
-            Padding="20,7,20,7"
-            VerticalAlignment="Bottom"
-            Click="SearchClick"
-            Content="Search" />
+            HorizontalAlignment="Stretch">
+            <Button
+                Name="SearchButton"
+                Padding="20,7,20,7"
+                VerticalAlignment="Bottom"
+                Click="SearchClick"
+                Content="Search"
+                DockPanel.Dock="Right" />
+            <xctk:WatermarkTextBox
+                Name="SearchBar"
+                Padding="5,7,0,7"
+                VerticalAlignment="Bottom"
+                DockPanel.Dock="Left"
+                PreviewMouseDown="SearchBarClick"
+                Watermark="Search by city or street address..." />
+        </DockPanel>
+
         <Button
             Grid.Row="3"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
             Margin="0,30,0,0"
             Padding="20,7,20,7"
             HorizontalAlignment="Center"
-            Content="My LISTR" Click="Button_Click_1" />
+            Click="MyListrClick"
+            Content="My LISTR" />
     </Grid>
 </Page>
