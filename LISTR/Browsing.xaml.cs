@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using MongoDB.Driver;
@@ -56,7 +54,6 @@ namespace LISTR
             {
                 myLISTR.favourites.Add(houses[index]);
                 DataContext = houses[++index];
-                Console.WriteLine("Hi");
             }
         }
 
@@ -64,9 +61,8 @@ namespace LISTR
         {
             if (index < houses.Count - 1)
             {
-                //myLISTRSeen.skipped.Add(houses[index]);
+                myLISTR.skipped.Add(houses[index]);
                 DataContext = houses[++index];
-                Console.WriteLine("Hi");
             }
         }
 
@@ -74,9 +70,8 @@ namespace LISTR
         {
             if (index < houses.Count - 1)
             {
-                //myLISTRDislike.disliked.Add(houses[index]);
+                myLISTR.disliked.Add(houses[index]);
                 DataContext = houses[++index];
-                Console.WriteLine("Hi");
             }
         }
 
@@ -90,7 +85,6 @@ namespace LISTR
             Image newimage = new Image();
             newimage.Source = ((Image)sender).Source;
             dynamicImage.Source = newimage.Source;
-
         }
 
         private void ContactRealtorClick(object sender, RoutedEventArgs e)
@@ -111,19 +105,19 @@ namespace LISTR
         private void moveToFavourites(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTR(this));
+            MainWindow.Main.Navigate(new myLISTR(this, myLISTR.SelectedTab.Favourites));
         }
 
         private void moveToSkipped(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            //MainWindow.Main.Navigate(new myLISTRSeen(this));
+            MainWindow.Main.Navigate(new myLISTR(this, myLISTR.SelectedTab.Skipped));
         }
 
         private void moveToDisliked(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            //MainWindow.Main.Navigate(new myLISTRDislike(this));
+            MainWindow.Main.Navigate(new myLISTR(this, myLISTR.SelectedTab.Disliked));
         }
     }
 }

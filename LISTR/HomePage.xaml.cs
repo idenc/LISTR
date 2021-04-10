@@ -139,15 +139,10 @@ namespace LISTR
             LoginButton.IsDefault = false;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void MyListrClick(object sender, RoutedEventArgs e)
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Main.Navigate(new myLISTR(this));
+            mainWindow.Main.Navigate(new myLISTR(this, myLISTR.SelectedTab.Favourites));
         }
     }
 }

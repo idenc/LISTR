@@ -149,7 +149,7 @@
                 Click="moveToDisliked">
                 <TextBlock TextAlignment="Center">
                     View<LineBreak />
-                    Trashed</TextBlock>
+                    Disliked</TextBlock>
             </Button>
             <xctk:WatermarkTextBox
                 Name="SearchBox"
