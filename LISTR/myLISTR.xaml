@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="RealtorListings"
+    d:DataContext="{x:Static local:RealtorListings.AllHouses}"
     d:DesignHeight="720"
     d:DesignWidth="1278.5"
     Style="{StaticResource WinAll}"
@@ -25,7 +26,10 @@
         </Style>
     </Page.Resources>
 
-    <Grid HorizontalAlignment="Center" Width="1280" RenderTransformOrigin="0.505,0.494">
+    <Grid
+        Width="1280"
+        HorizontalAlignment="Center"
+        RenderTransformOrigin="0.505,0.494">
 
         <Grid.Background>
             <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
@@ -38,8 +42,8 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
@@ -48,81 +52,88 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
-        <Image
+        <StackPanel
             Grid.Row="1"
-
             Grid.Column="1"
-            Height="43"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Source="resources/realtyLogoSmall.png" 
-            MouseLeftButtonDown="HomeClick"/>
+            Orientation="Horizontal">
+            <Image
+                Grid.Row="1"
+                Grid.Column="1"
+                Height="43"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                MouseLeftButtonDown="HomeClick"
+                Source="resources/realtyLogoSmall.png" />
+
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                Margin="20,0,0,0"
+                Padding="10,0,10,0"
+                Click="backClick">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconBootstrapIcons
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="Black"
+                        Kind="ArrowLeftShort" />
+                    <TextBlock Margin="5,0,0,0">Back</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"
+            Grid.ColumnSpan="2"
             Padding="7"
             HorizontalAlignment="Center"
             Background="#FFF4F4F5">
             My LISTR
         </TextBlock>
 
-        <Grid
+        <StackPanel
             Grid.Row="2"
             Grid.Column="1"
             Margin="0,40,0,0"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Top">
-
-
-            <Grid.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="FontSize" Value="15" />
-                </Style>
-                <Style TargetType="Button">
-                    <Setter Property="FontSize" Value="15" />
-                </Style>
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="103*" />
-                <ColumnDefinition Width="21*"/>
-                <ColumnDefinition Width="124*" />
-                <ColumnDefinition Width="86*" />
-                <ColumnDefinition Width="38*"/>
-                <ColumnDefinition Width="248*" />
-            </Grid.ColumnDefinitions>
+            Orientation="Horizontal">
             <Button
-                Grid.Column="2"
-                Margin="22,-15,38,-25"
-                Background="#FF9B9797"
-                Content="Skipped"
-                FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" 
-                Click="myListrSkipped"/>
-            <Button
-                Grid.Column="3"
-                Margin="210,-15,58,-25"
-                Background="#FF9B9797"
-                Content="Disliked"
-                FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="3"
-                Click="myListrDisliked"/>
-            <Button
-                Grid.Column="1"
-                Margin="0,-15,20,-25"
+                Grid.ColumnSpan="2"
+                Padding="40,10,40,10"
+                Panel.ZIndex="2"
                 Background="#FFFFFF"
                 Content="Favourites"
                 FontSize="15"
-                Style="{StaticResource RoundButton}" Grid.ColumnSpan="2" />
-        </Grid>
+                Style="{StaticResource RoundButton}" />
+            <Button
+                Grid.ColumnSpan="2"
+                Margin="-10,0,0,0"
+                Padding="40,10,40,10"
+                Panel.ZIndex="1"
+                Background="#FF9B9797"
+                Click="myListrSkipped"
+                Content="Skipped"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" />
+            <Button
+                Grid.ColumnSpan="3"
+                Margin="-10,0,0,0"
+                Padding="40,10,40,10"
+                Panel.ZIndex="0"
+                Background="#FF9B9797"
+                Click="myListrDisliked"
+                Content="Disliked"
+                FontSize="15"
+                Style="{StaticResource RoundButton}" />
+
+        </StackPanel>
 
         <Grid
             Grid.Row="3"
             Grid.Column="1"
-            Margin="0,0,0,15"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Bottom"
-            Background="#FFF4F4F5" Height="116">
+            VerticalAlignment="Top"
+            Background="#FFF4F4F5">
             <Grid.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="FontSize" Value="15" />
@@ -131,94 +142,106 @@
                     <Setter Property="FontSize" Value="15" />
                 </Style>
             </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="248*" />
-                <ColumnDefinition Width="149*" />
-                <ColumnDefinition Width="99*"/>
-                <ColumnDefinition Width="82*" />
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="11*"/>
-                <ColumnDefinition Width="619*"/>
-                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button
+            <DockPanel
+                Grid.Row="0"
                 Grid.Column="0"
-                Margin="213,5,0,70"
-                Padding="7"
-                HorizontalAlignment="Left"
-                Grid.ColumnSpan="3" Width="171"
-                Click="resetClick"
-                >
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0" Text="Reset"/>
-                </StackPanel>
-            </Button>
+                LastChildFill="True">
+                <Button
+                    Grid.Column="1"
+                    Margin="20,10,20,10"
+                    Padding="30,7,30,7">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="5,0,0,0" Text="Filters" />
+                    </StackPanel>
+                </Button>
 
-            <Button
-                Grid.Column="1"
-                Margin="20,5,55,70"
-                Padding="7">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0" Text="Filters"/>
-                </StackPanel>
-            </Button>
-
-
-
-            <DockPanel Grid.Column="4" HorizontalAlignment="Stretch" Grid.ColumnSpan="4"/>
-            <xctk:WatermarkTextBox
-                    x:Name="ListingsSearch"
-                    Height="34"
-                    Margin="12.667,9,50,73"
+                <Button
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Width="171"
+                    Margin="20,10,20,10"
                     Padding="7"
-                    VerticalAlignment="Center"
-                    FontSize="15"
-                    Watermark="Search Listings..." Grid.Column="7" />
-            <Button
-                Grid.Column="7"
-                Margin="397,9,0,73"
-                Padding="7"
-                HorizontalAlignment="Left"
-                 Width="172">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0" Text="Search"/>
-                </StackPanel>
-            </Button>
-            <Button
-                Grid.Column="7"
-                Margin="397,72,0,10"
-                Padding="7"
-                HorizontalAlignment="Left"
-                 Width="172">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0"><Run Text="Remove all filters"/><LineBreak/><Run/></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button
-                Grid.Column="1"
-                Margin="20,65,55,10"
-                Padding="7"
-                Click="backClick">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,0,0,0" Text="Back"/>
-                </StackPanel>
-            </Button>
+                    HorizontalAlignment="Left"
+                    Click="resetClick">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="Black"
+                            Kind="Alert" />
+                        <TextBlock Margin="5,0,0,0" Text="Reset" />
+                        <iconPacks:PackIconMaterial
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="Black"
+                            Kind="Alert" />
+                    </StackPanel>
+                </Button>
+
+                <DockPanel
+                    Grid.Column="3"
+                    Margin="200,0,20,0"
+                    HorizontalAlignment="Stretch">
+                    <Button Margin="0,10" DockPanel.Dock="Right">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Padding="7">Search</TextBlock>
+                            <iconPacks:PackIconMaterial
+                                Margin="0,0,7,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Kind="HomeSearch" />
+                        </StackPanel>
+                    </Button>
+                    <xctk:WatermarkTextBox
+                        Name="ListingsSearch"
+                        Margin="0,10"
+                        Padding="7"
+                        Height="36"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        DockPanel.Dock="Left"
+                        FontSize="15"
+                        Watermark="Search Listings..." />
+                </DockPanel>
+            </DockPanel>
 
 
-
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
+                <Button
+                    Grid.Column="7"
+                    Margin="0,10,20,10"
+                    Padding="7"
+                    HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Remove all filters</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </Grid>
 
         <ScrollViewer
             Grid.Row="4"
             Grid.Column="1"
             VerticalAlignment="Top"
-            Background="White" Height="481" Grid.RowSpan="2">
+            Background="White">
             <ItemsControl
                 x:Name="MyControl"
                 Background="White"
-                ItemsSource="{Binding Source={x:Static local:myLISTR.favourites}}"
-                TextSearch.TextPath="@Address" Height="1063" Width="1220">
+                ItemsSource="{Binding Source={x:Static local:RealtorListings.AllHouses}}"
+                TextSearch.TextPath="@Address">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -228,16 +251,11 @@
                                 <ColumnDefinition Width="1.5*" />
                             </Grid.ColumnDefinitions>
 
-
                             <Image
                                 Grid.Column="0"
                                 Height="100"
                                 Margin="20"
                                 Source="{Binding Images[0]}" />
-
-
-
-
 
                             <StackPanel
                                 Grid.Column="1"
@@ -245,7 +263,7 @@
                                 VerticalAlignment="Center">
                                 <StackPanel.Resources>
                                     <Style TargetType="TextBlock">
-                                        <Setter Property="FontSize" Value="15" />
+                                        <Setter Property="FontSize" Value="20" />
                                     </Style>
                                 </StackPanel.Resources>
                                 <TextBlock>
@@ -279,22 +297,40 @@
 
 
                             <Canvas Grid.Column="2" Margin="0,20,20,20">
-                                <Button Width="256" Margin="0" Canvas.Left="1">
+                                <Canvas.Resources>
+                                    <Style TargetType="Button">
+                                        <Setter Property="FontSize" Value="20" />
+                                    </Style>
+                                </Canvas.Resources>
+                                <Button
+                                    Canvas.Left="1"
+                                    Width="256"
+                                    Margin="0">
                                     View Details
                                 </Button>
                                 <Button
+                                    Canvas.Left="270"
                                     Width="233"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270" Click="ContactRealtorClick">
+                                    Margin="0"
+                                    Click="ContactRealtorClick"
+                                    Tag="{Binding Id}">
                                     Contact Realtor
                                 </Button>
                                 <Button
+                                    Canvas.Left="270"
+                                    Canvas.Top="50"
                                     Width="233"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Left="270" Canvas.Top="50" Click="moveListingSkipped">
+                                    Margin="0"
+                                    Click="moveListingSkipped"
+                                    Tag="{Binding Id}">
                                     Move To Skipped
                                 </Button>
                                 <Button
+                                    Canvas.Top="50"
                                     Width="257"
-                                    Tag="{Binding Id}" Margin="0" Canvas.Top="50" Click="moveListingDisliked">
+                                    Margin="0"
+                                    Click="moveListingDisliked"
+                                    Tag="{Binding Id}">
                                     Move To Disliked
                                 </Button>
                             </Canvas>

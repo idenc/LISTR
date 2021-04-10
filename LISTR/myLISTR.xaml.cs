@@ -41,7 +41,7 @@ namespace LISTR
 
         private void ContactRealtorClick(object sender, RoutedEventArgs e)
         {
-            new ContactRealtor(this)
+            new ContactRealtor()
             {
                 Placement = System.Windows.Controls.Primitives.PlacementMode.Center,
                 PlacementTarget = this,
@@ -64,29 +64,31 @@ namespace LISTR
         private void myListrSkipped(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTRSeen(_previousPage));
         }
 
         private void myListrDisliked(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTRDislike(_previousPage));
         }
 
         private void moveListingSkipped(object sender, RoutedEventArgs e)
         {
-            string id = ((Button)sender).Tag as string;
-            myLISTRSeen.skipped.Add(favourites.Where(i => i.Id == id).Single());
-            favourites.Remove(favourites.Where(i => i.Id == id).Single());
+            //string id = ((Button)sender).Tag as string;
+            //myLISTRSeen.skipped.Add(favourites.Where(i => i.Id == id).Single());
+            //favourites.Remove(favourites.Where(i => i.Id == id).Single());
         }
 
         private void moveListingDisliked(object sender, RoutedEventArgs e)
         {
-            string id = ((Button)sender).Tag as string;
-            myLISTRDislike.disliked.Add(favourites.Where(i => i.Id == id).Single());
-            favourites.Remove(favourites.Where(i => i.Id == id).Single());
+            //string id = ((Button)sender).Tag as string;
+            //myLISTRDislike.disliked.Add(favourites.Where(i => i.Id == id).Single());
+            //favourites.Remove(favourites.Where(i => i.Id == id).Single());
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 

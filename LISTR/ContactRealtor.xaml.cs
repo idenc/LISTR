@@ -1,7 +1,4 @@
-﻿using System.Web.UI.WebControls;
-using System.Windows.Controls.Primitives;
-using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using System.Windows.Controls.Primitives;
 
 namespace LISTR
 {
@@ -11,13 +8,6 @@ namespace LISTR
     public partial class ContactRealtor : Popup
     {
         private readonly Browsing browsing;
-
-        private readonly myLISTR myLISTR;
-        private readonly myLISTRSeen myLISTRSeen;
-        private readonly myLISTRDislike myLISTRDislike;
-
-
-
         private const string defaultText = "Hello";
 
         public ContactRealtor(Browsing browsing)
@@ -26,26 +16,10 @@ namespace LISTR
             this.browsing = browsing;
         }
 
-
-        public ContactRealtor(myLISTR myLISTR)
+        public ContactRealtor()
         {
             InitializeComponent();
-            this.myLISTR = myLISTR;
         }
-
-        public ContactRealtor(myLISTRSeen myLISTRSeen)
-        {
-            this.myLISTRSeen = myLISTRSeen;
-        }
-
-        public ContactRealtor(myLISTRDislike myLISTRDislike)
-        {
-            this.myLISTRDislike = myLISTRDislike;
-        }
-
-
-
-
 
         private void SendClick(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -58,15 +32,11 @@ namespace LISTR
             {
                 this.IsOpen = false;
             }
-
         }
 
         private void CancelClick(object sender, System.Windows.RoutedEventArgs e)
         {
             this.IsOpen = false;
         }
-
-
-
     }
 }

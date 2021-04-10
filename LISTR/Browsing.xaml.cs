@@ -64,7 +64,7 @@ namespace LISTR
         {
             if (index < houses.Count - 1)
             {
-                myLISTRSeen.skipped.Add(houses[index]);
+                //myLISTRSeen.skipped.Add(houses[index]);
                 DataContext = houses[++index];
                 Console.WriteLine("Hi");
             }
@@ -74,7 +74,7 @@ namespace LISTR
         {
             if (index < houses.Count - 1)
             {
-                myLISTRDislike.disliked.Add(houses[index]);
+                //myLISTRDislike.disliked.Add(houses[index]);
                 DataContext = houses[++index];
                 Console.WriteLine("Hi");
             }
@@ -117,13 +117,13 @@ namespace LISTR
         private void moveToSkipped(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTRSeen(this));
+            //MainWindow.Main.Navigate(new myLISTRSeen(this));
         }
 
         private void moveToDisliked(object sender, RoutedEventArgs e)
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
-            MainWindow.Main.Navigate(new myLISTRDislike(this));
+            //MainWindow.Main.Navigate(new myLISTRDislike(this));
         }
     }
 }
