@@ -259,5 +259,33 @@ namespace LISTR
                 destList.Add(listing);
             }
         }
+
+        private void DetailsClick(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            string id = button.Tag as string;
+            Console.WriteLine(id);
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+
+            if (selectedTab == SelectedTab.Favourites)
+            {
+                House listing = favourites.Where(i => i.Id == id).Single();
+                mainWindow.Main.Navigate(new LISTRpop(listing));
+            }
+            else if (selectedTab == SelectedTab.Skipped)
+            {
+                House listing = skipped.Where(i => i.Id == id).Single();
+                mainWindow.Main.Navigate(new LISTRpop(listing));
+            }
+            else
+            {
+                House listing = disliked.Where(i => i.Id == id).Single();
+                mainWindow.Main.Navigate(new LISTRpop(listing));
+            }
+
+
+           
+            
+        }
     }
 }

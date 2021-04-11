@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,15 +18,21 @@ namespace LISTR
         private string search;
         private List<House> houses;
         private int index = 0;
+     
 
+
+       
         public Browsing(List<House> houses, string search)
         {
             mainWindow = (MainWindow)Application.Current.MainWindow;
+           
+            
             try
             {
                 this.search = search;
                 this.houses = houses;
                 DataContext = houses[index];
+               
             }
             catch (Exception ex)
             {
@@ -55,7 +62,11 @@ namespace LISTR
                 myLISTR.favourites.Add(houses[index]);
                 DataContext = houses[++index];
             }
+
+
         }
+
+    
 
         private void SeenClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -118,6 +129,11 @@ namespace LISTR
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
             MainWindow.Main.Navigate(new myLISTR(this, myLISTR.SelectedTab.Disliked));
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
