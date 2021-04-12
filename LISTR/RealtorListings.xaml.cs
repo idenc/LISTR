@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using ToastNotifications.Lifetime.Clear;
 using ToastNotifications.Messages;
