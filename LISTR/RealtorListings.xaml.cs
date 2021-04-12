@@ -6,8 +6,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-using MongoDB.Bson;
 using MongoDB.Driver;
+using ToastNotifications.Lifetime.Clear;
+using ToastNotifications.Messages;
 
 namespace LISTR
 {
@@ -19,8 +20,10 @@ namespace LISTR
         public static ObservableCollection<House> AllHouses = new ObservableCollection<House>(MainWindow.houses.AsQueryable().ToList());
         private ObservableCollection<House> houses;
         private readonly MainWindow mainWindow;
+        private bool justPosted = false;
+        private bool justUpdated = false;
 
-        public RealtorListings()
+        public RealtorListings(bool justPosted = false, bool justUpdated = false)
         {
             mainWindow = (MainWindow)Application.Current.MainWindow;
             Console.WriteLine("Num Houses: " + AllHouses.Count);
@@ -30,15 +33,19 @@ namespace LISTR
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(MyControl.ItemsSource);
             view.Filter = ListingFilter;
+            this.justPosted = justPosted;
+            this.justUpdated = justUpdated;
         }
 
         private void AddListingClick(object sender, RoutedEventArgs e)
         {
+            MainWindow.notifier.ClearMessages(new ClearAll());
             mainWindow.Main.Navigate(new AddListing());
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
+            MainWindow.notifier.ClearMessages(new ClearAll());
             mainWindow.Main.Navigate(new HomePage());
         }
 
@@ -51,6 +58,7 @@ namespace LISTR
             House houseToRemove = AllHouses.Where(i => i.Id == id).Single();
             AllHouses.Remove(houseToRemove);
             houses.Remove(houseToRemove);
+            MainWindow.notifier.ShowSuccess("Listing successfully deleted");
         }
 
         private bool ListingFilter(object item)
@@ -89,6 +97,7 @@ namespace LISTR
         private void HouseEdit(object sender, RoutedEventArgs e)
         {
             string id = ((Button)sender).Tag as string;
+            MainWindow.notifier.ClearMessages(new ClearAll());
             mainWindow.Main.Navigate(new AddListing(houses.Where(i => i.Id == id).Single()));
         }
 
@@ -108,6 +117,14 @@ namespace LISTR
         private void RealtorLoaded(object sender, RoutedEventArgs e)
         {
             MyControl.ItemsSource = houses;
+            if (justPosted)
+            {
+                MainWindow.notifier.ShowSuccess("Posting created successfully");
+            }
+            else if (justUpdated)
+            {
+                MainWindow.notifier.ShowSuccess("Posting updated successfully");
+            }
         }
 
         private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)

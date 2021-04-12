@@ -10,6 +10,9 @@
                 <Setter Property="FontFamily" Value="/LISTR;component/resources/fonts/#Montserrat" />
                 <Setter Property="FontSize" Value="24" />
             </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

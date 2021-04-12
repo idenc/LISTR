@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Position;
 
 namespace LISTR
 {
@@ -15,6 +19,21 @@ namespace LISTR
         public static IMongoCollection<House> houseCollection = db.GetCollection<House>("Houses");
         public static List<House> houses = houseCollection.AsQueryable().ToList();
         public static IMongoCollection<BsonDocument> accounts = db.GetCollection<BsonDocument>("Accounts");
+
+        public static Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 20,
+                offsetY: 20);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
 
         public MainWindow()
         {

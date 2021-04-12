@@ -152,6 +152,7 @@ namespace LISTR
             {
                 MainWindow.houseCollection.InsertOne(house);
                 MainWindow.houses.Add(house);
+                GoToListings(true, false);
             }
             else
             {
@@ -164,7 +165,7 @@ namespace LISTR
                     if (index != -1)
                     {
                         MainWindow.houses[index] = house;
-                        GoToListings();
+                        GoToListings(false, true);
                     }
                 }
                 else
@@ -213,15 +214,15 @@ namespace LISTR
             }
         }
 
-        private void GoToListings()
+        private void GoToListings(bool justPosted, bool justUpdated)
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Main.Navigate(new RealtorListings());
+            mainWindow.Main.Navigate(new RealtorListings(justPosted, justUpdated));
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)
         {
-            GoToListings();
+            GoToListings(false, false);
         }
 
         private void AddListingLoaded(object sender, RoutedEventArgs e)

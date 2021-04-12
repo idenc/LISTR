@@ -1,6 +1,7 @@
 ﻿using System.Windows.Controls.Primitives;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using ToastNotifications.Messages;
 
 namespace LISTR
 {
@@ -46,8 +47,9 @@ namespace LISTR
             };
 
             MainWindow.accounts.InsertOne(document);
-            this.homePage.DoLogin(false, Username.Text);
-            this.IsOpen = false;
+            homePage.DoLogin(false, Username.Text);
+            IsOpen = false;
+            MainWindow.notifier.ShowSuccess("Account registered successfully");
         }
     }
 }
