@@ -7,10 +7,10 @@ namespace LISTR
     /// </summary>
     public partial class ContactRealtor : Popup
     {
-        private readonly Browsing browsing;
+        private readonly Browsecontrol browsing;
         private const string defaultText = "Hello";
 
-        public ContactRealtor(Browsing browsing)
+        public ContactRealtor(Browsecontrol browsing)
         {
             InitializeComponent();
             this.browsing = browsing;

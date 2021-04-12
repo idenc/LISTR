@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using MongoDB.Driver;
 
 namespace LISTR
@@ -72,83 +73,10 @@ namespace LISTR
             }
         }
 
-        private void FavouriteClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (index < houses.Count - 1)
-            {
-                myLISTR.favourites.Add(houses[index]);
-                DataContext = houses[++index];
-            }
-        }
-
-        private void SeenClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (index < houses.Count - 1)
-            {
-                myLISTR.skipped.Add(houses[index]);
-                DataContext = houses[++index];
-            }
-        }
-
-        private void DislikeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (index < houses.Count - 1)
-            {
-                myLISTR.disliked.Add(houses[index]);
-                DataContext = houses[++index];
-            }
-        }
-
-        private void BrowsingLoaded(object sender, RoutedEventArgs e)
-        {
-            SearchBox.Watermark = this.search;
-            if (isPreview)
-            {
-                TextBlock tb = new TextBlock
-                {
-                    TextAlignment = TextAlignment.Center,
-                    Text = "Cancel\nPreview"
-                };
-                ViewFavouritesButton.Content = tb;
-
-                ViewSkippedButton.Content = "Post";
-
-                ViewFavouritesButton.Click -= moveToFavourites;
-                ViewSkippedButton.Click -= moveToSkipped;
-
-                ViewFavouritesButton.Click += GoToPreviousPage;
-                ViewSkippedButton.Click += PreviewPost;
-
-                DislikeButton.PreviewMouseDown -= DislikeClick;
-                SkipButton.PreviewMouseDown -= SeenClick;
-                FavouriteButton.PreviewMouseDown -= FavouriteClick;
-
-                ViewDislikedButton.Visibility = Visibility.Collapsed;
-                SearchBar.Visibility = Visibility.Collapsed;
-            }
-        }
-
         private void PreviewPost(object sender, RoutedEventArgs e)
         {
             addListingPage.PostListing(null, null);
             mainWindow.Main.Navigate(new RealtorListings());
-        }
-
-        private void ImageClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Image newimage = new Image();
-            newimage.Source = ((Image)sender).Source;
-            dynamicImage.Source = newimage.Source;
-        }
-
-        private void ContactRealtorClick(object sender, RoutedEventArgs e)
-        {
-            new ContactRealtor(this)
-            {
-                Placement = System.Windows.Controls.Primitives.PlacementMode.Center,
-                PlacementTarget = this,
-                IsOpen = true
-            };
         }
 
         private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -172,6 +100,55 @@ namespace LISTR
         {
             var MainWindow = (MainWindow)Application.Current.MainWindow;
             MainWindow.Main.Navigate(new myLISTR(this, myLISTR.SelectedTab.Disliked));
+        }
+
+        private void RightKeyPress(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("Keypress");
+            if (e.Key == Key.Right)
+            {
+                if (index < houses.Count)
+                {
+                    Console.WriteLine("Sliding left");
+                    var browseControl = new Browsecontrol();
+                    browseControl.DataContext = houses[index];
+                    Transitor.SlideLeft(browseControl);
+                    index++;
+                }
+            }
+        }
+
+        private void BrowsingLoaded(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Watermark = this.search;
+            Focus();
+            var browseControl = new Browsecontrol();
+            browseControl.DataContext = houses[index++];
+            Transitor.currentPresenter.Content = browseControl;
+            if (isPreview)
+            {
+                TextBlock tb = new TextBlock
+                {
+                    TextAlignment = TextAlignment.Center,
+                    Text = "Cancel\nPreview"
+                };
+                ViewFavouritesButton.Content = tb;
+
+                ViewSkippedButton.Content = "Post";
+
+                ViewFavouritesButton.Click -= moveToFavourites;
+                ViewSkippedButton.Click -= moveToSkipped;
+
+                ViewFavouritesButton.Click += GoToPreviousPage;
+                ViewSkippedButton.Click += PreviewPost;
+
+                //DislikeButton.PreviewMouseDown -= DislikeClick;
+                //SkipButton.PreviewMouseDown -= SeenClick;
+                //FavouriteButton.PreviewMouseDown -= FavouriteClick;
+
+                ViewDislikedButton.Visibility = Visibility.Collapsed;
+                SearchBar.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

@@ -392,6 +392,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Browsecontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Browsing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -416,6 +420,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Browsecontrol.xaml.cs">
+      <DependentUpon>Browsecontrol.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Browsing.xaml.cs">
       <DependentUpon>Browsing.xaml</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -427,9 +434,13 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="House.cs" />
+    <Compile Include="InvertConverter.cs" />
     <Compile Include="MongoContext.cs" />
     <Compile Include="myLISTR.xaml.cs">
       <DependentUpon>myLISTR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageTransitor.xaml.cs">
+      <DependentUpon>PageTransitor.xaml</DependentUpon>
     </Compile>
     <Compile Include="RealtorListings.xaml.cs">
       <DependentUpon>RealtorListings.xaml</DependentUpon>
@@ -449,6 +460,10 @@
     <Page Include="myLISTR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageTransitor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="RealtorListings.xaml">
       <SubType>Designer</SubType>
