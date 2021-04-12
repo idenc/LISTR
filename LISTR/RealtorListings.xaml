@@ -52,6 +52,8 @@
             Height="43"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            Cursor="Hand"
+            MouseLeftButtonDown="HomeClick"
             Source="resources/realtyLogoSmall.png" />
         <TextBlock
             Grid.Row="1"

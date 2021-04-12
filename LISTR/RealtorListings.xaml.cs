@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace LISTR
@@ -44,9 +45,12 @@ namespace LISTR
         private void DeleteListing(object sender, RoutedEventArgs e)
         {
             string id = ((Button)sender).Tag as string;
-            var deleteFilter = Builders<House>.Filter.Eq("_id", id);
+
+            var deleteFilter = Builders<House>.Filter.Eq("_id", new ObjectId(id));
             MainWindow.houseCollection.DeleteOne(deleteFilter);
-            houses.Remove(houses.Where(i => i.Id == id).Single());
+            House houseToRemove = AllHouses.Where(i => i.Id == id).Single();
+            AllHouses.Remove(houseToRemove);
+            houses.Remove(houseToRemove);
         }
 
         private bool ListingFilter(object item)
@@ -104,6 +108,11 @@ namespace LISTR
         private void RealtorLoaded(object sender, RoutedEventArgs e)
         {
             MyControl.ItemsSource = houses;
+        }
+
+        private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            HomeButtonClick(null, null);
         }
     }
 
