@@ -17,6 +17,8 @@ namespace LISTR
         private string search;
         private List<House> houses;
         private int index = 0;
+        private AddListing addListingPage;
+        private bool isPreview = false;
 
         public Browsing(List<House> houses, string search, bool isPreview = false)
         {
@@ -39,9 +41,19 @@ namespace LISTR
                 }
             }
 
-            if (isPreview) { 
-            
-            }
+            InitializeComponent();
+        }
+
+        public Browsing(House house, AddListing addListingPage)
+        {
+            mainWindow = (MainWindow)Application.Current.MainWindow;
+            this.addListingPage = addListingPage;
+            houses = new List<House>
+            {
+                house
+            };
+            DataContext = house;
+            isPreview = true;
 
             InitializeComponent();
         }
@@ -50,6 +62,14 @@ namespace LISTR
         {
             DataContext = SampleHouse;
             InitializeComponent();
+        }
+
+        private void GoToPreviousPage(object sender, RoutedEventArgs e)
+        {
+            if (addListingPage != null)
+            {
+                mainWindow.Main.Navigate(addListingPage);
+            }
         }
 
         private void FavouriteClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -82,6 +102,36 @@ namespace LISTR
         private void BrowsingLoaded(object sender, RoutedEventArgs e)
         {
             SearchBox.Watermark = this.search;
+            if (isPreview)
+            {
+                TextBlock tb = new TextBlock
+                {
+                    TextAlignment = TextAlignment.Center,
+                    Text = "Cancel\nPreview"
+                };
+                ViewFavouritesButton.Content = tb;
+
+                ViewSkippedButton.Content = "Post";
+
+                ViewFavouritesButton.Click -= moveToFavourites;
+                ViewSkippedButton.Click -= moveToSkipped;
+
+                ViewFavouritesButton.Click += GoToPreviousPage;
+                ViewSkippedButton.Click += PreviewPost;
+
+                DislikeButton.PreviewMouseDown -= DislikeClick;
+                SkipButton.PreviewMouseDown -= SeenClick;
+                FavouriteButton.PreviewMouseDown -= FavouriteClick;
+
+                ViewDislikedButton.Visibility = Visibility.Collapsed;
+                SearchBar.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void PreviewPost(object sender, RoutedEventArgs e)
+        {
+            addListingPage.PostListing(null, null);
+            mainWindow.Main.Navigate(new RealtorListings());
         }
 
         private void ImageClick(object sender, System.Windows.Input.MouseButtonEventArgs e)

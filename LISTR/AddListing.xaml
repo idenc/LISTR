@@ -281,6 +281,7 @@
             Margin="548,600,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            Click="PreviewListing"
             Content="Preview"
             FontSize="24" />
         <Button

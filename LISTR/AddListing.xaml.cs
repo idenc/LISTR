@@ -98,13 +98,8 @@ namespace LISTR
             return !(String.IsNullOrWhiteSpace(Owners.Text) || String.IsNullOrWhiteSpace(Price.Text) || String.IsNullOrWhiteSpace(Address.Text));
         }
 
-        private void PostListing(object sender, RoutedEventArgs e)
+        private House ConstructHouse()
         {
-            if (!MandatoryFieldsFilled())
-            {
-                PostPopup.IsOpen = true;
-                return;
-            }
             House house = new House();
             house.Description = Description.Text;
             house.NumRooms = Bedrooms.Text;
@@ -139,6 +134,19 @@ namespace LISTR
                 }
             }
             house.Images = images;
+
+            return house;
+        }
+
+        public void PostListing(object sender, RoutedEventArgs e)
+        {
+            if (!MandatoryFieldsFilled())
+            {
+                PostPopup.IsOpen = true;
+                return;
+            }
+
+            House house = ConstructHouse();
 
             if (editHouse == null)
             {
@@ -249,6 +257,12 @@ namespace LISTR
                     image.Source = LoadImage(editHouse.Images[i - 1]);
                 }
             }
+        }
+
+        private void PreviewListing(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new Browsing(ConstructHouse(), this));
         }
     }
 }

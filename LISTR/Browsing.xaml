@@ -128,6 +128,7 @@
                 Source="resources/realtyLogoSmall.png" />
 
             <Button
+                Name="ViewFavouritesButton"
                 Width=" 140"
                 Margin="20,12,12,12"
                 Padding="7"
@@ -139,6 +140,7 @@
             </Button>
 
             <Button
+                Name="ViewSkippedButton"
                 Width=" 140"
                 Margin="8,12,12,12"
                 Padding="7"
@@ -150,6 +152,7 @@
             </Button>
 
             <Button
+                Name="ViewDislikedButton"
                 Width="140"
                 Margin="8,12,12,12"
                 Padding="7"
@@ -159,27 +162,33 @@
                     View<LineBreak />
                     Disliked</TextBlock>
             </Button>
-            <xctk:WatermarkTextBox
-                Name="SearchBox"
-                Height="50"
-                MinWidth="250"
+
+            <StackPanel
+                Name="SearchBar"
                 Margin="250,26,0,26.667"
-                Padding="7"
-                VerticalAlignment="Center"
-                FontSize="27" />
-            <Button Margin="0,26,0,26.667">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Padding="7">Search</TextBlock>
-                    <iconPacks:PackIconMaterial
-                        Width="20"
-                        Height="20"
-                        Margin="2,0,7,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="Black"
-                        Kind="HomeSearch" />
-                </StackPanel>
-            </Button>
+                Orientation="Horizontal">
+                <xctk:WatermarkTextBox
+                    Name="SearchBox"
+                    Height="50"
+                    MinWidth="250"
+                    Padding="7"
+                    VerticalAlignment="Center"
+                    FontSize="27" />
+                <Button>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Padding="7">Search</TextBlock>
+                        <iconPacks:PackIconMaterial
+                            Width="20"
+                            Height="20"
+                            Margin="2,0,7,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="Black"
+                            Kind="HomeSearch" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
         </StackPanel>
 
         <Grid
@@ -253,7 +262,13 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
-
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10" />
@@ -268,10 +283,10 @@
                     Grid.Column="2"
                     Padding="0"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Center"
                     FontSize="34"
                     FontWeight="Bold"
-                    LineHeight="3"
+                    LineHeight="34"
                     LineStackingStrategy="BlockLineHeight"
                     Text="{Binding NumRooms}" />
                 <iconPacks:PackIconMaterial
@@ -281,7 +296,7 @@
                     Height="auto"
                     Margin="10,0,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Center"
                     Foreground="Black"
                     Kind="Bed" />
 
@@ -322,11 +337,17 @@
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="1"
+                    VerticalAlignment="Top"
+                    FontSize="22"
+                    Text="{Binding Path=Area, StringFormat='{}{0} sqft'}" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="1"
                     VerticalAlignment="Bottom"
                     FontSize="22"
                     Text="{Binding Address}" />
                 <TextBlock
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.Column="1"
                     FontSize="22">
                     <TextBlock.Text>
@@ -338,27 +359,19 @@
                     </TextBlock.Text>
                 </TextBlock>
                 <TextBlock
-                    Grid.Row="4"
-                    Grid.ColumnSpan="2"
-                    Margin="10,0.333,-231,20"
-                    FontSize="22"
-                    Text="{Binding Path=Description, StringFormat='Description: {0}'}" />
-                <TextBlock
                     Grid.Row="5"
                     Grid.Column="1"
-                    Margin="1.333,0,-147.667,-28.333"
+                    Margin="0,10,0,0"
                     FontSize="22"
                     Text="Similar to Previous Listing:" />
                 <StackPanel
-                    Grid.Row="4"
-                    Grid.RowSpan="2"
-                    Grid.ColumnSpan="2"
-                    Margin="0,26.333,-321.667,-86.333">
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
                     <Button
                         x:Name="EnterButton_Copy"
                         Width="129"
                         Height="36"
-                        Margin="10,0,0,-94.667"
                         Padding="20,7,20,7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
@@ -369,7 +382,7 @@
                         x:Name="EnterButton_Copy2"
                         Width="129"
                         Height="36"
-                        Margin="150,0,0,-94.667"
+                        Margin="10,0,0,0"
                         Padding="20,7,20,7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
@@ -389,20 +402,19 @@
                         FontSize="16" />
                 </StackPanel>
                 <TextBlock
-                    Grid.Row="5"
+                    Grid.Row="7"
                     Grid.Column="1"
-                    Margin="1.333,87,-158,-120.333"
+                    Margin="0,10,0,0"
                     FontSize="22"
                     Text="Unique to this Listing:" />
                 <StackPanel
-                    Grid.Row="5"
-                    Grid.ColumnSpan="2"
-                    Margin="0,62,-322,-169.333">
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
                     <Button
                         x:Name="EnterButton_Copy3"
                         Width="129"
                         Height="36"
-                        Margin="150,0,0,-94.667"
                         Padding="20,7,20,7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
@@ -413,7 +425,7 @@
                         x:Name="EnterButton_Copy1"
                         Width="129"
                         Height="36"
-                        Margin="10,0,0,-94.667"
+                        Margin="10,0,0,0"
                         Padding="20,7,20,7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
@@ -422,20 +434,19 @@
                         FontSize="16" />
                 </StackPanel>
                 <TextBlock
-                    Grid.Row="5"
+                    Grid.Row="9"
                     Grid.Column="1"
-                    Margin="0.333,175,-157.667,-208.333"
+                    Margin="0,10,0,0"
                     FontSize="22"
                     Text="Not Included in this Listing:" />
                 <StackPanel
-                    Grid.Row="5"
-                    Grid.ColumnSpan="2"
-                    Margin="0,154,-321.667,-261.333">
+                    Grid.Row="10"
+                    Grid.Column="1"
+                    Orientation="Horizontal">
                     <Button
                         x:Name="EnterButton_Copy5"
                         Width="129"
                         Height="36"
-                        Margin="150,0,0,-94.667"
                         Padding="20,7,20,7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
@@ -446,7 +457,7 @@
                         x:Name="EnterButton_Copy6"
                         Width="129"
                         Height="36"
-                        Margin="10,0,0,-94.667"
+                        Margin="10,0,0,0"
                         Padding="20,7,20,7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
@@ -454,6 +465,12 @@
                         Content="A-Frame"
                         FontSize="16" />
                 </StackPanel>
+                <TextBlock
+                    Grid.Row="11"
+                    Grid.ColumnSpan="2"
+                    Margin="0,20,0,0"
+                    FontSize="22"
+                    Text="{Binding Path=Description, StringFormat='Description: {0}'}" />
             </Grid>
         </ScrollViewer>
 
@@ -463,6 +480,7 @@
             Margin="229,558,-331,-508"
             Rows="1">
             <Button
+                Name="DislikeButton"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove},
                                              Width=103,
                                              Height=120}"
@@ -470,12 +488,14 @@
                 Style="{StaticResource MyButtonStyle}" />
 
             <Button
+                Name="SkipButton"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward},
                                              Width=103,
                                              Height=120}"
                 PreviewMouseDown="SeenClick"
                 Style="{StaticResource MyButtonStyle}" />
             <Button
+                Name="FavouriteButton"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart},
                                              Width=103,
                                              Height=120}"
