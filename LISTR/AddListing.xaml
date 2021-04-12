@@ -192,7 +192,7 @@
             Text=""
             TextWrapping="Wrap"
             Watermark="City" />
-        <ComboBox
+        <xctk:WatermarkComboBox
             Name="Province"
             Grid.Row="3"
             Grid.Column="1"
@@ -202,7 +202,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="16"
-            SelectedIndex="0">
+            Watermark="Province">
             <ComboBoxItem Content="Alberta" />
             <ComboBoxItem Content="BC" />
             <ComboBoxItem Content="Manitoba" />
@@ -216,7 +216,7 @@
             <ComboBoxItem Content="Northwest Territories" />
             <ComboBoxItem Content="Nunavut" />
             <ComboBoxItem Content="Yukon" />
-        </ComboBox>
+        </xctk:WatermarkComboBox>
         <Label
             Grid.Row="3"
             Grid.Column="1"
@@ -324,7 +324,7 @@
             Text=""
             TextWrapping="Wrap"
             Watermark="Add listing description here..." />
-        <ComboBox
+        <xctk:WatermarkComboBox
             Name="Bedrooms"
             Grid.Row="3"
             Grid.Column="1"
@@ -334,14 +334,14 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="16"
-            Text="">
+            Watermark="# of bedrooms">
             <ComboBoxItem Content="1" />
             <ComboBoxItem Content="2" />
             <ComboBoxItem Content="3" />
             <ComboBoxItem Content="4" />
             <ComboBoxItem Content="5+" />
-        </ComboBox>
-        <ComboBox
+        </xctk:WatermarkComboBox>
+        <xctk:WatermarkComboBox
             Name="Bathrooms"
             Grid.Row="3"
             Grid.Column="1"
@@ -351,13 +351,13 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="16"
-            Text="">
+            Watermark="# of bathrooms">
             <ComboBoxItem Content="1" />
             <ComboBoxItem Content="2" />
             <ComboBoxItem Content="3" />
             <ComboBoxItem Content="4" />
             <ComboBoxItem Content="5+" />
-        </ComboBox>
+        </xctk:WatermarkComboBox>
         <Label
             Grid.Row="3"
             Grid.Column="1"
