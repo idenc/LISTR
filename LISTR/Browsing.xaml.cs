@@ -18,7 +18,7 @@ namespace LISTR
         private List<House> houses;
         private int index = 0;
 
-        public Browsing(List<House> houses, string search)
+        public Browsing(List<House> houses, string search, bool isPreview = false)
         {
             mainWindow = (MainWindow)Application.Current.MainWindow;
             try
@@ -37,6 +37,10 @@ namespace LISTR
                 {
                     throw;
                 }
+            }
+
+            if (isPreview) { 
+            
             }
 
             InitializeComponent();

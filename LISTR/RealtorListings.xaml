@@ -93,6 +93,8 @@
                 Click="HomeButtonClick">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconBootstrapIcons
+                        Width="20"
+                        Height="20"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Foreground="Black"
@@ -126,6 +128,8 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Padding="7">Search</TextBlock>
                         <iconPacks:PackIconMaterial
+                            Width="20"
+                            Height="20"
                             Margin="0,0,7,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
@@ -152,6 +156,8 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Padding="7">Add Listing</TextBlock>
                     <iconPacks:PackIconMaterial
+                        Width="20"
+                        Height="20"
                         Margin="0,0,7,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -237,6 +243,8 @@
                                         <iconPacks:PackIconMaterial
                                             Grid.Row="0"
                                             Grid.Column="1"
+                                            Width="20"
+                                            Height="20"
                                             Margin="0,0,7,0"
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Center"
@@ -253,6 +261,8 @@
                                             Delete
                                         </TextBlock>
                                         <iconPacks:PackIconMaterial
+                                            Width="20"
+                                            Height="20"
                                             Margin="0,0,7,0"
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Center"
