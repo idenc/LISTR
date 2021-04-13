@@ -75,7 +75,7 @@
                     Margin="0,20,0,0"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal">
-                    <xctk:WatermarkPasswordBox
+                    <xctk:WatermarkTextBox
                         Name="Password1"
                         Width="235"
                         HorizontalAlignment="Center"
@@ -104,7 +104,7 @@
                     Margin="0,20,0,0"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal">
-                    <xctk:WatermarkPasswordBox
+                    <xctk:WatermarkTextBox
                         Name="Password2"
                         Width="235"
                         HorizontalAlignment="Center"
