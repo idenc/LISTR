@@ -148,11 +148,11 @@ namespace LISTR
 
             if (isRental)
             {
-                return "For Rent: " + price + " per month";
+                return "For Rent: $" + price + " per month";
             }
             else
             {
-                return "For Sale: " + price;
+                return "For Sale: $" + price;
             }
         }
 
