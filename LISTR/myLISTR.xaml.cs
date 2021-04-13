@@ -313,7 +313,7 @@ namespace LISTR
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new NewFil()
+            new NewFil(_previousPage)
             {
                 Placement = System.Windows.Controls.Primitives.PlacementMode.Center,
                 PlacementTarget = this,
