@@ -116,7 +116,7 @@ namespace LISTR
             || (x.Province != null && x.Province.ToLower().Contains(search)));
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Main.Navigate(new Browsing(result, search));
+            mainWindow.Main.Navigate(new Browsing(result, SearchBar.Text));
         }
 
         private void HomePageLoaded(object sender, RoutedEventArgs e)

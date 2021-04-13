@@ -28,7 +28,6 @@ namespace LISTR
             {
                 this.search = search;
                 this.houses = houses;
-                DataContext = houses[index];
             }
             catch (Exception ex)
             {
@@ -109,22 +108,40 @@ namespace LISTR
             {
                 if (index < houses.Count)
                 {
-                    Console.WriteLine("Sliding left");
-                    var browseControl = new Browsecontrol();
-                    browseControl.DataContext = houses[index];
-                    Transitor.SlideLeft(browseControl);
-                    index++;
+                    AdvanceHouse();
                 }
+            }
+        }
+
+        public void AdvanceHouse()
+        {
+            if (index < houses.Count)
+            {
+                var browseControl = new Browsecontrol(houses[index++], this);
+                Transitor.SlideLeft(browseControl);
             }
         }
 
         private void BrowsingLoaded(object sender, RoutedEventArgs e)
         {
-            SearchBox.Watermark = this.search;
+            SearchBox.Watermark = search;
             Focus();
-            var browseControl = new Browsecontrol();
-            browseControl.DataContext = houses[index++];
-            Transitor.currentPresenter.Content = browseControl;
+            if (index < houses.Count)
+            {
+                var browseControl = new Browsecontrol(houses[index++], this);
+                Transitor.currentPresenter.Content = browseControl;
+            }
+            else
+            {
+                TextBlock tb = new TextBlock
+                {
+                    Text = "No listings found for search " + search,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                Transitor.TransitorGrid.Children.Add(tb);
+            }
+
             if (isPreview)
             {
                 TextBlock tb = new TextBlock
