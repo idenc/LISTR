@@ -439,6 +439,9 @@
     <Compile Include="myLISTR.xaml.cs">
       <DependentUpon>myLISTR.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewFil.xaml.cs">
+      <DependentUpon>NewFil.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageTransitor.xaml.cs">
       <DependentUpon>PageTransitor.xaml</DependentUpon>
     </Compile>
@@ -463,6 +466,10 @@
     <Page Include="myLISTR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewFil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="PageTransitor.xaml">
       <SubType>Designer</SubType>
