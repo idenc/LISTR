@@ -149,7 +149,7 @@
                 VerticalAlignment="Bottom"
                 DockPanel.Dock="Left"
                 PreviewMouseDown="SearchBarClick"
-                Watermark="Search by city or street address..." />
+                Watermark="Search houses by city or street address..." />
         </DockPanel>
 
         <Button

@@ -146,7 +146,7 @@ namespace LISTR
                 //SkipButton.PreviewMouseDown -= SeenClick;
                 //FavouriteButton.PreviewMouseDown -= FavouriteClick;
 
-                ViewDislikedButton.Visibility = Visibility.Collapsed;
+                //ViewDislikedButton.Visibility = Visibility.Collapsed;
                 SearchBar.Visibility = Visibility.Collapsed;
             }
         }
