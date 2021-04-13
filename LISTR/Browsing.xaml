@@ -10,10 +10,10 @@
     Title="Browsing"
     d:DesignHeight="720"
     d:DesignWidth="1280"
-    Focusable="True"
-    KeyDown="HandleKeyPress"
-    Loaded="BrowsingLoaded"
     FocusVisualStyle="{x:Null}"
+    Focusable="True"
+    Loaded="BrowsingLoaded"
+    PreviewKeyDown="HandleKeyPress"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 
@@ -94,7 +94,7 @@
                     Padding="7"
                     VerticalAlignment="Center"
                     FontSize="27" />
-                <Button IsDefault="True" Click="SearchClick">
+                <Button Click="SearchClick" IsDefault="True">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Padding="7">Search</TextBlock>
                         <iconPacks:PackIconMaterial

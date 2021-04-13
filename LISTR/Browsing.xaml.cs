@@ -126,16 +126,19 @@ namespace LISTR
                 {
                     myLISTR.favourites.Add(houses[index++]);
                     AdvanceHouse();
+                    e.Handled = true;
                 }
                 else if (e.Key == Key.Left)
                 {
                     myLISTR.disliked.Add(houses[index++]);
                     AdvanceHouse();
+                    e.Handled = true;
                 }
                 else if (e.Key == Key.Up || e.Key == Key.Down)
                 {
                     myLISTR.skipped.Add(houses[index++]);
                     AdvanceHouse();
+                    e.Handled = true;
                 }
             }
         }
