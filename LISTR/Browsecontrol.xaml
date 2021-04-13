@@ -21,7 +21,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border
                             Name="border"
-                            Padding="0,0"
+                            Padding="10,5"
                             Background="{TemplateBinding Background}"
                             BorderBrush="DarkGray"
                             BorderThickness="1"
@@ -189,6 +189,7 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
+                    <RowDefinition Height="10" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10" />
@@ -331,31 +332,18 @@
                     ItemsSource="{Binding Unique}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid
-                                Width="auto"
-                                Height="50"
-                                Rows="1" />
+                            <WrapPanel />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemContainerStyle>
                         <Style>
                             <Setter Property="FrameworkElement.Margin" Value="5" />
-
                         </Style>
-
                     </ItemsControl.ItemContainerStyle>
 
-                    <ItemsControl.Template>
-                        <ControlTemplate TargetType="ItemsControl">
-                            <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
-                                <ItemsPresenter />
-                            </ScrollViewer>
-                        </ControlTemplate>
-                    </ItemsControl.Template>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button
-                                Height="22"
                                 Background="#ffffed"
                                 Content="{Binding}"
                                 FontSize="16"
