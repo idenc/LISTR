@@ -28,12 +28,14 @@ namespace LISTR
         private void Confirm(object sender, System.Windows.RoutedEventArgs e)
         {
             IsOpen = false;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new myLISTR(Listr, myLISTR.SelectedTab.Favourites, 1));
+            //IsOpen = false;
         }
 
         private void Cancel(object sender, System.Windows.RoutedEventArgs e)
         {
-            //var mainWindow = (MainWindow)Application.Current.MainWindow;
-            //mainWindow.Main.Navigate(new myLISTR(Listr, myLISTR.SelectedTab.Favourites));
+        
             IsOpen = false;
         }
 
