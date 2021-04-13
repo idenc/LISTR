@@ -79,6 +79,12 @@ namespace LISTR
         [BsonElement("tags"), BsonDefaultValue(null)]
         public string[] Tags { get; set; }
 
+        [BsonElement("unique"), BsonDefaultValue(null)]
+        public string[] Unique { get; set; }
+
+        [BsonElement("similar"), BsonDefaultValue(null)]
+        public string[] Similar { get; set; }
+
         private bool IsStringEmpty(string str)
         {
             return string.IsNullOrWhiteSpace(str);

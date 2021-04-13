@@ -310,7 +310,9 @@
                                 <Button
                                     Canvas.Left="1"
                                     Width="256"
-                                    Margin="0">
+                                    Margin="0"
+                                    Click="DetailsClick"
+                                    Tag="{Binding Id}">
                                     View Details
                                 </Button>
                                 <Button
