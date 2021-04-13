@@ -451,9 +451,6 @@
     <Compile Include="ContactRealtor.xaml.cs">
       <DependentUpon>ContactRealtor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LISTRpop.xaml.cs">
-      <DependentUpon>LISTRpop.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -480,10 +477,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ContactRealtor.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="LISTRpop.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

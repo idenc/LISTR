@@ -19,7 +19,9 @@ namespace LISTR
         private List<House> houses;
         private int index = 0;
         private AddListing addListingPage;
+        private myLISTR myLISTRPage;
         private bool isPreview = false;
+        private bool isViewDetails = false;
 
         public Browsing(List<House> houses, string search, bool isPreview = false)
         {
@@ -53,6 +55,19 @@ namespace LISTR
                 house
             };
             isPreview = true;
+
+            InitializeComponent();
+        }
+
+        public Browsing(House house, myLISTR myLISTRPage)
+        {
+            mainWindow = (MainWindow)Application.Current.MainWindow;
+            this.myLISTRPage = myLISTRPage;
+            houses = new List<House>
+            {
+                house
+            };
+            isViewDetails = true;
 
             InitializeComponent();
         }
@@ -124,6 +139,14 @@ namespace LISTR
             }
         }
 
+        private void BackToMyListr(object sender, RoutedEventArgs e)
+        {
+            if (myLISTRPage != null)
+            {
+                mainWindow.Main.Navigate(myLISTRPage);
+            }
+        }
+
         private void BrowsingLoaded(object sender, RoutedEventArgs e)
         {
             SearchBox.Watermark = search;
@@ -149,6 +172,20 @@ namespace LISTR
                     ViewFavouritesButton.Click += GoToPreviousPage;
 
                     SearchBar.Visibility = Visibility.Collapsed;
+                }
+                else if (isViewDetails)
+                {
+                    TextBlock tb = new TextBlock
+                    {
+                        TextAlignment = TextAlignment.Center,
+                        Text = "Back to\nMy LISTR"
+                    };
+                    ViewFavouritesButton.Content = tb;
+                    ViewFavouritesButton.Click -= moveToFavourites;
+                    ViewFavouritesButton.Click += BackToMyListr;
+                    browseControl.SkipButton.Visibility = Visibility.Collapsed;
+                    browseControl.FavouriteButton.Visibility = Visibility.Collapsed;
+                    browseControl.DislikeButton.Visibility = Visibility.Collapsed;
                 }
             }
             else
