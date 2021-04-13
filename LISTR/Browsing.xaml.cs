@@ -52,7 +52,6 @@ namespace LISTR
             {
                 house
             };
-            DataContext = house;
             isPreview = true;
 
             InitializeComponent();
@@ -60,7 +59,10 @@ namespace LISTR
 
         public Browsing()
         {
-            DataContext = SampleHouse;
+            houses = new List<House>
+            {
+                SampleHouse
+            };
             InitializeComponent();
         }
 
@@ -75,7 +77,7 @@ namespace LISTR
         private void PreviewPost(object sender, RoutedEventArgs e)
         {
             addListingPage.PostListing(null, null);
-            mainWindow.Main.Navigate(new RealtorListings());
+            mainWindow.Main.Navigate(new RealtorListings(true, false));
         }
 
         private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -130,6 +132,24 @@ namespace LISTR
             {
                 var browseControl = new Browsecontrol(houses[index++], this);
                 Transitor.currentPresenter.Content = browseControl;
+
+                if (isPreview)
+                {
+                    TextBlock tb = new TextBlock
+                    {
+                        TextAlignment = TextAlignment.Center,
+                        Text = "Cancel\nPreview"
+                    };
+                    ViewFavouritesButton.Content = tb;
+
+                    PostButton.Visibility = Visibility.Visible;
+
+                    ViewFavouritesButton.Click -= moveToFavourites;
+
+                    ViewFavouritesButton.Click += GoToPreviousPage;
+
+                    SearchBar.Visibility = Visibility.Collapsed;
+                }
             }
             else
             {
@@ -140,31 +160,6 @@ namespace LISTR
                     VerticalAlignment = VerticalAlignment.Center
                 };
                 Transitor.TransitorGrid.Children.Add(tb);
-            }
-
-            if (isPreview)
-            {
-                TextBlock tb = new TextBlock
-                {
-                    TextAlignment = TextAlignment.Center,
-                    Text = "Cancel\nPreview"
-                };
-                ViewFavouritesButton.Content = tb;
-
-                ViewSkippedButton.Content = "Post";
-
-                ViewFavouritesButton.Click -= moveToFavourites;
-                ViewSkippedButton.Click -= moveToSkipped;
-
-                ViewFavouritesButton.Click += GoToPreviousPage;
-                ViewSkippedButton.Click += PreviewPost;
-
-                //DislikeButton.PreviewMouseDown -= DislikeClick;
-                //SkipButton.PreviewMouseDown -= SeenClick;
-                //FavouriteButton.PreviewMouseDown -= FavouriteClick;
-
-                //ViewDislikedButton.Visibility = Visibility.Collapsed;
-                SearchBar.Visibility = Visibility.Collapsed;
             }
         }
     }

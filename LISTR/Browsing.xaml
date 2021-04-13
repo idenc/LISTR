@@ -72,16 +72,14 @@
             </Button>
 
             <Button
-                Name="ViewSkippedButton"
+                Name="PostButton"
                 Width=" 140"
                 Margin="8,12,12,12"
                 Padding="7"
                 HorizontalAlignment="Left"
-                Click="moveToSkipped"
+                Click="PreviewPost"
                 Visibility="Collapsed">
-                <TextBlock TextAlignment="Center">
-                    View<LineBreak />
-                    Skipped</TextBlock>
+                <TextBlock Text="Post" TextAlignment="Center" />
             </Button>
 
             <StackPanel
