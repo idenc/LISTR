@@ -1,0 +1,61 @@
+﻿<UserControl
+    x:Class="LISTR.PageTransitor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LISTR"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:InvertConverter x:Key="invertConverter" />
+        <Storyboard
+            x:Key="SlideLeft"
+            Completed="SlideLeft_Completed"
+            FillBehavior="Stop"
+            Duration="0:0:0.5">
+            <DoubleAnimation
+                Name="Left"
+                Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
+                From="0"
+                To="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=1}, Converter={StaticResource invertConverter}, Path=ActualWidth}"
+                Duration="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Storyboard}, Path=Duration}" />
+            <DoubleAnimation
+                Name="Right"
+                Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
+                From="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=1}, Path=ActualWidth}"
+                To="0"
+                Duration="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Storyboard}, Path=Duration}" />
+        </Storyboard>
+
+        <Storyboard
+            x:Key="SlideDown"
+            Completed="SlideDown_Completed"
+            FillBehavior="Stop"
+            Duration="0:0:0.25">
+            <DoubleAnimation
+                Name="Top"
+                Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.Y)"
+                From="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=1}, Converter={StaticResource invertConverter}, Path=ActualHeight}"
+                To="0" />
+            <DoubleAnimation
+                Name="Down"
+                Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.Y)"
+                From="0"
+                To="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=1}, Path=ActualHeight}" />
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid Name="TransitorGrid">
+        <ContentControl Name="Presenter1">
+            <ContentControl.RenderTransform>
+                <TranslateTransform X="0" Y="0" />
+            </ContentControl.RenderTransform>
+        </ContentControl>
+        <ContentControl Name="Presenter2">
+            <ContentControl.RenderTransform>
+                <TranslateTransform X="0" Y="0" />
+            </ContentControl.RenderTransform>
+        </ContentControl>
+    </Grid>
+</UserControl>
