@@ -101,8 +101,8 @@ namespace LISTR
             else
             {
                 House house = item as House;
-                return house.Address.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 
-                    || house.City.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 
+                return house.Address.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0
+                    || house.City.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0
                     || house.Province.IndexOf(ListingsSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0;
             }
         }
@@ -267,25 +267,22 @@ namespace LISTR
             Console.WriteLine(id);
             var mainWindow = (MainWindow)Application.Current.MainWindow;
 
+            House listing;
+
             if (selectedTab == SelectedTab.Favourites)
             {
-                House listing = favourites.Where(i => i.Id == id).Single();
-                mainWindow.Main.Navigate(new LISTRpop(listing));
+                listing = favourites.Where(i => i.Id == id).Single();
             }
             else if (selectedTab == SelectedTab.Skipped)
             {
-                House listing = skipped.Where(i => i.Id == id).Single();
-                mainWindow.Main.Navigate(new LISTRpop(listing));
+                listing = skipped.Where(i => i.Id == id).Single();
             }
             else
             {
-                House listing = disliked.Where(i => i.Id == id).Single();
-                mainWindow.Main.Navigate(new LISTRpop(listing));
+                listing = disliked.Where(i => i.Id == id).Single();
             }
 
-
-           
-            
+            mainWindow.Main.Navigate(new Browsing(listing, this));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
