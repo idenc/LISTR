@@ -173,9 +173,9 @@
         <ScrollViewer
             Name="InfoBox"
             Grid.Row="1"
-            PreviewMouseWheel="HandleScroll"
             Grid.Column="4"
             Margin="229.333,23.333,-482.333,-248.667"
+            PreviewMouseWheel="HandleScroll"
             VerticalScrollBarVisibility="Auto">
             <Grid Name="TextBox" Background="White">
                 <Grid.RowDefinitions>
@@ -382,6 +382,7 @@
             Rows="1">
             <Button
                 Name="DislikeButton"
+                Background="#00000000"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove},
                                              Width=103,
                                              Height=120}"
@@ -390,6 +391,7 @@
 
             <Button
                 Name="SkipButton"
+                Background="#00000000"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward},
                                              Width=103,
                                              Height=120}"
@@ -397,6 +399,7 @@
                 Style="{StaticResource MyButtonStyle}" />
             <Button
                 Name="FavouriteButton"
+                Background="#00000000"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart},
                                              Width=103,
                                              Height=120}"
