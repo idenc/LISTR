@@ -287,5 +287,15 @@ namespace LISTR
            
             
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new NewFil()
+            {
+                Placement = System.Windows.Controls.Primitives.PlacementMode.Center,
+                PlacementTarget = this,
+                IsOpen = true
+            };
+        }
     }
 }

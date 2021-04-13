@@ -160,7 +160,7 @@
                 <Button
                     Grid.Column="1"
                     Margin="20,10,20,10"
-                    Padding="30,7,30,7">
+                    Padding="30,7,30,7" Click="Button_Click">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="5,0,0,0" Text="Filters" />
                     </StackPanel>
