@@ -171,9 +171,11 @@
         </Grid>
 
         <ScrollViewer
+            Name="InfoBox"
             Grid.Row="1"
             Grid.Column="4"
             Margin="229.333,23.333,-482.333,-248.667"
+            PreviewMouseWheel="HandleScroll"
             VerticalScrollBarVisibility="Auto">
             <Grid Name="TextBox" Background="White">
                 <Grid.RowDefinitions>
@@ -364,9 +366,12 @@
                 <TextBlock
                     Grid.Row="9"
                     Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    MaxWidth="{Binding ElementName=InfoBox, Path=ActualWidth}"
                     Margin="0,20,0,0"
                     FontSize="22"
-                    Text="{Binding Path=Description, StringFormat='Description: {0}'}" />
+                    Text="{Binding Path=Description, StringFormat='Description: {0}'}"
+                    TextWrapping="Wrap" />
             </Grid>
         </ScrollViewer>
 
@@ -377,6 +382,7 @@
             Rows="1">
             <Button
                 Name="DislikeButton"
+                Background="#00000000"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove},
                                              Width=103,
                                              Height=120}"
@@ -385,6 +391,7 @@
 
             <Button
                 Name="SkipButton"
+                Background="#00000000"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward},
                                              Width=103,
                                              Height=120}"
@@ -392,6 +399,7 @@
                 Style="{StaticResource MyButtonStyle}" />
             <Button
                 Name="FavouriteButton"
+                Background="#00000000"
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart},
                                              Width=103,
                                              Height=120}"

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace LISTR
@@ -40,19 +41,28 @@ namespace LISTR
 
         private void FavouriteClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            myLISTR.favourites.Add(house);
+            if (!myLISTR.favourites.Any(x => x.Id == house.Id))
+            {
+                myLISTR.favourites.Add(house);
+            }
             browsingPage.AdvanceHouse();
         }
 
         private void SkipClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            myLISTR.skipped.Add(house);
+            if (!myLISTR.skipped.Any(x => x.Id == house.Id))
+            {
+                myLISTR.skipped.Add(house);
+            }
             browsingPage.AdvanceHouse();
         }
 
         private void DislikeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            myLISTR.disliked.Add(house);
+            if (!myLISTR.disliked.Any(x => x.Id == house.Id))
+            {
+                myLISTR.disliked.Add(house);
+            }
             browsingPage.AdvanceHouse();
         }
 
@@ -64,6 +74,13 @@ namespace LISTR
                 SkipButton.PreviewMouseDown -= SkipClick;
                 FavouriteButton.PreviewMouseDown -= FavouriteClick;
             }
+        }
+
+        private void HandleScroll(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 10);
+            e.Handled = true;
         }
     }
 }
