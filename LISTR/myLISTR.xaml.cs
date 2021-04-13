@@ -71,6 +71,19 @@ namespace LISTR
             InitializeComponent();
         }
 
+        //A hacky way to implement filtering
+        public myLISTR(Page previousPage, SelectedTab selectedTab, int indicator)
+        {
+            _previousPage = previousPage;
+            this.selectedTab = selectedTab;
+
+            InitializeComponent();
+            ObservableCollection<House> AllHouses1 = new ObservableCollection<House>(MainWindow.houses.AsQueryable().ToList());
+            favourites = AllHouses1;
+            //hard code deletions here
+        }
+
+
         public myLISTR()
         {
             InitializeComponent();
