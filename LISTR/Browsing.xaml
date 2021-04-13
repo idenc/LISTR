@@ -11,8 +11,9 @@
     d:DesignHeight="720"
     d:DesignWidth="1280"
     Focusable="True"
-    KeyDown="RightKeyPress"
+    KeyDown="HandleKeyPress"
     Loaded="BrowsingLoaded"
+    FocusVisualStyle="{x:Null}"
     Style="{StaticResource WinAll}"
     mc:Ignorable="d">
 

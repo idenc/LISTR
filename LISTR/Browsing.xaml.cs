@@ -118,13 +118,23 @@ namespace LISTR
             MainWindow.Main.Navigate(new myLISTR(this, myLISTR.SelectedTab.Disliked));
         }
 
-        private void RightKeyPress(object sender, KeyEventArgs e)
+        private void HandleKeyPress(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("Keypress");
-            if (e.Key == Key.Right)
+            if (index < houses.Count)
             {
-                if (index < houses.Count)
+                if (e.Key == Key.Right)
                 {
+                    myLISTR.favourites.Add(houses[index++]);
+                    AdvanceHouse();
+                }
+                else if (e.Key == Key.Left)
+                {
+                    myLISTR.disliked.Add(houses[index++]);
+                    AdvanceHouse();
+                }
+                else if (e.Key == Key.Up || e.Key == Key.Down)
+                {
+                    myLISTR.skipped.Add(houses[index++]);
                     AdvanceHouse();
                 }
             }
@@ -188,7 +198,7 @@ namespace LISTR
                     browseControl.DislikeButton.Visibility = Visibility.Collapsed;
                 }
             }
-            else
+            else if (Transitor.currentPresenter.Content == null)
             {
                 TextBlock tb = new TextBlock
                 {
