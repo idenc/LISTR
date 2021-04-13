@@ -81,6 +81,19 @@ namespace LISTR
             ObservableCollection<House> AllHouses1 = new ObservableCollection<House>(MainWindow.houses.AsQueryable().ToList());
             favourites = AllHouses1;
             //hard code deletions here
+            String[] deletions = new String[3];
+            deletions[0] = "6075d385b9082310a1e709a1";
+            deletions[1] = "6075de70b9082310a1e709a2";
+            deletions[2] = "6075e4c2b9082310a1e709a4";
+            for (int j = 0; j < deletions.Length; j++)
+            {
+                try {
+                    string id = deletions[j];
+                    House houseToRemove = favourites.Where(i => i.Id == id).Single();
+                    favourites.Remove(houseToRemove);
+                }
+                catch (Exception e) { }
+            }
         }
 
 
