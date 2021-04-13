@@ -93,7 +93,7 @@
                     Padding="7"
                     VerticalAlignment="Center"
                     FontSize="27" />
-                <Button>
+                <Button IsDefault="True" Click="SearchClick">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Padding="7">Search</TextBlock>
                         <iconPacks:PackIconMaterial

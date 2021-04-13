@@ -199,5 +199,15 @@ namespace LISTR
                 Transitor.TransitorGrid.Children.Add(tb);
             }
         }
+
+        private void SearchClick(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(SearchBox.Text))
+            {
+                return;
+            }
+
+            HomePage.DoHouseSearch(SearchBox.Text);
+        }
     }
 }

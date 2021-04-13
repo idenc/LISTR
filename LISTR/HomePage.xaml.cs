@@ -103,20 +103,25 @@ namespace LISTR
             mainWindow.Main.Navigate(new RealtorListings());
         }
 
+        public static void DoHouseSearch(string search)
+        {
+            string searchLowered = search.ToLower();
+            var result = MainWindow.houses.FindAll(x => (x.Address != null && x.Address.ToLower().Contains(searchLowered))
+                            || (x.City != null && x.City.ToLower().Contains(searchLowered))
+                            || (x.Province != null && x.Province.ToLower().Contains(searchLowered)));
+
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Main.Navigate(new Browsing(result, search));
+        }
+
         private void SearchClick(object sender, RoutedEventArgs e)
         {
-            string search = SearchBar.Text.ToLower();
-            if (String.IsNullOrWhiteSpace(search))
+            if (String.IsNullOrWhiteSpace(SearchBar.Text))
             {
                 return;
             }
 
-            var result = MainWindow.houses.FindAll(x => (x.Address != null && x.Address.ToLower().Contains(search))
-            || (x.City != null && x.City.ToLower().Contains(search))
-            || (x.Province != null && x.Province.ToLower().Contains(search)));
-
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Main.Navigate(new Browsing(result, SearchBar.Text));
+            DoHouseSearch(SearchBar.Text);
         }
 
         private void HomePageLoaded(object sender, RoutedEventArgs e)
