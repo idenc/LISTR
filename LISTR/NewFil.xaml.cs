@@ -54,5 +54,12 @@ namespace LISTR
         {
 
         }
+
+        private void TagClick(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn.Background == Brushes.LightCyan) { btn.Background = Brushes.Gray; }
+            else { btn.Background = Brushes.LightCyan; }
+        }
     }
 }

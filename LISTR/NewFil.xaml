@@ -75,7 +75,7 @@
             Foreground="Black"
             Opacity="0.5"
             Watermark="Max" Margin="50,160,170,19" BorderBrush="Black" FontFamily="/LISTR;component/resources/fonts/#Montserrat" Grid.Column="4" FontSize="11" />
-            <Rectangle Grid.ColumnSpan="5" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="158" Margin="111,10,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="380" Grid.RowSpan="2"/>
+            <Rectangle Grid.ColumnSpan="5" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="158" Margin="100,10,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="400" Grid.RowSpan="2"/>
             <Button Content="Confirm" Grid.Column="4" HorizontalAlignment="Left" Height="30" Margin="102,145,0,0" Grid.Row="2" VerticalAlignment="Top" Width="89" FontFamily="/LISTR;component/resources/fonts/#Montserrat" Click="Confirm" Cursor="Arrow" FontSize="11"/>
             <Button Content="Cancel" HorizontalAlignment="Left" Height="30" Margin="111,145,0,0" Grid.Row="2" VerticalAlignment="Top" Width="89" FontFamily="/LISTR;component/resources/fonts/#Montserrat" Click="Cancel" Cursor="Arrow" FontSize="11"/>
             <Button x:Name="BuySwitch" Content="Buy&#xD;&#xA;" HorizontalAlignment="Left" Height="18" Margin="41,34,0,0" VerticalAlignment="Top" Width="75" Grid.Column="4" Click="Buy" FontFamily="/LISTR;component/resources/fonts/#Montserrat" FontSize="10"/>
@@ -103,6 +103,11 @@
                 <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="70" FontFamily="/LISTR;component/resources/fonts/#Montserrat" FontSize="9"/>
                 <ComboBoxItem Content="4+" HorizontalAlignment="Left" Width="70" FontFamily="/LISTR;component/resources/fonts/#Montserrat" FontSize="9"/>
             </ComboBox>
+            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="107,25,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick"/>
+            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="239,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="69,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.RowSpan="2" Grid.Column="4"/>
+            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="107,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick"/>
+            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="239,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.ColumnSpan="5"/>
 
         </Grid>
     </Grid>
