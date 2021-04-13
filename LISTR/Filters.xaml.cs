@@ -49,6 +49,7 @@ namespace LISTR
             Button btn = sender as Button;
             btn.Background = Brushes.Beige;
             BuySwitch.Background = Brushes.LightGray;
+       
         }
         private void Tag_Click(object sender, RoutedEventArgs e)
         {

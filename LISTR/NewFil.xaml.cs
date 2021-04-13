@@ -27,13 +27,14 @@ namespace LISTR
 
         private void Confirm(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            IsOpen = false;
         }
 
         private void Cancel(object sender, System.Windows.RoutedEventArgs e)
         {
-               var mainWindow = (MainWindow)Application.Current.MainWindow;
-               mainWindow.Main.Navigate(new myLISTR(Listr, myLISTR.SelectedTab.Favourites));
+            //var mainWindow = (MainWindow)Application.Current.MainWindow;
+            //mainWindow.Main.Navigate(new myLISTR(Listr, myLISTR.SelectedTab.Favourites));
+            IsOpen = false;
         }
 
         private void Buy(object sender, System.Windows.RoutedEventArgs e)
@@ -41,6 +42,11 @@ namespace LISTR
             Button btn = sender as Button;
             btn.Background = Brushes.Beige;
             RentSwitch.Background = Brushes.LightGray;
+            Tag1.Opacity = 1;
+            Tag2.Opacity = 1;
+            Tag3.Opacity = 1;
+            Tag4.Opacity = 1;
+            Tag5.Opacity = 1;
         }
 
         private void Rent(object sender, System.Windows.RoutedEventArgs e)
@@ -48,6 +54,12 @@ namespace LISTR
             Button btn = sender as Button;
             btn.Background = Brushes.Beige;
             BuySwitch.Background = Brushes.LightGray;
+            Tag1.Opacity = 0;
+            Tag2.Opacity = 0;
+            Tag3.Opacity = 0;
+            Tag4.Opacity = 0;
+            Tag5.Opacity = 0;
+
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)

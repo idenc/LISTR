@@ -103,11 +103,11 @@
                 <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="70" FontFamily="/LISTR;component/resources/fonts/#Montserrat" FontSize="9"/>
                 <ComboBoxItem Content="4+" HorizontalAlignment="Left" Width="70" FontFamily="/LISTR;component/resources/fonts/#Montserrat" FontSize="9"/>
             </ComboBox>
-            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="107,25,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick"/>
-            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="239,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
-            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="69,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.RowSpan="2" Grid.Column="4"/>
-            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="107,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick"/>
-            <Button Content="Button" HorizontalAlignment="Left" Height="18" Margin="239,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.ColumnSpan="5"/>
+            <Button x:Name="Tag1" Content="Garage" HorizontalAlignment="Left" Height="18" Margin="107,25,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick"/>
+            <Button x:Name="Tag2" Content="Pool" HorizontalAlignment="Left" Height="18" Margin="239,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+            <Button x:Name="Tag5" Content="Unfinished Basement" HorizontalAlignment="Left" Height="18" Margin="239,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.ColumnSpan="5"/>
+            <Button x:Name="Tag3" Content="School Nearby" HorizontalAlignment="Left" Height="18" Margin="69,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick" Grid.Column="4" Grid.RowSpan="2"/>
+            <Button x:Name="Tag4" Content="Transit Near" HorizontalAlignment="Left" Height="18" Margin="107,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="122" FontFamily="Montserrat" FontSize="11" Background="Gray" Click="TagClick"/>
 
         </Grid>
     </Grid>
