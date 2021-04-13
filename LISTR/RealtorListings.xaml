@@ -143,6 +143,7 @@
                     Margin="0,5,0,5"
                     Padding="7"
                     VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
                     DockPanel.Dock="Left"
                     FontSize="15"
                     TextChanged="ListingSearch"

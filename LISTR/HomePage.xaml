@@ -146,6 +146,9 @@
             <xctk:WatermarkTextBox
                 Name="SearchBar"
                 Padding="5,7,0,7"
+                Height="45"
+                FontSize="22"
+                VerticalContentAlignment="Center"
                 VerticalAlignment="Bottom"
                 DockPanel.Dock="Left"
                 PreviewMouseDown="SearchBarClick"
