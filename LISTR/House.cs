@@ -85,6 +85,9 @@ namespace LISTR
         [BsonElement("similar"), BsonDefaultValue(null)]
         public string[] Similar { get; set; }
 
+        [BsonElement("order"), BsonDefaultValue(null)]
+        public int Order { get; set; }
+
         private bool IsStringEmpty(string str)
         {
             return string.IsNullOrWhiteSpace(str);

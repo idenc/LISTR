@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using MongoDB.Bson;
@@ -108,7 +109,7 @@ namespace LISTR
             string searchLowered = search.ToLower();
             var result = MainWindow.houses.FindAll(x => (x.Address != null && x.Address.ToLower().Contains(searchLowered))
                             || (x.City != null && x.City.ToLower().Contains(searchLowered))
-                            || (x.Province != null && x.Province.ToLower().Contains(searchLowered)));
+                            || (x.Province != null && x.Province.ToLower().Contains(searchLowered))).OrderBy(o => o.Order).ToList();
 
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.Main.Navigate(new Browsing(result, search));
