@@ -77,6 +77,8 @@ namespace LISTR
             B1.Opacity = 0;
             B2.Opacity = 0;
             B3.Opacity = 0;
+            removeFilters.Opacity = 0;
+            removeButton.Opacity = 0;
         }
 
         //A hacky way to implement filtering
