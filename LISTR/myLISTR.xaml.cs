@@ -335,9 +335,11 @@ namespace LISTR
 
         private void TagHiding(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
-            btn.Opacity = 0;
-            T3.Opacity = 0;
+            Label label = sender as Label;
+            string tag = label.Tag as string;
+            Button btn = FindName(tag) as Button;
+            btn.Visibility = Visibility.Collapsed;
+            label.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
