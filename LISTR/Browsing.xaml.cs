@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using MongoDB.Driver;
 
@@ -22,6 +23,7 @@ namespace LISTR
         private myLISTR myLISTRPage;
         private bool isPreview = false;
         private bool isViewDetails = false;
+        private Browsecontrol browsecontrol;
 
         public Browsing(List<House> houses, string search, bool isPreview = false)
         {
@@ -122,22 +124,22 @@ namespace LISTR
         {
             if (index < houses.Count)
             {
-                if (e.Key == Key.Right)
+                if (e.Key == Key.Left)
                 {
                     myLISTR.favourites.Add(houses[index++]);
-                    AdvanceHouse();
+                    browsecontrol.FavouriteButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                     e.Handled = true;
                 }
-                else if (e.Key == Key.Left)
+                else if (e.Key == Key.Right)
                 {
                     myLISTR.disliked.Add(houses[index++]);
-                    AdvanceHouse();
+                    browsecontrol.DislikeButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                     e.Handled = true;
                 }
                 else if (e.Key == Key.Up || e.Key == Key.Down)
                 {
                     myLISTR.skipped.Add(houses[index++]);
-                    AdvanceHouse();
+                    browsecontrol.SkipButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                     e.Handled = true;
                 }
             }
@@ -147,8 +149,8 @@ namespace LISTR
         {
             if (index < houses.Count)
             {
-                var browseControl = new Browsecontrol(houses[index++], this);
-                Transitor.SlideLeft(browseControl);
+                browsecontrol = new Browsecontrol(houses[index++], this);
+                Transitor.SlideLeft(browsecontrol);
             }
         }
 
@@ -166,8 +168,8 @@ namespace LISTR
             Focus();
             if (index < houses.Count)
             {
-                var browseControl = new Browsecontrol(houses[index++], this);
-                Transitor.currentPresenter.Content = browseControl;
+                browsecontrol = new Browsecontrol(houses[index++], this);
+                Transitor.currentPresenter.Content = browsecontrol;
 
                 if (isPreview)
                 {
@@ -196,9 +198,9 @@ namespace LISTR
                     ViewFavouritesButton.Content = tb;
                     ViewFavouritesButton.Click -= moveToFavourites;
                     ViewFavouritesButton.Click += BackToMyListr;
-                    browseControl.SkipButton.Visibility = Visibility.Collapsed;
-                    browseControl.FavouriteButton.Visibility = Visibility.Collapsed;
-                    browseControl.DislikeButton.Visibility = Visibility.Collapsed;
+                    browsecontrol.SkipButton.Visibility = Visibility.Collapsed;
+                    browsecontrol.FavouriteButton.Visibility = Visibility.Collapsed;
+                    browsecontrol.DislikeButton.Visibility = Visibility.Collapsed;
                 }
             }
             else if (Transitor.currentPresenter.Content == null)

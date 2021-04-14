@@ -43,7 +43,7 @@ namespace LISTR
             };
         }
 
-        private void FavouriteClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void FavouriteClick(object sender, RoutedEventArgs e)
         {
             if (hasBeenAdded)
             {
@@ -57,7 +57,7 @@ namespace LISTR
             AnimationClick(sender as Button);
         }
 
-        private void SkipClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void SkipClick(object sender, RoutedEventArgs e)
         {
             if (hasBeenAdded)
             {
@@ -71,7 +71,7 @@ namespace LISTR
             AnimationClick(sender as Button);
         }
 
-        private void DislikeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void DislikeClick(object sender, RoutedEventArgs e)
         {
             if (hasBeenAdded)
             {
@@ -84,23 +84,6 @@ namespace LISTR
             }
             AnimationClick(sender as Button);
         }
-
-        //private void PlayClickAnimation(Button srcButton) {
-        //    Button button = new Button();
-        //    button.Content = srcButton.Content;
-        //    button.Background = srcButton.Background;
-        //    button.Margin = new Thickness(500, 455, -331, -405);
-        //    MainGrid.Children.Add(button);
-
-        //    TranslateTransform trans = new TranslateTransform();
-        //    button.RenderTransform = trans;
-        //    DoubleAnimation anim1 = new DoubleAnimation(top, newY - top, TimeSpan.FromSeconds(10));
-        //    DoubleAnimation anim2 = new DoubleAnimation(left, newX - left, TimeSpan.FromSeconds(10));
-        //    trans.BeginAnimation(TranslateTransform.XProperty, anim1);
-        //    trans.BeginAnimation(TranslateTransform.YProperty, anim2)
-
-        //    DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(1));
-        //}
 
         private void BrowsecontrolLoaded(object sender, RoutedEventArgs e)
         {

@@ -381,7 +381,7 @@
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart},
                                              Height=120,
                                              Width=103}"
-                PreviewMouseDown="FavouriteClick"
+                Click="FavouriteClick"
                 Style="{StaticResource MyButtonStyle}" />
             <Button
                 Name="SkipButton"
@@ -389,7 +389,7 @@
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward},
                                              Width=103,
                                              Height=120}"
-                PreviewMouseDown="SkipClick"
+                Click="SkipClick"
                 Style="{StaticResource MyButtonStyle}" />
             <Button
                 Name="DislikeButton"
@@ -397,7 +397,7 @@
                 Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove},
                                              Width=103,
                                              Height=120}"
-                PreviewMouseDown="DislikeClick"
+                Click="DislikeClick"
                 Style="{StaticResource MyButtonStyle}" />
 
         </UniformGrid>
