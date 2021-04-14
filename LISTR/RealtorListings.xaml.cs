@@ -32,8 +32,6 @@ namespace LISTR
             houses = new ObservableCollection<House>(AllHouses.Take(AllHouses.Count - 1));
             InitializeComponent();
 
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(MyControl.ItemsSource);
-            view.Filter = ListingFilter;
             this.justPosted = justPosted;
             this.justUpdated = justUpdated;
         }
@@ -90,6 +88,8 @@ namespace LISTR
             Panel.SetZIndex(ActiveButton, 0);
             houses = new ObservableCollection<House>(AllHouses.Skip(AllHouses.Count - 1));
             MyControl.ItemsSource = houses;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(MyControl.ItemsSource);
+            view.Filter = ListingFilter;
 
             var bc = new BrushConverter();
             ActiveButton.Background = bc.ConvertFrom("#FF9B9797") as Brush;
@@ -110,6 +110,8 @@ namespace LISTR
             Panel.SetZIndex(SoldButton, 0);
             houses = new ObservableCollection<House>(AllHouses.Take(AllHouses.Count - 1));
             MyControl.ItemsSource = houses;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(MyControl.ItemsSource);
+            view.Filter = ListingFilter;
 
             var bc = new BrushConverter();
             SoldButton.Background = bc.ConvertFrom("#FF9B9797") as Brush;
@@ -126,6 +128,8 @@ namespace LISTR
             {
                 MainWindow.notifier.ShowSuccess("Posting updated successfully");
             }
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(MyControl.ItemsSource);
+            view.Filter = ListingFilter;
         }
 
         private void HomeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
