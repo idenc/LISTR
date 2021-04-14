@@ -87,7 +87,8 @@
                 MouseDown="SelectPhotos"
                 RenderOptions.BitmapScalingMode="HighQuality"
                 RenderOptions.EdgeMode="Aliased"
-                Source="resources/addphoto.png" />
+                Source="resources/addphoto.png" 
+                Cursor="Hand"/>
             <Image
                 x:Name="img1"
                 Grid.Column="1"

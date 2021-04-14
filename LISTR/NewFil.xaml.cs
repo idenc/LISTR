@@ -16,10 +16,10 @@ namespace LISTR
     public partial class NewFil : Popup
     {
 
-        private readonly myLISTR Listr;
-
-        public NewFil()
+        Page home;
+        public NewFil(Page page)
         {
+            home = page;
             InitializeComponent();
             RentSwitch.Background = Brushes.LightGray;
             BuySwitch.Background = Brushes.Beige;
@@ -29,7 +29,7 @@ namespace LISTR
         {
             IsOpen = false;
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Main.Navigate(new myLISTR(Listr, myLISTR.SelectedTab.Favourites, 1));
+            mainWindow.Main.Navigate(new myLISTR(home, myLISTR.SelectedTab.Favourites, 1));
             //IsOpen = false;
         }
 
