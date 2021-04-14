@@ -12,8 +12,8 @@ namespace LISTR
 {
     public class MoveBinding : INotifyPropertyChanged
     {
-        private string _move1 = "Move to Skipped";
-        private string _move2 = "Move to Disliked";
+        private string _move1 = "Move to Disliked";
+        private string _move2 = "Move to Skipped";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -174,8 +174,8 @@ namespace LISTR
         {
             if (selectedTab == SelectedTab.Favourites)
             {
-                moveBinding.Move1 = "Move to Skipped";
-                moveBinding.Move2 = "Move to Disliked";
+                moveBinding.Move1 = "Move to Disliked";
+                moveBinding.Move2 = "Move to Skipped";
             }
             else if (selectedTab == SelectedTab.Disliked)
             {
@@ -184,8 +184,8 @@ namespace LISTR
             }
             else
             {
-                moveBinding.Move1 = "Move to Favourites";
-                moveBinding.Move2 = "Move to Disliked";
+                moveBinding.Move1 = "Move to Disliked";
+                moveBinding.Move2 = "Move to Favourites";
             }
         }
 

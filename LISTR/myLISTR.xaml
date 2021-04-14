@@ -76,11 +76,7 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
 
-        <Button
-                                Background="#ffffed"
-                                Content="{Binding}"
-                                FontSize="16"
-                                Style="{StaticResource NoLight}" />
+
 
         <StackPanel
             Grid.Row="1"
