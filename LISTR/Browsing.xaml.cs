@@ -205,6 +205,8 @@ namespace LISTR
                     browsecontrol.SkipButton.Visibility = Visibility.Collapsed;
                     browsecontrol.FavouriteButton.Visibility = Visibility.Collapsed;
                     browsecontrol.DislikeButton.Visibility = Visibility.Collapsed;
+
+                    SearchBar.Visibility = Visibility.Collapsed;
                 }
             }
             else if (Transitor.currentPresenter.Content == null)
