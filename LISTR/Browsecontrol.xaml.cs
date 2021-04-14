@@ -15,6 +15,7 @@ namespace LISTR
         private House house;
         private Browsing browsingPage;
         private bool isPreview = false;
+        private bool hasBeenAdded = false;
 
         public Browsecontrol(House house, Browsing browsingPage, bool isPreview = false)
         {
@@ -44,27 +45,42 @@ namespace LISTR
 
         private void FavouriteClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (hasBeenAdded)
+            {
+                return;
+            }
             if (!myLISTR.favourites.Any(x => x.Id == house.Id))
             {
                 myLISTR.favourites.Add(house);
+                hasBeenAdded = true;
             }
             AnimationClick(sender as Button);
         }
 
         private void SkipClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (hasBeenAdded)
+            {
+                return;
+            }
             if (!myLISTR.skipped.Any(x => x.Id == house.Id))
             {
                 myLISTR.skipped.Add(house);
+                hasBeenAdded = true;
             }
             AnimationClick(sender as Button);
         }
 
         private void DislikeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (hasBeenAdded)
+            {
+                return;
+            }
             if (!myLISTR.disliked.Any(x => x.Id == house.Id))
             {
                 myLISTR.disliked.Add(house);
+                hasBeenAdded = true;
             }
             AnimationClick(sender as Button);
         }
