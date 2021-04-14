@@ -13,6 +13,12 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
+        <TranslateTransform x:Key="UpAnimation" x:Name="UpAnimation" Y="50" />
+        <Storyboard x:Key="ClickAnimation" x:Name="ClickAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="AnimationButton" Storyboard.TargetProperty="Opacity">
+                <SplineDoubleKeyFrame KeyTime="0:0:0.55" Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
         <Style x:Key="NoLight" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Margin" Value="5" />
@@ -95,7 +101,7 @@
         <local:PriceConverter x:Key="PriceConverter" />
     </UserControl.Resources>
 
-    <Grid>
+    <Grid Name="MainGrid">
         <Grid.Background>
             <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
                 <GradientStop Offset="1" Color="#FFF4F4F5" />
@@ -361,14 +367,13 @@
             Margin="229,455,-331,-405"
             Rows="1">
             <Button
-                Name="DislikeButton"
+                Name="FavouriteButton"
                 Background="#00000000"
-                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove},
-                                             Width=103,
-                                             Height=120}"
-                PreviewMouseDown="DislikeClick"
+                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart},
+                                             Height=120,
+                                             Width=103}"
+                PreviewMouseDown="FavouriteClick"
                 Style="{StaticResource MyButtonStyle}" />
-
             <Button
                 Name="SkipButton"
                 Background="#00000000"
@@ -378,14 +383,51 @@
                 PreviewMouseDown="SkipClick"
                 Style="{StaticResource MyButtonStyle}" />
             <Button
-                Name="FavouriteButton"
+                Name="DislikeButton"
                 Background="#00000000"
-                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart},
+                Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove},
                                              Width=103,
                                              Height=120}"
-                PreviewMouseDown="FavouriteClick"
+                PreviewMouseDown="DislikeClick"
                 Style="{StaticResource MyButtonStyle}" />
+
         </UniformGrid>
+        <Button
+            Name="FavouriteAnimationButton"
+            Grid.Row="1"
+            Grid.Column="4"
+            Margin="85,455,-200,-405"
+            Background="#00000000"
+            Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeHeart},
+                                         Width=103,
+                                         Height=120}"
+            Foreground="Red"
+            Style="{StaticResource MyButtonStyle}"
+            Visibility="Collapsed" />
+        <Button
+            Name="SkippedAnimationButton"
+            Grid.Row="1"
+            Grid.Column="4"
+            Margin="225,455,-335,-405"
+            Background="#00000000"
+            Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.SkipForward},
+                                         Width=103,
+                                         Height=120}"
+            Foreground="Red"
+            Style="{StaticResource MyButtonStyle}"
+            Visibility="Collapsed" />
+        <Button
+            Name="DislikedAnimationButton"
+            Grid.Row="1"
+            Grid.Column="4"
+            Margin="500,455,-335,-405"
+            Background="#00000000"
+            Content="{iconPacks:PackIcon {x:Static iconPacks:PackIconMaterialKind.HomeRemove},
+                                         Width=103,
+                                         Height=120}"
+            Foreground="Red"
+            Style="{StaticResource MyButtonStyle}"
+            Visibility="Collapsed" />
 
         <Button
             Grid.Row="1"

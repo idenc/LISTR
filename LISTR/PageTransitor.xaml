@@ -14,7 +14,7 @@
             x:Key="SlideLeft"
             Completed="SlideLeft_Completed"
             FillBehavior="Stop"
-            Duration="0:0:0.5">
+            Duration="0:0:1">
             <DoubleAnimation
                 Name="Left"
                 Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
