@@ -43,7 +43,7 @@ namespace LISTR
             };
         }
 
-        private void FavouriteClick(object sender, RoutedEventArgs e)
+        public void FavouriteClick(object sender, RoutedEventArgs e)
         {
             if (hasBeenAdded)
             {
@@ -57,7 +57,7 @@ namespace LISTR
             AnimationClick(sender as Button);
         }
 
-        private void SkipClick(object sender, RoutedEventArgs e)
+        public void SkipClick(object sender, RoutedEventArgs e)
         {
             if (hasBeenAdded)
             {
@@ -71,7 +71,7 @@ namespace LISTR
             AnimationClick(sender as Button);
         }
 
-        private void DislikeClick(object sender, RoutedEventArgs e)
+        public void DislikeClick(object sender, RoutedEventArgs e)
         {
             if (hasBeenAdded)
             {

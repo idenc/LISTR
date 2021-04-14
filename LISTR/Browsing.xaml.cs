@@ -122,7 +122,7 @@ namespace LISTR
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
-            if (index < houses.Count)
+            if (index < houses.Count && !isPreview && !isViewDetails)
             {
                 if (e.Key == Key.Left)
                 {
@@ -187,6 +187,10 @@ namespace LISTR
                     ViewFavouritesButton.Click += GoToPreviousPage;
 
                     SearchBar.Visibility = Visibility.Collapsed;
+
+                    browsecontrol.FavouriteButton.Click -= browsecontrol.FavouriteClick;
+                    browsecontrol.SkipButton.Click -= browsecontrol.SkipClick;
+                    browsecontrol.DislikeButton.Click -= browsecontrol.DislikeClick;
                 }
                 else if (isViewDetails)
                 {
