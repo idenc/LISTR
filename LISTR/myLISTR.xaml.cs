@@ -116,18 +116,10 @@ namespace LISTR
 
         private void ResetClick(object sender, RoutedEventArgs e)
         {
-            if (selectedTab == SelectedTab.Favourites)
-            {
                 favourites.Clear();
-            }
-            else if (selectedTab == SelectedTab.Disliked)
-            {
                 disliked.Clear();
-            }
-            else
-            {
                 skipped.Clear();
-            }
+
         }
 
         private bool ListingFilter(object item)
