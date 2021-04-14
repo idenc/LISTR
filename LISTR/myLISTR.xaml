@@ -253,14 +253,14 @@
                 Grid.Row="1"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center">
-                <Button
+                <Button x:Name="removeButton"
                     Grid.Column="7"
                     Margin="0,10,20,10"
                     Padding="7"
                     HorizontalAlignment="Left"
                     Click="Button_Click_1">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock>Remove all filters</TextBlock>
+                        <TextBlock x:Name="removeFilters">Remove all filters</TextBlock>
                     </StackPanel>
                 </Button>
             </StackPanel>
