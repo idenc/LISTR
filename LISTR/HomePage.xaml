@@ -119,13 +119,13 @@
                 Visibility="Collapsed" />
             <Button
                 Name="ListingsButton"
-                Width="66"
+                Width="85"
                 Margin="0,20,0,0"
                 Padding="7"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Click="ListingsClick"
-                Content="Listings"
+                Content="Dashboard"
                 FontSize="12"
                 Visibility="Collapsed" />
         </StackPanel>
