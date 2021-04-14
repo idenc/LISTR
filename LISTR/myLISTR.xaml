@@ -26,6 +26,30 @@
                 </Style>
             </Style.Resources>
         </Style>
+
+        <Style x:Key="NoLight" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Name="border"
+                            Padding="10,5"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="DarkGray"
+                            BorderThickness="1"
+                            CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True" />
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Page.Resources>
 
     <Grid>
@@ -51,6 +75,13 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
+
+        <Button
+                                Background="#ffffed"
+                                Content="{Binding}"
+                                FontSize="16"
+                                Style="{StaticResource NoLight}" />
+
         <StackPanel
             Grid.Row="1"
             Grid.Column="1"
@@ -229,12 +260,19 @@
                     Grid.Column="7"
                     Margin="0,10,20,10"
                     Padding="7"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left" Click="Button_Click_1">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>Remove all filters</TextBlock>
                     </StackPanel>
                 </Button>
             </StackPanel>
+            <Button x:Name="B1" Background="LightCyan" Content="Beds 3 - 4" HorizontalAlignment="Left" Height="41" Margin="20,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="142" Style="{StaticResource NoLight}" FontSize="14" Click="TagHiding"/>
+            <Label x:Name="T1" Content="x" HorizontalAlignment="Left" Margin="137,8,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Foreground="Red"/>
+            <Button x:Name="B3" Background="LightCyan" Content="Garage" HorizontalAlignment="Left" Height="41" Margin="345,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="142" Style="{StaticResource NoLight}" FontSize="14" Click="TagHiding"/>
+            <Label x:Name="T3" Content="x" HorizontalAlignment="Left" Margin="461,8,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Foreground="Red"/>
+            <Button x:Name="B2" Background="LightCyan" Content="Baths 2+" HorizontalAlignment="Left" Height="41" Margin="182,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="142" Style="{StaticResource NoLight}" FontSize="14" Click="TagHiding"/>
+            <Label x:Name="T2" Content="x" HorizontalAlignment="Left" Margin="298,8,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Foreground="Red"/>
+
         </Grid>
 
         <ScrollViewer

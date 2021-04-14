@@ -12,7 +12,8 @@
     MinHeight="480"
     Icon="/LISTR;component/resources/realtyLogo.ico"
     UseLayoutRounding="True"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    ResizeMode="CanMinimize">
 
     <Frame
         x:Name="Main"

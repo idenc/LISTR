@@ -68,7 +68,15 @@ namespace LISTR
             _previousPage = previousPage;
             this.selectedTab = selectedTab;
 
+
             InitializeComponent();
+
+            T1.Opacity = 0;
+            T2.Opacity = 0;
+            T3.Opacity = 0;
+            B1.Opacity = 0;
+            B2.Opacity = 0;
+            B3.Opacity = 0;
         }
 
         //A hacky way to implement filtering
@@ -94,6 +102,8 @@ namespace LISTR
                 }
                 catch (Exception e) { }
             }
+
+
         }
 
 
@@ -319,6 +329,23 @@ namespace LISTR
                 PlacementTarget = this,
                 IsOpen = true
             };
+        }
+
+        private void TagHiding(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            btn.Opacity = 0;
+            T3.Opacity = 0;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            T1.Opacity = 0;
+            T2.Opacity = 0;
+            T3.Opacity = 0;
+            B1.Opacity = 0;
+            B2.Opacity = 0;
+            B3.Opacity = 0;
         }
     }
 }
