@@ -126,19 +126,19 @@ namespace LISTR
             {
                 if (e.Key == Key.Left)
                 {
-                    myLISTR.favourites.Add(houses[index++]);
+                    myLISTR.favourites.Add(houses[index]);
                     browsecontrol.FavouriteButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                     e.Handled = true;
                 }
                 else if (e.Key == Key.Right)
                 {
-                    myLISTR.disliked.Add(houses[index++]);
+                    myLISTR.disliked.Add(houses[index]);
                     browsecontrol.DislikeButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                     e.Handled = true;
                 }
                 else if (e.Key == Key.Up || e.Key == Key.Down)
                 {
-                    myLISTR.skipped.Add(houses[index++]);
+                    myLISTR.skipped.Add(houses[index]);
                     browsecontrol.SkipButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                     e.Handled = true;
                 }
@@ -149,7 +149,7 @@ namespace LISTR
         {
             if (index < houses.Count)
             {
-                browsecontrol = new Browsecontrol(houses[index++], this);
+                browsecontrol = new Browsecontrol(houses[++index], this);
                 Transitor.SlideLeft(browsecontrol);
             }
         }
@@ -168,7 +168,7 @@ namespace LISTR
             Focus();
             if (index < houses.Count)
             {
-                browsecontrol = new Browsecontrol(houses[index++], this);
+                browsecontrol = new Browsecontrol(houses[index], this);
                 Transitor.currentPresenter.Content = browsecontrol;
 
                 if (isPreview)
